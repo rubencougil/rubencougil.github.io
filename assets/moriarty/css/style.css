@@ -1,0 +1,69 @@
+#Tabla_01 {
+	
+	margin: 20px auto 0 auto;
+	width:1024px;
+	height:768px;
+}
+
+#header {
+
+	background: url(../images/header.jpg);
+	width:1024px;
+	height:232px;
+}
+
+#left_pane {
+
+
+	background: url(../images/left_pane.jpg);
+	width:530px;
+	height:548px;
+	float:left;
+}
+
+#right_pane {
+
+	float:left;
+	background: url(../images/right_pane.jpg);
+	left:530px;
+	top:234px;
+	width:494px;
+	height:548px;
+}
+
+#right_pane_content{
+	
+	margin-top: 60px;
+	width: 350px;
+	margin-left: 50px;
+	color: #999;
+	
+}
+
+b {
+	color: #84350F;
+}
+
+a{
+
+	text-decoration:none;
+	color: #00F;
+	
+}
+
+
+#copyright {
+
+	text-align:center;
+	margin: 0 auto 0 auto;
+	color: #333;
+	
+}
+
+#player{
+	
+	margin-left:50px;
+	margin-top:30px;
+	
+}
+

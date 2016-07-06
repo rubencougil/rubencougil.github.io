@@ -1,0 +1,461 @@
+/* ==========================================================================
+   HTML5 Boilerplate styles - h5bp.com (generated via initializr.com)
+   ========================================================================== */
+
+html,
+button,
+input,
+select,
+textarea {
+    color: #222;
+}
+
+body {
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+img {
+    vertical-align: middle;
+}
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.chromeframe {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+
+/* ===== Initializr Styles ==================================================
+   Author: Jonathan Verrecchia - verekia.com/initializr/responsive-template
+   ========================================================================== */
+
+body {
+    font: 16px/26px Helvetica, Helvetica Neue, Arial;
+}
+
+.wrapper {
+    width: 85%;
+    margin: 0 5%;
+}
+
+
+
+/* ==============
+    MOBILE: Menu
+   ============== */
+
+nav ul {
+    margin: 0;
+    padding: 0;
+
+}
+
+nav a:hover,
+nav a:visited {
+}
+
+nav a:hover {
+
+}
+
+nav a {
+    float: left;
+    margin-bottom: 0;
+    background-color: transparent;
+}
+
+nav {
+    float: right;
+    width: 154px;
+}
+
+header{width: 75%;}
+
+/* ==============
+    MOBILE: Main
+   ============== */
+
+.main {
+    padding: 30px 0;
+}
+
+.main article h1 {
+    font-size: 2em;
+}
+
+.main aside {
+    color: white;
+    padding: 0px 5% 10px;
+}
+
+.footer-container footer {
+    color: #444;
+    text-align: center;
+
+}
+
+/* ===============
+    ALL: IE Fixes
+   =============== */
+
+.ie7 .title {
+    padding-top: 20px;
+}
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+
+body { background-image: url('../img/creampaper.png') ;}
+.main {background-color: white; padding: 50px 10px}
+.main-container{margin-top: 40px;}
+.wrapper, header{margin: 0px auto 30px auto;  color: #444;}
+.wrapper{box-shadow: 0 1px 3px rgba(0, 0, 0, .1);}
+h2 {border-left: 26px solid #444;margin-left: -10px;font: bold 20px/12px 'verdana',sans-serif;letter-spacing: -2px;
+padding: 0 0 0 5px;margin-bottom: 5px;}
+h1{font: 18px/10px 'verdana',sans-serif;letter-spacing: -2px;padding: 0 0 0 10px; margin-bottom:5px;color: #AAA;}
+h3 {margin: 0px;font-size: 16px;font-weight: normal;padding: 0 0 0 23px;}
+#bio {clear: left;margin: 30px auto 60px auto;padding: 20px 15px 75px 15px;;max-width: 560px;background: #FBFBFB;border: 1px solid #F3F3F3;
+border-radius: 8px;position: relative;border-width: 0 1px 1px;border-color: white #F3F3F3 #E8E8E8;line-height: 1.6em;
+z-index:1;}
+a {text-decoration: none;color: #444;background-color: #CCC;padding: 2px;}
+#bio img {margin-right: 10px;}
+.ex-title img {width: 12px;margin-left: 10px;}
+.fecha {font-size: 11px;font-style: italic;}
+.ex-description { line-height: 1.6em;display:none; display: none;padding: 20px;border: 1px solid #DDD;border-radius:10px;
+width: 91%;margin: 30px 0 20px 0;}
+.ex-description img {float: left; margin: 0 20px 5px 0;}
+nav {height: 50px;width: 154px;margin-left: -10px;line-height:40px;position: relative;}
+.header-container{background-color: #444;position: fixed;width: 100%;height: 50px;z-index:2; margin-top:-80px;}
+.ex-title > strong, img {cursor:pointer;}
+.social {margin-left: 20px;width: 100%;height: auto;}
+.social ul {list-style: none; margin: 15px 25px 0 0; padding: 0 0 40px 0;max-width:100%; float:right;}
+.social ul li {float:left; max-width:100%;}
+.social ul li img{max-width: 100%; height: auto;}
+.social ul li a {background-color: transparent;}
+.bordered li {border: 1px solid #CCC;}
+.con-list {margin: 1% 0 0% 25px;width: 100%;height: auto; overflow:hidden;}
+.con-list ul {list-style: none;margin: 0 auto;padding: 1.5em 0 0em 14px;overflow: hidden;display: block;}
+.con-list ul li {float: left;margin: 3% 2.3% 1% 2.3%;}
+.con-list ul li img{max-width: 100%; height: auto;}
+.con-list a, .con-list-b a {background: transparent; padding:0; margin:0;border:none;}
+.con-list-b {margin: 0 0 7% 20px;width: 100%;height: auto; overflow:hidden;}
+.con-list-b ul {list-style: none; margin: 0; padding: 2% 0 8% 0;}
+.con-list-b ul li {float:left; margin: 4% 1.3% 2% 1.3%; max-width:100%;}
+.con-list-b ul li img{max-width: 100%; height: auto;}
+#pic {float:left; max-width: 100%; width:20%; border: 1px solid #CCC; margin: 15px 15px 0 15px ;}
+#pic img { max-width:100%; height: auto;}
+.listado ul{padding: 0 0 0 10px}
+.listado li{display:block;}
+.ex-title strong{display:block;float:left;width:99%;margin-right: 1%}
+.ex-title .fecha{display:block;float:left}
+.ex-options img {width:30px;}
+.section-icon {display:none;}
+
+/* ==========================================================================
+   Media Queries
+   ========================================================================== */
+
+@media only screen and (min-width: 480px) {
+
+/* ====================
+    INTERMEDIATE: Menu
+   ==================== */
+
+    .title {
+        float: left;
+        line-height: 25px;
+    }
+
+    nav a {
+        float: left;
+        margin-bottom: 0;
+        background-color: transparent;
+    }
+
+    nav li:first-child a {
+        margin-left: 0;
+    }
+
+    nav li:last-child a {
+        margin-right: 0;
+    }
+
+/* ========================
+    INTERMEDIATE: IE Fixes
+   ======================== */
+
+    nav ul li {
+        display: inline;
+    }
+
+    nav {
+        float: right;
+        width: 170px;
+    }    
+
+    .oldie nav a {
+        margin: 0 0.7%;
+    }
+
+    .wrapper {width: 65%;}
+    header{width: 75%;}
+
+    .header-container{
+       -webkit-box-shadow: 0 1px 10px #aaa;
+       -moz-box-shadow: 0 1px 10px #aaa;
+       box-shadow: 0 1px 10px #aaa; 
+    }
+    .main aside {
+        -webkit-box-shadow: 0 3px 10px #aaa;
+           -moz-box-shadow: 0 3px 10px #aaa;
+                box-shadow: 0 3px 10px #aaa;
+    }
+
+    h2 {border-left: 52px solid #444; margin-left: -50px; font: bold 20px/12px 'verdana',sans-serif;
+            letter-spacing: -2px;padding: 0 0 0 20px; margin-bottom:5px;}    
+
+    .main {padding: 50px;}
+
+
+}
+
+@media only screen and (min-width: 768px) {
+
+/* ====================
+    WIDE: CSS3 Effects
+   ==================== */
+
+    .header-container{
+       -webkit-box-shadow: 0 1px 10px #aaa;
+       -moz-box-shadow: 0 1px 10px #aaa;
+       box-shadow: 0 1px 10px #aaa; 
+    }
+    .main aside {
+        -webkit-box-shadow: 0 3px 10px #aaa;
+           -moz-box-shadow: 0 3px 10px #aaa;
+                box-shadow: 0 3px 10px #aaa;
+    }
+
+/* ============
+    WIDE: Menu
+   ============ */
+
+    .title {
+        float: left;
+        line-height: 25px;
+    }
+
+    nav {
+        float: right;
+        width: 154px;
+    }
+
+/* ============
+    WIDE: Main
+   ============ */
+
+    .main article {
+        float: left;
+        width: 100%;
+    }
+
+    .main aside {
+        float: right;
+        width: 28%;
+    }
+
+    .wrapper {width: 65%;}
+    header{width: 75%;}
+
+
+    .ex-title strong{width:auto;}
+    #bio {padding: 20px 35px 75px 35px;}
+
+    .section-icon {display:block; float: left;margin: -28px 0 0 -110px;}
+    .section-icon img {width: 36px;height: auto; opacity: 0.15; cursor: auto}    
+
+
+}
+
+@media only screen and (min-width: 1140px) {
+
+/* ===============
+    Maximal Width
+   =============== */
+
+    .wrapper {
+        width: 700px; /* 1140px - 10% for margins */
+    }
+
+    header { width: 800px;}
+    #bio {padding: 20px 45px 75px 45px;}
+
+
+
+}
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+.ir {
+    background-color: transparent;
+    border: 0;
+    overflow: hidden;
+    *text-indent: -9999px;
+}
+
+.ir:before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 100%;
+}
+
+.hidden {
+    display: none !important;
+    visibility: hidden;
+}
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+/* ==========================================================================
+   Print styles
+   ========================================================================== */
+
+@media print {
+    * {
+        background: transparent !important;
+        color: #000 !important; /* Black prints faster: h5bp.com/s */
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    /*
+     * Don't show links for images, or javascript/internal links
+     */
+
+    .ir a:after,
+    a[href^="javascript:"]:after,
+    a[href^="#"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    thead {
+        display: table-header-group; /* h5bp.com/t */
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    @page {
+        margin: 0.5cm;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}

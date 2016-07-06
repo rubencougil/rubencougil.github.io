@@ -1,0 +1,9 @@
+body { margin-top: 20px; }
+canvas { background: url(../img/speeddating.jpg) no-repeat; }
+
+#sd-canvas-wrapper { text-align:center; }
+#left-column { margin-top: 32px; }
+
+.title-wrapper { text-align:center;}
+.download-wrapper { text-align: center; }
+.fb-like{ margin-right: 10px  ;}

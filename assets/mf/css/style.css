@@ -1,0 +1,114 @@
+body{
+	
+	overflow-x: hidden; 
+}
+
+#Tabla_01 {
+	
+	margin: 0 auto 0 auto;
+	left:0px;
+	top:0px;
+	width:1024px;
+	height:1000px;
+}
+
+#panel {
+	text-align:justify;
+	font-family:"Courier New", Courier, monospace;
+	font-size:12px;
+	margin-top:140px;
+	height:310px;
+	margin-left:60px;
+	width:290px;
+	
+}
+
+
+
+#mf-01_ {
+
+	background: url(../images/mf_01.jpg);
+	left:0px;
+	top:0px;
+	width:1024px;
+	height:302px;
+}
+
+#mf-02_ {
+
+	background: url(../images/mf_02.jpg);
+	left:0px;
+	top:302px;
+	width:550px;
+	height:584px;
+	float:left;
+}
+
+#mf-03_ {
+
+	background: url(../images/mf_03.jpg);
+	left:550px;
+	top:302px;
+	width:474px;
+	height:584px;
+	float:left;
+}
+
+#player{
+	
+	margin-left:120px;
+	margin-top:10px;
+	
+}
+
+div#share {
+
+	margin-left: 800px;
+	padding-top: 120px;
+	
+}
+
+#copyright {
+
+	text-align:center;
+	margin: 0 auto 0 auto;
+	color: #333;
+	
+}
+
+div#descarga{
+
+	margin-left: 500px;
+	margin-top: 10px;
+	font-size:12px;	
+	
+}
+
+div#descarga a {
+	
+	background-image: url('Download.png');
+	display:block;
+	width: 50px;
+	height: 50px;
+	color: #3f6584;
+}
+
+div#descarga a:hover {
+	
+	background-image: url('Download_hover.png');
+	display:block;
+	width: 50px;
+	height: 50px;
+	color: #3f6584;
+}
+
+a {
+
+	text-decoration:none;
+	color: #4D2E04;
+	
+}
+
+
+
+

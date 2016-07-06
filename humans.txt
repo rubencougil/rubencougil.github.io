@@ -1,0 +1,15 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    <name> Rubén Cougil Grande <role> Web Developer <twitter> @rcougil
+
+# THANKS
+
+    <name> Miguel García <role> Web Designer <twitter> @arti360
+
+# TECHNOLOGY COLOPHON
+
+    HTML5, CSS3
+    jQuery, Modernizr

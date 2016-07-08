@@ -155,9 +155,9 @@ a {text-decoration: none;color: #444;background-color: #CCC;padding: 2px;}
 .ex-title img {width: 12px;margin-left: 10px;}
 .fecha {font-size: 11px;font-style: italic;}
 .ex-description { line-height: 1.6em; display:none; padding: 20px;border: 1px solid #DDD;border-radius:10px;
-width: 91%;margin: 30px 0 20px 0;}
+width: 86%;margin: 30px 0 20px 0;}
 .ex-description-displayed { line-height: 1.6em; padding: 20px;border: 1px solid #DDD;border-radius:10px;
-width: 91%;margin: 30px 0 20px 0;}
+width: 86%;margin: 30px 0 20px 0;}
 .ex-description img {float: left; margin: 0 20px 5px 0;}
 .ex-description-displayed img {float: left; margin: 0 20px 5px 0;}
 nav {height: 50px;width: 154px;margin-left: -10px;line-height:40px;position: relative;}

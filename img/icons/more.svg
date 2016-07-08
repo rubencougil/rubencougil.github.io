@@ -1,8 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" width="100px" height="100px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
-<polygon style="fill:#010101;" points="100,62.769 0,62.769 0,50.269 100,50.269 100,62.769 "/>
-<polygon style="fill:#010101;" points="100,12.5 0,12.5 0,0 100,0 100,12.5 "/>
-<path style="fill:#010101;" d="M37.5,93.75c0,3.455-2.808,6.25-6.25,6.25c-3.467,0-6.262-2.795-6.262-6.25s2.795-6.25,6.262-6.25  C34.692,87.5,37.5,90.295,37.5,93.75z"/>
-<polygon style="fill:#010101;" points="62.5,37.5 0,37.5 0,25 62.5,25 62.5,37.5 "/>
-<path style="fill:#010101;" d="M12.5,93.75c0,3.455-2.795,6.25-6.25,6.25C2.795,100,0,97.205,0,93.75s2.795-6.25,6.25-6.25  C9.705,87.5,12.5,90.295,12.5,93.75z"/>
-<path style="fill:#010101;" d="M62.5,93.75c0,3.455-2.795,6.25-6.25,6.25S50,97.205,50,93.75s2.795-6.25,6.25-6.25  S62.5,90.295,62.5,93.75z"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 90 112.5" enable-background="new 0 0 90 90" xml:space="preserve"><path d="M45,31.3c-7.6,0-13.7,6.2-13.7,13.7c0,7.6,6.2,13.7,13.7,13.7c7.6,0,13.7-6.2,13.7-13.7S52.6,31.3,45,31.3z M49.7,46.1h-3.6  v3.6c0,0.6-0.5,1.1-1.1,1.1c-0.6,0-1.1-0.5-1.1-1.1v-3.6h-3.6c-0.6,0-1.1-0.5-1.1-1.1s0.5-1.1,1.1-1.1h3.6v-3.6  c0-0.6,0.5-1.1,1.1-1.1c0.6,0,1.1,0.5,1.1,1.1v3.6h3.6c0.6,0,1.1,0.5,1.1,1.1C50.7,45.6,50.2,46.1,49.7,46.1z"/><text x="0" y="105" fill="#000000" font-size="5px" font-weight="bold" font-family="'Helvetica Neue', Helvetica, Arial-Unicode, Arial, Sans-serif">Created by Kaique Amorim</text><text x="0" y="110" fill="#000000" font-size="5px" font-weight="bold" font-family="'Helvetica Neue', Helvetica, Arial-Unicode, Arial, Sans-serif">from the Noun Project</text></svg>

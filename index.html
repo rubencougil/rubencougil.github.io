@@ -54,8 +54,6 @@
                                 </li>
                                 <li><a href="https://github.com/rubencougil" target="_blank"><img
                                             src="./img/social-media/github.png" /></a></li>
-                                <li><a href="" id="download-pdf" target="_blank"><img
-                                            src="./img/social-media/pdf.png" /></a></li>
                             </ul>
                         </div>
                     </div>
@@ -398,23 +396,6 @@
             }, function () {
                 $('.social li').css('opacity', '1')
             });
-
-            $('#download-pdf').click(function (event) {
-                event.preventDefault();
-                var element = document.getElementById('main');
-                var opt = {
-                    margin: 0.2,
-                    filename: 'ruben_cougil.pdf',
-                    image: { type: 'jpeg', quality: 0.98 },
-                    html2canvas: {
-                        logging: true,
-                        useCORS: true,
-                    },
-                    jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
-                };
-                html2pdf().set(opt).from(element).toPdf().save();
-            });
-
         });
     </script>
 </body>

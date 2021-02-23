@@ -24,12 +24,13 @@
 
     <link rel="stylesheet" href="css/normalize.min.css">
     <link rel="stylesheet" href="css/main.css">
+
     <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 </head>
 
 <body>
-    <div class="main-container">
-        <div class="main wrapper clearfix">
+    <div id="main-container" class="main-container">
+        <div id="main" class="main wrapper clearfix">
             <article>
                 <section>
                     <h2>RUBÉN COUGIL GRANDE</h2>
@@ -37,10 +38,10 @@
                     <div id="bio">
                         <div id="pic"><img src="./img/pic.jpg" /></div>
                         <p>
-                            Ingeniero Informático desde 2011. Actualmente <a href="http://www.linkedin.com/in/rcgrande"
-                                target="_blank">Senior Software Engineer en Adobe.</a>,
-                            realizando desarrollo Web de Alto Rendimiento. Programador, Gamer, retro-fan de los 8-bits,
-                            amante del Rock y gallego orgulloso.
+                            Ingeniero Informático. <a href="http://www.linkedin.com/in/rcgrande" target="_blank">Senior
+                                Software Engineer en Adobe.</a> Realizando desarrollo Web de
+                            Alto Rendimiento. Programador, Gamer, retro-fan de los 8-bits, amante del Rock y gallego
+                            orgulloso.
                         </p>
                         <div class="social">
                             <ul>
@@ -53,6 +54,8 @@
                                 </li>
                                 <li><a href="https://github.com/rubencougil" target="_blank"><img
                                             src="./img/social-media/github.png" /></a></li>
+                                <li><a href="" id="download-pdf" target="_blank"><img
+                                            src="./img/social-media/pdf.png" /></a></li>
                             </ul>
                         </div>
                     </div>
@@ -211,25 +214,6 @@
                                 sonorización de salas, grabación y procesado.
                             </p>
                         </li>
-                        <li>
-                            <p class="ex-title">
-                                <strong>PFC: PizzaOnline</strong>
-                                <span class="fecha">(Ourense, Sept. 2005 - Marzo 2006) </span>
-                                <img src="./img/icons/more.png" />
-                            </p>
-                            <p class="ex-description">
-                                <img src="./img/pizzaonline.jpg" />
-                                En 2005 desarrollé otro sistema web para mi proyecto de tercer curso (con el que
-                                conseguí el título de Ingeniero Técnico en Informática de Gestión) en la ESEI. Se trata
-                                de un completo servicio online para cadenas de pizzerías. La idea era hacer los pedidos
-                                online en lugar de la tradicional llamada telefónica. El sistema era capaz de almacenar
-                                datos de los usuarios registrados como últimos pedidos, preferencias y otras muchas
-                                características. <br /><br />
-                                El sistema se separó en dos sub-sistemas, una interfaz para los clientes y otra para los
-                                administradores. Estos últimos podían gestionar todos los aspectos relaccionados con los
-                                pedidos y con la gestión de su pizzería.
-                            </p>
-                        </li>
                     </ul>
                     <br />
                 </section>
@@ -278,7 +262,7 @@
                             </p>
                             <p class="ex-description-displayed">
                                 <img src="./img/lasalle-logo.png" />
-                                Docente Universitario. Actualmente impartiendo la asignatura <a
+                                Docente Universitario. Impartiendo la asignatura <a
                                     href="https://github.com/rubencougil/rendimiento-en-aplicaciones-web"
                                     target="_blank">Rendimiento
                                     Web</a>,
@@ -398,6 +382,7 @@
 
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/vendor/html2pdf.bundle.min.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {
@@ -412,6 +397,22 @@
                 });
             }, function () {
                 $('.social li').css('opacity', '1')
+            });
+
+            $('#download-pdf').click(function (event) {
+                event.preventDefault();
+                var element = document.getElementById('main');
+                var opt = {
+                    margin: 0.2,
+                    filename: 'ruben_cougil.pdf',
+                    image: { type: 'jpeg', quality: 0.98 },
+                    html2canvas: {
+                        logging: true,
+                        useCORS: true,
+                    },
+                    jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+                };
+                html2pdf().set(opt).from(element).toPdf().save();
             });
 
         });

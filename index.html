@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js">
+<html lang="es" class="no-js">
 
 <head>
     <meta charset="utf-8">
@@ -25,9 +25,10 @@
     <link rel="stylesheet" href="css/normalize.min.css">
     <link rel="stylesheet" href="css/main.css">
 
+    <!-- Modernizr -->
     <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XP27FQB93K"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -47,7 +48,7 @@
                     <div class="section-icon"><img src="./img/icons/perfil.svg" /></div>
                     <div id="bio">
                         <div id="pic"><img src="./img/pic.jpg" /></div>
-                        <p>
+                        <p data-i18n="[html]hero-description">
                             Ingeniero Informático. <a href="http://www.linkedin.com/in/rcgrande" target="_blank">Senior
                                 Software Engineer en Adobe.</a> Realizando desarrollo Web de
                             Alto Rendimiento. Programador, Gamer, retro-fan de los 8-bits, amante del Rock y gallego
@@ -55,35 +56,31 @@
                         </p>
                         <div class="social">
                             <ul>
-                                <li><a href="https://twitter.com/rcougil" target="_blank"><img
-                                            src="./img/social-media/twitter.png" /></a></li>
-                                <li><a href="http://www.linkedin.com/in/rcgrande" target="_blank"><img
-                                            src="./img/social-media/linkedin.png" target="_blank" /></a></li>
-                                <li><a href="mailto:rubencougil@gmail.com"><img
-                                            src="./img/social-media/email.png" /></a>
+                                <li><a href="https://twitter.com/rcougil" target="_blank"><img src="./img/social-media/twitter.png" /></a></li>
+                                <li><a href="http://www.linkedin.com/in/rcgrande" target="_blank"><img src="./img/social-media/linkedin.png" target="_blank" /></a></li>
+                                <li><a href="mailto:rubencougil@gmail.com"><img src="./img/social-media/email.png" /></a>
                                 </li>
-                                <li><a href="https://github.com/rubencougil" target="_blank"><img
-                                            src="./img/social-media/github.png" /></a></li>
+                                <li><a href="https://github.com/rubencougil" target="_blank"><img src="./img/social-media/github.png" /></a></li>
                             </ul>
                         </div>
                     </div>
                 </section>
                 <section class="listado">
-                    <h2>EXPERIENCIA</h2>
+                    <h2 data-i18n="EXPERIENCE">EXPERIENCIA</h2>
                     <div class="section-icon"><img src="./img/icons/experiencia.svg" /></div>
                     <ul>
                         <li>
                             <p class="ex-title">
-                                <strong>Software Engineer en Adobe.</strong>
-                                <span class="fecha">(Barcelona, Agosto. 2018 - Actualidad) </span>
+                                <strong data-i18n="exp-adobe-title">Software Engineer en Adobe.</strong>
+                                <span class="fecha" data-i18n="exp-adobe-date">(Barcelona, Agosto. 2018 - Actualidad)
+                                </span>
                                 <img src="./img/icons/more.png" />
                             </p>
-                            <p class="ex-description-displayed">
+                            <p data-i18n="[html]exp-adobe-description" class="ex-description-displayed">
                                 <img src="./img/adobe-logo.png" />
                                 <a href="https://www.adobe.com/es/commerce/magento.html" target="_blank">Adobe</a>
                                 Destaca en el mundo del software
-                                por sus programas de edición de páginas web, vídeo e imagen digital. Adobe adquiere <a
-                                    href="http://www.magento.com/" target="_blank">Magento</a>
+                                por sus programas de edición de páginas web, vídeo e imagen digital. Adobe adquiere <a href="http://www.magento.com/" target="_blank">Magento</a>
                                 en Agosto de 2018. Las dos empresas fusionarán tecnologías para combinar
                                 la fortaleza de Adobe en contenido y datos con la innovación de comercio abierto de
                                 Magento en su denominado
@@ -94,11 +91,12 @@
                         </li>
                         <li>
                             <p class="ex-title">
-                                <strong>Software Engineer en Magento Inc.</strong>
-                                <span class="fecha">(Barcelona, Octubre. 2016 - Actualidad) </span>
+                                <strong data-i18n="exp-magento-title">Software Engineer en Magento Inc.</strong>
+                                <span data-18n="exp-magento-date" class="fecha">(Barcelona, Octubre. 2016 -
+                                    Agosto 2018)</span>
                                 <img src="./img/icons/more.png" />
                             </p>
-                            <p class="ex-description-displayed">
+                            <p data-i18n="[html]exp-magento-description" class="ex-description-displayed">
                                 <img src="./img/magento-logo.png" />
                                 <a href="http://www.magento.com/" target="_blank">Magento</a> es una plataforma de
                                 comercio en línea, de código liberado (opensource), con el que se pueden llevar a cabo
@@ -109,11 +107,12 @@
                         </li>
                         <li>
                             <p class="ex-title">
-                                <strong>Web Developer en CMP Group</strong>
-                                <span class="fecha">(Barcelona, Julio. 2015 - Octubre 2016) </span>
+                                <strong data-i18n="exp-cmp-title">Web Developer en CMP Group</strong>
+                                <span data-i18n="exp-cmp-date" class="fecha">(Barcelona, Julio. 2015 - Octubre 2016)
+                                </span>
                                 <img src="./img/icons/more.png" />
                             </p>
-                            <p class="ex-description-displayed">
+                            <p data-i18n="[html]exp-cmp-description" class="ex-description-displayed">
                                 <img src="./img/cmp.png" />
                                 <a href="http://teamcmp.com/" target="_blank">CMP Group</a> es una empresa de
                                 entretenimiento digital fundada en 2002 en Rochester (NY) con su sede principal en
@@ -127,11 +126,12 @@
                         </li>
                         <li>
                             <p class="ex-title">
-                                <strong>Web Developer en Softonic</strong>
-                                <span class="fecha">(Barcelona, Marzo. 2013 - Julio. 2015) </span>
+                                <strong data-i18n="exp-softonic-title">Web Developer en Softonic</strong>
+                                <span data-i18n="exp-softonic-date" class="fecha">(Barcelona, Marzo. 2013 - Julio.
+                                    2015)</span>
                                 <img src="./img/icons/more.png" />
                             </p>
-                            <p class="ex-description-displayed">
+                            <p data-i18n="[html]exp-softonic-description" class="ex-description-displayed">
                                 <img src="./img/softonic.jpg" />
                                 Desarrollo Web en la multinacional <a href="http://www.softonic.com" target="_blank">
                                     Softonic</a> (en su sede en Barcelona). <strong>Programación web para entornos de
@@ -144,27 +144,28 @@
                         </li>
                         <li>
                             <p class="ex-title">
-                                <strong>Trainee PHP Developer en Softonic</strong>
-                                <span class="fecha">(Barcelona, Enero. 2013 - Marzo. 2013) </span>
+                                <strong data-i18n="exp-softonic-trainee-title">Trainee PHP Developer en
+                                    Softonic</strong>
+                                <span data-i18n="exp-softonic-trainee-date" class="fecha">(Barcelona, Enero. 2013 -
+                                    Marzo. 2013)</span>
                                 <img src="./img/icons/more.png" />
                             </p>
-                            <p class="ex-description">
+                            <p data-i18n="[html]exp-softonic-trainee-description" class="ex-description">
                                 <img src="./img/softonic.jpg" />
-                                Incluido en un plan de formación en la multinacional <a href="http://www.softonic.com"
-                                    target="_blank"> Softonic</a> (en su sede en Barcelona) para convertir a
-                                programadores con un año de experiencia prevía en expertos en <strong>programación web
-                                    para entornos de Alto Rendimiento</strong>. Preparación de certificación en MySQL,
-                                Patrones de Diseño, Metodología SCRUMM, sistemas de caché...
+                                Incluido en un plan de formación en la multinacional <a href="http://www.softonic.com" target="_blank">
+                                    Softonic</a> (en su sede en Barcelona) para convertir a programadores con un año de experiencia prevía en
+                                expertos en <strong>programación web para entornos de Alto Rendimiento</strong>. Preparación de certificación
+                                en MySQL, Patrones de Diseño, Metodología SCRUMM, sistemas de caché...
                                 <br />
                             </p>
                         </li>
                         <li>
                             <p class="ex-title">
-                                <strong>Social Media Developer en Elogia</strong>
-                                <span class="fecha">(Vigo, Sept. 2011 - Enero 2013) </span>
+                                <strong data-i18n="exp-elogia-title">Social Media Developer en Elogia</strong>
+                                <span data-i18n="exp-elogia-date" class="fecha">(Vigo, Sept. 2011 - Enero 2013)</span>
                                 <img src="./img/icons/more.png" />
                             </p>
-                            <p class="ex-description">
+                            <p data-i18n="[html]exp-elogia-description" class="ex-description">
                                 <img src="./img/ito.jpg" />
                                 <a href="http://elogia.net" target="_blank">Elogia</a> es una agencia de Marketing
                                 Online. Allí me dediqué a desarrollar e integrar aplicaciones en Redes Sociales para
@@ -172,49 +173,45 @@
                                     2</i>, entre otros . Instalé, configuré y administré sitios web en Wordpress que
                                 sería utilizados como blogs corporativos para clientes como <i>Zelnova</i>, <i>Banco
                                     Mediolanum</i>, <i>D.O. Rías Baixas</i> o <i>Qualita</i> . Desarrollé una plataforma
-                                de uso interno: el <i>Social Media Objectives Framework</i> y el blog <a
-                                    href="http://www.marketing4ecommerce.net">marketing4ecommerce</a>. También colaboré
-                                como autor en el <a href="http://www.elogia.net/blog/autor/Ruben-Cougil/"
-                                    target="_blank">blog</a> de la compañía.
+                                de uso interno: el <i>Social Media Objectives Framework</i> y el blog <a href="http://www.marketing4ecommerce.net">
+                                    marketing4ecommerce</a>. También colaboré como autor en el <a href="http://www.elogia.net/blog/autor/Ruben-Cougil/" target="_blank">blog</a> de la compañía.
                                 <br />
                             </p>
                         </li>
                         <li>
                             <p class="ex-title">
-                                <strong>PFC Financiado: TUGlabWeb</strong>
-                                <span class="fecha">(Ourense, Sept. 2010 - Julio 2011) </span>
+                                <strong data-i18n="exp-tuglabweb-title">PFC Financiado: TUGlabWeb</strong>
+                                <span data-i18n="exp-tuglabweb-date" class="fecha">(Ourense, Sept. 2010 - Julio
+                                    2011)</span>
                                 <img src="./img/icons/more.png" />
                             </p>
-                            <p class="ex-description">
+                            <p data-i18n="[html]exp-tuglabweb-description" class="ex-description">
                                 <img src="./img/rubick.jpg" />
                                 <a href="http://tuglabweb.uvigo.es/" target="_blank">TUGlabWEB</a> es una interfaz para
                                 juegos de Utilidad Transferible que provee una forma de realizar cálculos sobre la
                                 función característica que representa a un juego de 3 o 4 jugadores (coaliciones) en el
-                                marco de la <a href="http://es.wikipedia.org/wiki/Teor%C3%ADa_de_juegos"
-                                    target="_blank">Teoría de Juegos </a>. Se han implementado un completo panel de
-                                administración, gestión de usuarios, manejar y guardar resultados obtenidos, y muchas
-                                más funcionalidades. <br /><br />
-                                Se ha desarrollado en colaboración con <a href="#" target="_blank">GWAI</a>
-                                (Intelligence Agent Group of University of Vigo ), <a href="#"
-                                    target="_blank">SAGATH</a> (Santiago Game Theroy Group), Departamento de Matemáticas
-                                de Vigo y <a href="#" target="_blank">SIDOR</a> (Statistical Inference, Decisions and
-                                Operations Research).
+                                marco de la <a href="http://es.wikipedia.org/wiki/Teor%C3%ADa_de_juegos" target="_blank">
+                                    Teoría de Juegos </a>. Se han implementado un completo panel de administración, gestión de
+                                usuarios, manejar y guardar resultados obtenidos, y muchas más funcionalidades. Se ha desarrollado
+                                en colaboración con GWAI (Intelligence Agent Group of University of Vigo ), SAGATH
+                                (Santiago Game Theroy Group), Departamento de Matemáticas de Vigo y SIDOR (Statistical Inference,
+                                Decisions and Operations Research).
                             </p>
                         </li>
                         <li>
                             <p class="ex-title">
-                                <strong>Becario en UVIGO</strong>
-                                <span class="fecha">(Ourense, Sept. 2008 - Agosto 2010) </span>
+                                <strong data-i18n="exp-uvigo-title">Becario en UVIGO</strong>
+                                <span data-i18n="exp-uvigo-date" class="fecha">(Ourense, Sept. 2008 - Agosto 2010)
+                                </span>
                                 <img src="./img/icons/more.png" />
                             </p>
-                            <p class="ex-description">
+                            <p data-i18n="[html]exp-uvigo-description" class="ex-description">
                                 <img src="./img/uvigotv.jpg" />
-                                He trabajado como becario en tres departamentos diferentes en <a href="http://uvigo.es"
-                                    target="_blank">UVIGO</a>. Primero, estuve en <a href="fcetou.uvigo.es"
-                                    target="_blank">FCETOU</a> (Facultad de Turismo y Empresariales de Ourense) y poco
+                                He trabajado como becario en tres departamentos diferentes en <a href="http://uvigo.es" target="_blank">UVIGO</a>.
+                                Primero, estuve en <a href="fcetou.uvigo.es" target="_blank">FCETOU</a>
+                                (Facultad de Turismo y Empresariales de Ourense) y poco
                                 después en <a href="http://fcou.uvigo.es/" target="_blank">FCOU</a> (Facultad de
                                 Ciencias de Ourense). Me dedicaba a dar soporte informático y a mantenimiento
-                                <br /><br />
                                 En 2010 empecé a trabajar en Servicios Multimedia y Sitemas de Videoconferencia en UVIGO
                                 <a href="http://tv.uvigo.es/" target="_blank">(tv.uvigo.es)</a>. Hice mantenimiento ,
                                 control y configuración de sistemas AG (Access Grid) y de videoconferencia (Ipela,
@@ -226,154 +223,125 @@
                     <br />
                 </section>
                 <section id="conocimientos">
-                    <h2>TECNOLOGIAS</h2>
+                    <h2 data-i18n="TECHNOLOGIES">TECNOLOGIAS</h2>
                     <div class="section-icon"><img src="./img/icons/conocimientos.svg" /></div>
                     <div class="con-list">
                         <ul>
                             <li><a href="http://php.net" target="_blank"><img src="./img/conocimientos/php.jpg" /></a>
                             </li>
-                            <li><a href="https://www.typescriptlang.org/" target="_blank"><img
-                                        src="./img/conocimientos/ts.jpg" /></a></li>
-                            <li><a href="http://www.oracle.com/us/products/mysql/overview/index.html"
-                                    target="_blank"><img src="./img/conocimientos/sql.png" /></a></li>
-                            <li><a href="https://symfony.com/" target="_blank"><img
-                                        src="./img/conocimientos/symfony.jpg" /></a></li>
-                            <li><a href="https://www.elastic.co/es/" target="_blank"><img
-                                        src="./img/conocimientos/elastic.jpg" /></a></li>
-                            <li><a href="https://www.golang.org/" target="_blank"><img
-                                        src="./img/conocimientos/go-logo.png" /></a></li>
-                            <li><a href="https://www.docker.com/" target="_blank"><img
-                                        src="./img/conocimientos/docker.png" /></a></li>
-                            <li><a href="https://www.newrelic.com/" target="_blank"><img
-                                        src="./img/conocimientos/new_relic.png" /></a></li>
-                            <li><a href="https://aws.amazon.com/" target="_blank"><img
-                                        src="./img/conocimientos/aws.png" /></a></li>
-                            <li><a href="http://redis.io/" target="_blank"><img
-                                        src="./img/conocimientos/redis.jpg" /></a></li>
-                            <li><a href="http://jenkins.io/" target="_blank"><img
-                                        src="./img/conocimientos/jenkins.png" /></a></li>
-                            <li><a href="https://prometheus.io/" target="_blank"><img
-                                        src="./img/conocimientos/prometheus.jpg" /></a></li>
+                            <li><a href="https://www.typescriptlang.org/" target="_blank"><img src="./img/conocimientos/ts.jpg" /></a></li>
+                            <li><a href="http://www.oracle.com/us/products/mysql/overview/index.html" target="_blank"><img src="./img/conocimientos/sql.png" /></a></li>
+                            <li><a href="https://symfony.com/" target="_blank"><img src="./img/conocimientos/symfony.jpg" /></a></li>
+                            <li><a href="https://www.elastic.co/es/" target="_blank"><img src="./img/conocimientos/elastic.jpg" /></a></li>
+                            <li><a href="https://www.golang.org/" target="_blank"><img src="./img/conocimientos/go-logo.png" /></a></li>
+                            <li><a href="https://www.docker.com/" target="_blank"><img src="./img/conocimientos/docker.png" /></a></li>
+                            <li><a href="https://www.newrelic.com/" target="_blank"><img src="./img/conocimientos/new_relic.png" /></a></li>
+                            <li><a href="https://aws.amazon.com/" target="_blank"><img src="./img/conocimientos/aws.png" /></a></li>
+                            <li><a href="http://redis.io/" target="_blank"><img src="./img/conocimientos/redis.jpg" /></a></li>
+                            <li><a href="http://jenkins.io/" target="_blank"><img src="./img/conocimientos/jenkins.png" /></a></li>
+                            <li><a href="https://prometheus.io/" target="_blank"><img src="./img/conocimientos/prometheus.jpg" /></a></li>
                         </ul>
                     </div>
                     <br />
                 </section>
                 <section class="listado">
-                    <h2>ACTIVIDAD</h2>
+                    <h2 data-i18n="ACTIVITY">ACTIVIDAD PROFESIONAL</h2>
                     <div class="section-icon"><img src="./img/icons/actividad.svg" /></div>
                     <ul>
                         <li>
                             <p class="ex-title">
-                                <strong>Profesor universitario en La Salle (Universidad Ramón Llull)</strong>
-                                <span class="fecha">(Barcelona, Sep. 2017 - ...) </span>
+                                <strong data-i18n="act-lasalle-title">Profesor universitario en La Salle (Universidad
+                                    Ramón Llull)</strong>
+                                <span data-i18n="act-lasalle-date" class="fecha">(Barcelona, Sep. 2017 - Actualidad)
+                                </span>
                                 <img src="./img/icons/more.png" />
                             </p>
-                            <p class="ex-description-displayed">
+                            <p data-i18n="[html]act-lasalle-description" class="ex-description-displayed">
                                 <img src="./img/lasalle-logo.png" />
-                                Docente Universitario. Impartiendo la asignatura <a
-                                    href="https://github.com/rubencougil/rendimiento-en-aplicaciones-web"
-                                    target="_blank">Rendimiento
-                                    Web</a>,
-                                "Lenguajes de programación Backend",
-                                y dirigiendo TFM (Trabajo Fin de Master) en el
-                                <a href="https://www.salleurl.edu/es/estudios/master-universitario-en-programacion-web-de-alto-rendimiento"
-                                    target="_blank">
-                                    Master de Desarollo Web de Alto Rendimiento</a>.
-                                Este master aporta una formación sólida de programación y tecnologías web, permitiendo a
-                                los
-                                estudiantes obtener las capacidades requeridas para incorporarse de manera
-                                inmediata a cualquier empresa con presencia en internet.
-
+                                Docente Universitario. Impartiendo la asignatura <a href="https://github.com/rubencougil/rendimiento-en-aplicaciones-web" target="_blank">Rendimiento Web</a>, "Lenguajes de programación Backend", y dirigiendo TFM (Trabajo Fin de Master) en el
+                                <a href="https://www.salleurl.edu/es/estudios/master-universitario-en-programacion-web-de-alto-rendimiento" target="_blank"> Master de Desarollo Web de Alto Rendimiento</a>.
+                                Este master aporta una formación sólida de programación y tecnologías web, permitiendo a los
+                                estudiantes obtener las capacidades requeridas para incorporarse de manera inmediata a cualquier empresa
+                                con presencia en internet.
                             </p>
                         </li>
                         <li>
                             <p class="ex-title">
-                                <strong>Profesor en GeeksHubs Academy</strong>
-                                <span class="fecha">(Valencia, Noviembre. 2019 - ...) </span>
+                                <strong data-i18n="act-geekshubs-title">Profesor en GeeksHubs Academy</strong>
+                                <span data-i18n="act-geekshubs-date" class="fecha">(Valencia, Noviembre. 2019 -
+                                    Actualidad)</span>
                                 <img src="./img/icons/more.png" />
                             </p>
-                            <p class="ex-description-displayed">
+                            <p data-i18n="[html]act-geekshubs-description" class="ex-description-displayed">
                                 <img src="./img/geekshubs.jpg" />
                                 Profesor en <a href="https://geekshubs.com/" target="_blank">GeeksHubs</a>:
-                                Reinventando el futuro de la educación y el recruitment tech.
-                                Creemos en el poder de la tecnología para generar impacto.
-                                Docente en
-                                <a href="https://bootcamp.geekshubsacademy.com/online/devops/" target="_blank"> DevOps
-                                    Bootcamp </a>,
-                                dirigido a Profesionales con experiencia que quieran mejorar sus habilidades en esta
-                                área,
-                                especializarse en DevOps, arquitecturas e infraestructuras IT.
+                                Reinventando el futuro de la educación y el recruitment tech. Creemos en el poder de la tecnología para generar
+                                impacto. Docente en <a href="https://bootcamp.geekshubsacademy.com/online/devops/" target="_blank"> DevOps Bootcamp
+                                </a>, dirigido a Profesionales con experiencia que quieran mejorar sus habilidades en esta área, especializarse en
+                                DevOps, arquitecturas e infraestructuras IT.
                             </p>
                         </li>
                         <li>
                             <p class="ex-title">
-                                <strong>Profesor en Codely.tv Pro</strong>
-                                <span class="fecha">(Barcelona, Junio. 2017 - ...) </span>
+                                <strong data-i18n="act-codely-title">Profesor en Codely.tv Pro</strong>
+                                <span data-i18n="act-codely-data" class="fecha">(Barcelona, Junio. 2017 - Actualidad)</span>
                                 <img src="./img/icons/more.png" />
                             </p>
-                            <p class="ex-description-displayed">
+                            <p data-i18n="[html]act-codely-description" class="ex-description-displayed">
                                 <img src="./img/codelytv-logo.png" />
-                                Profesor en <a href="https://codely.tv/" target="_blank">Codely.tv Pro</a>:
-                                Aprende de profesionales con experiencia en cursos prácticos y sin rodeos.
-                                Mejora tus habilidades, especialízate, y sigue avanzando en tu carrera.
+                                Profesor en <a href="https://codely.tv/" target="_blank">Codely.tv Pro</a>: Aprende de profesionales con experiencia
+                                en cursos prácticos y sin rodeos. Mejora tus habilidades, especialízate, y sigue avanzando en tu carrera.
                                 Cursos online para programadores. Creador de los cursos
-                                <a href="https://pro.codely.tv/library/elkbeats-centraliza-la-gestion-de-logs-con-the-elastic-stack"
-                                    target="_blank"> ELK + Beats: Centraliza tus logs con Elastic Stack</a>,
-                                <a href="https://pro.codely.tv/library/prometheus" target="_blank"> Monitoring con
-                                    Prometheus</a> y
-                                <a href="https://pro.codely.tv/library/curso-grafana-con-prometheus" target="_blank">
+                                <a href="https://pro.codely.tv/library/elkbeats-centraliza-la-gestion-de-logs-con-the-elastic-stack" target="_blank">
+                                    ELK + Beats: Centraliza tus logs con Elastic Stack</a>, <a href="https://pro.codely.tv/library/prometheus" target="_blank">
+                                    Monitoring con Prometheus</a> y <a href="https://pro.codely.tv/library/curso-grafana-con-prometheus" target="_blank">
                                     Visualiza Prometheus con Grafana</a>
                             </p>
                         </li>
                         <li>
                             <p class="ex-title">
-                                <strong>Creador de Rekomendo!</strong>
-                                <span class="fecha">(Barcelona, Junio. 2017 - ...) </span>
+                                <strong data-i18n="act-rekomendo-title">Creador de Rekomendo!</strong>
+                                <span data-i18n="act-rekomendo-date" class="fecha">(Barcelona, Julio. 2017 - Enero 2020)</span>
                                 <img src="./img/icons/more.png" />
                             </p>
-                            <p class="ex-description">
+                            <p data-i18n="[html]act-rekomendo-description" class="ex-description-displayed">
                                 <img src="./img/rek-logo.png" />
-                                <a href="https://www.youtube.com/watch?v=WadYoipE97E" target="_blank">Rekomendo!</a> es
-                                un recomendador
-                                cultural. Descubre nuevos libros, videojuegos, música, juegos de mesa,
-                                películas y series que te <a
-                                    href="https://medium.com/@rcougil/la-historia-detr%C3%A1s-de-rekomendo-mi-app-de-recomendaci%C3%B3n-cultural-93864fdb75d6"
-                                    target="_blank">gustarán</a>. Puntúa y envía recomendaciones personalizadas a tus
-                                amigos.
-                                Guarda tus puntuaciones y nunca te quedes en blanco cuando alguien te pide consejo.
-                                Disponible para dispositivos
-                                <a href="https://www.youtube.com/watch?v=WadYoipE97E" target="_blank">Android.</a>
+                                <a href="https://www.youtube.com/watch?v=WadYoipE97E" target="_blank">Rekomendo!</a> fue un recomendador
+                                cultural. Descubre nuevos libros, videojuegos, música, juegos de mesa, películas y series que te
+                                <a href="https://medium.com/@rcougil/la-historia-detr%C3%A1s-de-rekomendo-mi-app-de-recomendaci%C3%B3n-cultural-93864fdb75d6" target="_blank">gustarán</a>.
+                                Podías puntuar y envíar recomendaciones personalizadas a tus amigos. Guardar tus puntuaciones y nunca te quedabas
+                                en blanco cuando alguien te pide consejo. Estuvo disponible para dispositivos
+                                <a href="https://www.youtube.com/watch?v=WadYoipE97E" target="_blank">Android y iOS</a>
                             </p>
                         </li>
                     </ul>
                     <br />
                 </section>
                 <section class="listado">
-                    <h2>ESTUDIOS</h2>
+                    <h2 data-i18n="ACADEMIC">ESTUDIOS</h2>
                     <div class="section-icon"><img src="./img/icons/estudios.svg" /></div>
                     <ul>
                         <li>
                             <p class="ex-title">
-                                <strong>Licenciado en Ingeniería Informática</strong>
-                                <span class="fecha">(Ourense, 2008-2011) </span>
+                                <strong data-i18n="std-comp-science-degree-title">Licenciado en Ingeniería Informática</strong>
+                                <span data-i18n="std-comp-science-degree-date" class="fecha">(Ourense, 2008-2011) </span>
                                 <img src="./img/icons/more.png" />
                             </p>
-                            <p class="ex-description">
+                            <p data-i18n="[html]std-comp-science-degree-description" class="ex-description">
                                 Conseguí el título en Ingeniería Informática en la Escuela Superior de Ingeniería
-                                Informática de la universidad de Vigo <a href="http://www.esei.uvigo.es/"
-                                    target="_blank">(ESEI)</a> , campus de Ourense, Galicia.
+                                Informática de la universidad de Vigo <a href="http://www.esei.uvigo.es/" target="_blank">(ESEI)</a>,
+                                campus de Ourense, Galicia.
                             </p>
                         </li>
                         <li>
                             <p class="ex-title">
-                                <strong>Ingeniero Técnico en Informática de Gestión</strong>
-                                <span class="fecha">(Ourense, 2003- 2008) </span>
+                                <strong data-i18n="std-comp-science-tech-title">Ingeniero Técnico en Informática de Gestión</strong>
+                                <span data-i18n="std-comp-science-tech-date" class="fecha">(Ourense, 2003-2008) </span>
                                 <img src="./img/icons/more.png" />
                             </p>
-                            <p class="ex-description">
+                            <p data-i18n="[html]std-comp-science-tech-description" class="ex-description">
                                 Conseguí el título en Ingeniería Técnica Informática de Gestión en la Escuela Superior
-                                de Ingeniería Informática de la universidad de Vigo <a href="http://www.esei.uvigo.es/"
-                                    target="_blank">(ESEI)</a> , campus de Ourense, Galicia.
+                                de Ingeniería Informática de la universidad de Vigo <a href="http://www.esei.uvigo.es/" target="_blank">(ESEI)</a> , campus de Ourense, Galicia.
                             </p>
                         </li>
                     </ul>
@@ -388,12 +356,25 @@
         window.jQuery || document.write('<script src="js/vendor/jquery-1.8.3.min.js"><\/script>')
     </script>
 
+    <!-- i18n -->
+    <script src="js/vendor/i18n/jquery.i18n.js"></script>
+    <script src="js/vendor/i18n/jquery.i18n.messagestore.js"></script>
+    <script src="js/vendor/i18n/jquery.i18n.fallbacks.js"></script>
+    <script src="js/vendor/i18n/jquery.i18n.parser.js"></script>
+    <script src="js/vendor/i18n/jquery.i18n.emitter.js"></script>
+    <script src="js/vendor/i18n/jquery.i18n.language.js"></script>
+
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
-    <script src="js/vendor/html2pdf.bundle.min.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {
+
+            $.i18n().load({
+                'en': './i18n/en.json',
+            }).done(function () {
+                $('body').i18n();
+            });
 
             $(".ex-title > strong, .ex-title > img").click(function () {
                 $(this).parent().next().slideToggle();

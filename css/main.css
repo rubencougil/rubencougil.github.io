@@ -146,6 +146,16 @@ body {
     padding: 50px 10px
 }
 
+.language-selector {
+    text-align: right;
+    margin-bottom: 10px;
+}
+
+.language-selector a {
+    background: none;
+    opacity: 0.5;
+}
+
 .main-container {
     margin-top: 20px;
 }
@@ -478,7 +488,7 @@ img {
     }
 
     .main {
-        padding: 50px;
+        padding: 25px 50px 25px 50px;
     }
 
 

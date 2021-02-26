@@ -31,6 +31,9 @@
     <!-- Modernizr -->
     <script async src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" integrity="sha512-3n19xznO0ubPpSwYCRRBgHh63DrV+bdZfHK52b1esvId4GsfwStQNPJFjeQos2h3JwCmZl0/LgLxSKMAI55hgw==" crossorigin="anonymous"></script>
 
+    <!-- html2pdf-->
+    <script async src="js/vendor/html2pdf/html2pdf.bundle.min.js"></script>
+
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XP27FQB93K"></script>
     <script>
@@ -47,11 +50,12 @@
         <div id="main" class="main wrapper clearfix">
             <article>
                 <section>
-                    <div id="language-selector" class="language-selector">
-                        <a href="#" data-locale="es"> ES </a>
+                    <div id="language-selector">
+                        <a class="language-selector" href="#" data-locale="es"> ES </a>
                         ·
-                        <a href="#" data-locale="en"> EN </a>
-                    </div>
+                        <a class="language-selector" href="#" data-locale="en"> EN </a>
+                        ·
+                        <a href="#" id="pdf-button"> PDF </a>
                 </section>
                 <section>
                     <h2>RUBÉN COUGIL GRANDE</h2>
@@ -59,18 +63,18 @@
                     <div id="bio">
                         <div id="pic"><img alt="icon" src="./img/pic.jpg" /></div>
                         <p data-i18n="[html]hero-description">
-                            Ingeniero Informático. <a href="http://www.linkedin.com/in/rcgrande" target="_blank">Sr.
+                            Ingeniero Informático. <a href="http://www.linkedin.com/in/rcgrande">Sr.
                                 Software Engineer en Adobe.</a> Realizando desarrollo Web de
                             Alto Rendimiento. Programador, Gamer, retro-fan de los 8-bits, amante del Rock y gallego
                             orgulloso. Vivo en <b>Barcelona</b>.
                         </p>
                         <div class="social">
                             <ul>
-                                <li><a href="https://twitter.com/rcougil" target="_blank"><img alt="icon" src="./img/social-media/twitter.png" /></a></li>
-                                <li><a href="http://www.linkedin.com/in/rcgrande" target="_blank"><img alt="icon" src="./img/social-media/linkedin.png" target="_blank" /></a></li>
+                                <li><a href="https://twitter.com/rcougil"><img alt="icon" src="./img/social-media/twitter.png" /></a></li>
+                                <li><a href="http://www.linkedin.com/in/rcgrande"><img alt="icon" src="./img/social-media/linkedin.png" /></a></li>
                                 <li><a href="mailto:rubencougil@gmail.com"><img alt="icon" src="./img/social-media/email.png" /></a>
                                 </li>
-                                <li><a href="https://github.com/rubencougil" target="_blank"><img alt="icon" src="./img/social-media/github.png" /></a></li>
+                                <li><a href="https://github.com/rubencougil"><img alt="icon" src="./img/social-media/github.png" /></a></li>
                             </ul>
                         </div>
                     </div>
@@ -88,13 +92,13 @@
                             </p>
                             <p data-i18n="[html]exp-adobe-description" class="ex-description-displayed">
                                 <img alt="adobe" src="./img/adobe-logo.png" />
-                                <a href="https://www.adobe.com/es/commerce/magento.html" target="_blank">Adobe</a>
+                                <a href="https://www.adobe.com/es/commerce/magento.html">Adobe</a>
                                 Destaca en el mundo del software
-                                por sus programas de edición de páginas web, vídeo e imagen digital. Adobe adquiere <a href="http://www.magento.com/" target="_blank">Magento</a>
+                                por sus programas de edición de páginas web, vídeo e imagen digital. Adobe adquiere <a href="http://www.magento.com/">Magento</a>
                                 en Agosto de 2018. Las dos empresas fusionarán tecnologías para combinar
                                 la fortaleza de Adobe en contenido y datos con la innovación de comercio abierto de
                                 Magento en su denominado
-                                <a href="https://www.adobe.com/es/experience-cloud.html" target="_blank">Adobe
+                                <a href="https://www.adobe.com/es/experience-cloud.html">Adobe
                                     Experience Cloud.</a>
                                 <br />
                             </p>
@@ -107,7 +111,7 @@
                             </p>
                             <p data-i18n="[html]exp-magento-description" class="ex-description-displayed">
                                 <img alt="magento" src="./img/magento-logo.png" />
-                                <a href="http://www.magento.com/" target="_blank">Magento</a> es una plataforma de
+                                <a href="http://www.magento.com/">Magento</a> es una plataforma de
                                 comercio en línea, de código liberado (opensource), con el que se pueden llevar a cabo
                                 todo tipo de proyectos relacionados con la venta en Internet. Gracias a su concepción de
                                 sistema modular, es altamente flexible y escalable. Magento ofrece dos plataformas
@@ -124,7 +128,7 @@
                             </p>
                             <p data-i18n="[html]exp-cmp-description" class="ex-description-displayed">
                                 <img alt="cmp" src="./img/cmp.png" />
-                                <a href="http://teamcmp.com/" target="_blank">CMP Group</a> es una empresa de
+                                <a href="http://teamcmp.com/">CMP Group</a> es una empresa de
                                 entretenimiento digital fundada en 2002 en Rochester (NY) con su sede principal en
                                 Barcelona. Como Senior Developer, me he encargado de la parte de backend de uno de los
                                 productos de la compañía relaccionado con <strong> Realidad Virtual </strong> y
@@ -143,7 +147,7 @@
                             </p>
                             <p data-i18n="[html]exp-softonic-description" class="ex-description-displayed">
                                 <img alt="softonic" src="./img/softonic.jpg" />
-                                Desarrollo Web en la multinacional <a href="http://www.softonic.com" target="_blank">
+                                Desarrollo Web en la multinacional <a href="http://www.softonic.com">
                                     Softonic</a> (en su sede en Barcelona). <strong>Programación web para entornos de
                                     Alto Rendimiento</strong> siguiendo una metodología ágil (SCRUMM framework).
                                 Especialista en desarrollo web con PHP y MySQL. Subversion, Sistemas de Cache, Patrones
@@ -160,7 +164,7 @@
                             </p>
                             <p data-i18n="[html]exp-softonic-trainee-description" class="ex-description">
                                 <img alt="softonic" src="./img/softonic.jpg" />
-                                Incluido en un plan de formación en la multinacional <a href="http://www.softonic.com" target="_blank">
+                                Incluido en un plan de formación en la multinacional <a href="http://www.softonic.com">
                                     Softonic</a> (en su sede en Barcelona) para convertir a programadores con un año de experiencia prevía en
                                 expertos en <strong>programación web para entornos de Alto Rendimiento</strong>. Preparación de certificación
                                 en MySQL, Patrones de Diseño, Metodología SCRUMM, sistemas de caché...
@@ -175,7 +179,7 @@
                             </p>
                             <p data-i18n="[html]exp-elogia-description" class="ex-description">
                                 <img alt="elogia" src="./img/ito.jpg" />
-                                <a href="http://elogia.net" target="_blank">Elogia</a> es una agencia de Marketing
+                                <a href="http://elogia.net">Elogia</a> es una agencia de Marketing
                                 Online. Allí me dediqué a desarrollar e integrar aplicaciones en Redes Sociales para
                                 <i>Viceroy</i>, <i>Mercedes-Benz</i>, <i>HP</i>, <i>Pizza Móvil</i>, <i>CC Gran Vía
                                     2</i>, entre otros . Instalé, configuré y administré sitios web en Wordpress que
@@ -183,7 +187,7 @@
                                     Mediolanum</i>, <i>D.O. Rías Baixas</i> o <i>Qualita</i> . Desarrollé una plataforma
                                 de uso interno: el <i>Social Media Objectives Framework</i> y el blog <a href="http://www.marketing4ecommerce.net">
                                     marketing4ecommerce</a>. También colaboré como autor en el
-                                <a href="http://www.elogia.net/blog/autor/Ruben-Cougil/" target="_blank">blog</a> de la compañía.
+                                <a href="http://www.elogia.net/blog/autor/Ruben-Cougil/">blog</a> de la compañía.
                                 <br />
                             </p>
                         </li>
@@ -195,10 +199,10 @@
                             </p>
                             <p data-i18n="[html]exp-tuglabweb-description" class="ex-description">
                                 <img alt="tuglabweb" src="./img/rubick.jpg" />
-                                <a href="http://tuglabweb.uvigo.es/" target="_blank">TUGlabWEB</a> es una interfaz para
+                                <a href="http://tuglabweb.uvigo.es/">TUGlabWEB</a> es una interfaz para
                                 juegos de Utilidad Transferible que provee una forma de realizar cálculos sobre la
                                 función característica que representa a un juego de 3 o 4 jugadores (coaliciones) en el
-                                marco de la <a href="http://es.wikipedia.org/wiki/Teor%C3%ADa_de_juegos" target="_blank">
+                                marco de la <a href="http://es.wikipedia.org/wiki/Teor%C3%ADa_de_juegos">
                                     Teoría de Juegos </a>. Se han implementado un completo panel de administración, gestión de
                                 usuarios, manejar y guardar resultados obtenidos, y muchas más funcionalidades. Se ha desarrollado
                                 en colaboración con GWAI (Intelligence Agent Group of University of Vigo ), SAGATH
@@ -214,13 +218,13 @@
                             </p>
                             <p data-i18n="[html]exp-uvigo-description" class="ex-description">
                                 <img alt="uvigo" src="./img/uvigotv.jpg" />
-                                He trabajado como becario en tres departamentos diferentes en <a href="http://uvigo.es" target="_blank">UVIGO</a>.
-                                Primero, estuve en <a href="fcetou.uvigo.es" target="_blank">FCETOU</a>
+                                He trabajado como becario en tres departamentos diferentes en <a href="http://uvigo.es">UVIGO</a>.
+                                Primero, estuve en <a href="fcetou.uvigo.es">FCETOU</a>
                                 (Facultad de Turismo y Empresariales de Ourense) y poco
-                                después en <a href="http://fcou.uvigo.es/" target="_blank">FCOU</a> (Facultad de
+                                después en <a href="http://fcou.uvigo.es/">FCOU</a> (Facultad de
                                 Ciencias de Ourense). Me dedicaba a dar soporte informático y a mantenimiento
                                 En 2010 empecé a trabajar en Servicios Multimedia y Sitemas de Videoconferencia en UVIGO
-                                <a href="http://tv.uvigo.es/" target="_blank">(tv.uvigo.es)</a>. Hice mantenimiento ,
+                                <a href="http://tv.uvigo.es/">(tv.uvigo.es)</a>. Hice mantenimiento ,
                                 control y configuración de sistemas AG (Access Grid) y de videoconferencia (Ipela,
                                 Polycom, Adobe Connect…). Además, trabajé con producción y post-producción de eventos,
                                 sonorización de salas, grabación y procesado.
@@ -234,19 +238,19 @@
                     <div class="section-icon"><img alt="icon" src="./img/icons/conocimientos.svg" /></div>
                     <div class="con-list">
                         <ul>
-                            <li><a href="http://php.net" target="_blank"><img alt="icon" src="./img/conocimientos/php.jpg" /></a>
+                            <li><a href="http://php.net"><img alt="icon" src="./img/conocimientos/php.jpg" /></a>
                             </li>
-                            <li><a href="https://www.typescriptlang.org/" target="_blank"><img alt="icon" src="./img/conocimientos/ts.jpg" /></a></li>
-                            <li><a href="http://www.oracle.com/us/products/mysql/overview/index.html" target="_blank"><img alt="icon" src="./img/conocimientos/sql.png" /></a></li>
-                            <li><a href="https://symfony.com/" target="_blank"><img alt="icon" src="./img/conocimientos/symfony.jpg" /></a></li>
-                            <li><a href="https://www.elastic.co/es/" target="_blank"><img alt="icon" src="./img/conocimientos/elastic.jpg" /></a></li>
-                            <li><a href="https://www.golang.org/" target="_blank"><img alt="icon" src="./img/conocimientos/go-logo.png" /></a></li>
-                            <li><a href="https://www.docker.com/" target="_blank"><img alt="icon" src="./img/conocimientos/docker.png" /></a></li>
-                            <li><a href="https://www.newrelic.com/" target="_blank"><img alt="icon" src="./img/conocimientos/new_relic.png" /></a></li>
-                            <li><a href="https://aws.amazon.com/" target="_blank"><img alt="icon" src="./img/conocimientos/aws.png" /></a></li>
-                            <li><a href="http://redis.io/" target="_blank"><img alt="icon" src="./img/conocimientos/redis.jpg" /></a></li>
-                            <li><a href="http://jenkins.io/" target="_blank"><img alt="icon" src="./img/conocimientos/jenkins.png" /></a></li>
-                            <li><a href="https://prometheus.io/" target="_blank"><img alt="icon" src="./img/conocimientos/prometheus.jpg" /></a></li>
+                            <li><a href="https://www.typescriptlang.org/"><img alt="icon" src="./img/conocimientos/ts.jpg" /></a></li>
+                            <li><a href="http://www.oracle.com/us/products/mysql/overview/index.html"><img alt="icon" src="./img/conocimientos/sql.png" /></a></li>
+                            <li><a href="https://symfony.com/"><img alt="icon" src="./img/conocimientos/symfony.jpg" /></a></li>
+                            <li><a href="https://www.elastic.co/es/"><img alt="icon" src="./img/conocimientos/elastic.jpg" /></a></li>
+                            <li><a href="https://www.golang.org/"><img alt="icon" src="./img/conocimientos/go-logo.png" /></a></li>
+                            <li><a href="https://www.docker.com/"><img alt="icon" src="./img/conocimientos/docker.png" /></a></li>
+                            <li><a href="https://www.newrelic.com/"><img alt="icon" src="./img/conocimientos/new_relic.png" /></a></li>
+                            <li><a href="https://aws.amazon.com/"><img alt="icon" src="./img/conocimientos/aws.png" /></a></li>
+                            <li><a href="http://redis.io/"><img alt="icon" src="./img/conocimientos/redis.jpg" /></a></li>
+                            <li><a href="http://jenkins.io/"><img alt="icon" src="./img/conocimientos/jenkins.png" /></a></li>
+                            <li><a href="https://prometheus.io/"><img alt="icon" src="./img/conocimientos/prometheus.jpg" /></a></li>
                         </ul>
                     </div>
                     <br />
@@ -264,8 +268,8 @@
                             </p>
                             <p data-i18n="[html]act-lasalle-description" class="ex-description-displayed">
                                 <img alt="lasalle" src="./img/lasalle-logo.png" />
-                                Docente Universitario. Impartiendo la asignatura <a href="https://github.com/rubencougil/rendimiento-en-aplicaciones-web" target="_blank">Rendimiento Web</a>, "Lenguajes de programación Backend", y dirigiendo TFM (Trabajo Fin de Master) en el
-                                <a href="https://www.salleurl.edu/es/estudios/master-universitario-en-programacion-web-de-alto-rendimiento" target="_blank"> Master de Desarollo Web de Alto Rendimiento</a>.
+                                Docente Universitario. Impartiendo la asignatura <a href="https://github.com/rubencougil/rendimiento-en-aplicaciones-web">Rendimiento Web</a>, "Lenguajes de programación Backend", y dirigiendo TFM (Trabajo Fin de Master) en el
+                                <a href="https://www.salleurl.edu/es/estudios/master-universitario-en-programacion-web-de-alto-rendimiento"> Master de Desarollo Web de Alto Rendimiento</a>.
                                 Este master aporta una formación sólida de programación y tecnologías web, permitiendo a los
                                 estudiantes obtener las capacidades requeridas para incorporarse de manera inmediata a cualquier empresa
                                 con presencia en internet.
@@ -279,9 +283,9 @@
                             </p>
                             <p data-i18n="[html]act-geekshubs-description" class="ex-description-displayed">
                                 <img alt="geekshubs" src="./img/geekshubs.jpg" />
-                                Profesor en <a href="https://geekshubs.com/" target="_blank">GeeksHubs</a>:
+                                Profesor en <a href="https://geekshubs.com/">GeeksHubs</a>:
                                 Reinventando el futuro de la educación y el recruitment tech. Creemos en el poder de la tecnología para generar
-                                impacto. Docente en <a href="https://bootcamp.geekshubsacademy.com/online/devops/" target="_blank"> DevOps Bootcamp
+                                impacto. Docente en <a href="https://bootcamp.geekshubsacademy.com/online/devops/"> DevOps Bootcamp
                                 </a>, dirigido a Profesionales con experiencia que quieran mejorar sus habilidades en esta área, especializarse en
                                 DevOps, arquitecturas e infraestructuras IT.
                             </p>
@@ -294,12 +298,12 @@
                             </p>
                             <p data-i18n="[html]act-codely-description" class="ex-description-displayed">
                                 <img alt="codelytv" src="./img/codelytv-logo.png" />
-                                Profesor en <a href="https://codely.tv/" target="_blank">Codely.tv Pro</a>: Aprende de profesionales con experiencia
+                                Profesor en <a href="https://codely.tv/">Codely.tv Pro</a>: Aprende de profesionales con experiencia
                                 en cursos prácticos y sin rodeos. Mejora tus habilidades, especialízate, y sigue avanzando en tu carrera.
                                 Cursos online para programadores. Creador de los cursos
-                                <a href="https://pro.codely.tv/library/elkbeats-centraliza-la-gestion-de-logs-con-the-elastic-stack" target="_blank">
-                                    ELK + Beats: Centraliza tus logs con Elastic Stack</a>, <a href="https://pro.codely.tv/library/prometheus" target="_blank">
-                                    Monitoring con Prometheus</a> y <a href="https://pro.codely.tv/library/curso-grafana-con-prometheus" target="_blank">
+                                <a href="https://pro.codely.tv/library/elkbeats-centraliza-la-gestion-de-logs-con-the-elastic-stack">
+                                    ELK + Beats: Centraliza tus logs con Elastic Stack</a>, <a href="https://pro.codely.tv/library/prometheus">
+                                    Monitoring con Prometheus</a> y <a href="https://pro.codely.tv/library/curso-grafana-con-prometheus">
                                     Visualiza Prometheus con Grafana</a>
                             </p>
                         </li>
@@ -311,12 +315,12 @@
                             </p>
                             <p data-i18n="[html]act-rekomendo-description" class="ex-description-displayed">
                                 <img alt="rekomendo" src="./img/rek-logo.png" />
-                                <a href="https://www.youtube.com/watch?v=WadYoipE97E" target="_blank">Rekomendo!</a> fue un recomendador
+                                <a href="https://www.youtube.com/watch?v=WadYoipE97E">Rekomendo!</a> fue un recomendador
                                 cultural. Descubre nuevos libros, videojuegos, música, juegos de mesa, películas y series que te
-                                <a href="https://medium.com/@rcougil/la-historia-detr%C3%A1s-de-rekomendo-mi-app-de-recomendaci%C3%B3n-cultural-93864fdb75d6" target="_blank">gustarán</a>.
+                                <a href="https://medium.com/@rcougil/la-historia-detr%C3%A1s-de-rekomendo-mi-app-de-recomendaci%C3%B3n-cultural-93864fdb75d6">gustarán</a>.
                                 Podías puntuar y envíar recomendaciones personalizadas a tus amigos. Guardar tus puntuaciones y nunca te quedabas
                                 en blanco cuando alguien te pide consejo. Estuvo disponible para dispositivos
-                                <a href="https://www.youtube.com/watch?v=WadYoipE97E" target="_blank">Android y iOS</a>
+                                <a href="https://www.youtube.com/watch?v=WadYoipE97E">Android y iOS</a>
                             </p>
                         </li>
                     </ul>
@@ -334,7 +338,7 @@
                             </p>
                             <p data-i18n="[html]std-comp-science-degree-description" class="ex-description">
                                 Conseguí el título en Ingeniería Informática en la Escuela Superior de Ingeniería
-                                Informática de la universidad de Vigo <a href="http://www.esei.uvigo.es/" target="_blank">(ESEI)</a>,
+                                Informática de la universidad de Vigo <a href="http://www.esei.uvigo.es/">(ESEI)</a>,
                                 campus de Ourense, Galicia.
                             </p>
                         </li>
@@ -346,7 +350,7 @@
                             </p>
                             <p data-i18n="[html]std-comp-science-tech-description" class="ex-description">
                                 Conseguí el título en Ingeniería Técnica Informática de Gestión en la Escuela Superior
-                                de Ingeniería Informática de la universidad de Vigo <a href="http://www.esei.uvigo.es/" target="_blank">(ESEI)</a> , campus de Ourense, Galicia.
+                                de Ingeniería Informática de la universidad de Vigo <a href="http://www.esei.uvigo.es/">(ESEI)</a> , campus de Ourense, Galicia.
                             </p>
                         </li>
                     </ul>
@@ -370,8 +374,27 @@
     <script type="text/javascript">
         $(document).ready(function () {
 
+            // Add target _black and noopener to all links
             $('a[href^="http"]').not('a[href*="' + location.hostname + '"]').attr({ target: "_blank", rel: "noopener" });
 
+            // html2pdf
+            $('#pdf-button').click(function (event) {
+                event.preventDefault();
+                var element = document.getElementById('main');
+                var opt = {
+                    margin: 0.3,
+                    filename: 'ruben_cougil.pdf',
+                    image: { type: 'jpeg', quality: 0.98 },
+                    html2canvas: {
+                        logging: true,
+                        useCORS: true,
+                    },
+                    jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+                };
+                html2pdf().set(opt).from(element).toPdf().save();
+            });
+
+            // Languages
             var userLang = navigator.language || navigator.userLanguage;
             var lang = userLang.split("-")[0];
 
@@ -386,13 +409,14 @@
                 }
             });
 
-            $("#language-selector").on('click', 'a', function (e) {
+            $(".language-selector").on('click', function (e) {
                 e.preventDefault();
                 $.i18n().locale = $(this).data('locale');
                 console.log($.i18n().locale);
                 $('body').i18n();
             });
 
+            // CSS effects for Icons
             $(".ex-title > strong, .ex-title > img").click(function () {
                 $(this).parent().next().slideToggle();
             });

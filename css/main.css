@@ -146,12 +146,12 @@ body {
     padding: 20px 10px
 }
 
-.language-selector {
+#language-selector {
     text-align: right;
     margin-bottom: 10px;
 }
 
-.language-selector a {
+#language-selector a {
     background: none;
     opacity: 0.6;
 }

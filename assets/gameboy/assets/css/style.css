@@ -1,0 +1,7 @@
+#gameboy { background-image: url('../img/gameboy_grey_600px.jpg'); width: 600px; height: 965px;margin:0 auto 0 auto;}
+#gameboy canvas {margin-left: 145px;margin-top: 133px;}
+
+.container-fluid {margin: 20px 0 20px 0;}
+.center {text-align: center;}
+.fb-like {margin-right: 10px;}
+#share{padding-left: 25px;}

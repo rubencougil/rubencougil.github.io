@@ -148,12 +148,11 @@ body {
 
 #language-selector {
     text-align: right;
-    margin-bottom: 10px;
+    margin-bottom: 40px;
 }
 
-#language-selector a {
-    background: none;
-    opacity: 0.6;
+#language-selector img {
+    margin: 0 3px 0 3px
 }
 
 .main-container {

@@ -23,15 +23,16 @@ function calculateScore() {
     var financiers = parseInt(document.getElementById("financiersVictoryPointsInput").value || 0);
     var financiersMult = parseInt(document.getElementById("financiersMultiplierInput").value || 0);
 
-    console.log(gross, science, scienceMult);
     var result = (gross 
         + (science * scienceMult) 
         + (energy * energyMult) 
         + (gold * goldMult) 
         + (exploration * explorationMult)
-        + (generalsMult > 0) ? generals * (generalsMult + 1) : generals
-        + (financiersMult > 0) ? financiers * (financiersMult + 1) : financiers
+        + ((generalsMult > 0) ? generals * (generalsMult + 1) : generals)
+        + ((financiersMult > 0) ? financiers * (financiersMult + 1) : financiers)
     );
+
+    console.log(result)
 
     resultInput.value = result;
 }

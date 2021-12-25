@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <title>It's a Wonderful World</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -13,16 +14,25 @@
 </head>
 
 <body>
-    <main role="main" class="container-fluid mt-3">
+    <main role="main" class="container mt-3 m-0 p-0 justify-content-center">
         <div class="row justify-content-center">
-            <div class="col-10 p-0">
+            <div class="col-12 p-0 mb-3 text-center">
                 <img src="img/banner.png" class="img-fluid" alt="It's a Wonderful World">
             </div>
         </div>
+        <div class="row justify-content-center">
+            <div class="col-10">
+                <div class="alert alert-secondary mb-0">
+                    Welcome to the
+                    <a href="https://boardgamegeek.com/boardgame/271324/its-wonderful-world" target="_blank">It's a Wonderful World</a>
+                    Board Game Score calculator.
+                </div>
+            </div>
+        </div>
         <div class="row">
-            <div class="col-2"></div>
-            <div class="col-8">
-                <div class="form-group mt-3">
+            <div class="col-1"></div>
+            <div class="col-10">
+                <div class="form-group mt-1">
                     <div class="form-row">
                         <div class="col-8">
                             <label for="grossVictoryPointsInput"></label>
@@ -119,8 +129,28 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="alert alert-info mb-4 mt-2">
+                            <b>
+                                In case of tie: 
+                            </b>
+                            <i>
+                                Tied player with the most cards in their Empire wins. If there is still a tie, the tied
+                                player with the most Character tokens wins. If the tie still persists, the tied
+                                players share the victory.
+                            </i>
+                        </div>
+                    </div>
+
+                </div>
             </div>
-            <div class="col-2"></div>
+            <div class="col-1"></div>
+        </div>
+        <div class="row bg-dark text-white">
+            <div class="col text-right pt-2 mr-2">
+                <p> 🕹 <i>Made by <a href="http://ruben.cougil.com" target="_blank"> Rubén Cougil</a></i></p>
+            </div>
         </div>
 
     </main>

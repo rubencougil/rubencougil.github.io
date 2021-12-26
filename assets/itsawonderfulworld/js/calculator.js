@@ -32,7 +32,5 @@ function calculateScore() {
         + ((financiersMult > 0) ? financiers * (financiersMult + 1) : financiers)
     );
 
-    console.log(result)
-
     resultInput.value = result;
 }

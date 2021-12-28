@@ -24,12 +24,12 @@ function calculateScore() {
     var financiersMult = parseInt(document.getElementById("financiersMultiplierInput").value || 0);
 
     var result = (gross 
-        + (science * scienceMult) 
-        + (energy * energyMult) 
-        + (gold * goldMult) 
-        + (exploration * explorationMult)
-        + ((generalsMult > 0) ? generals * (generalsMult + 1) : generals)
-        + ((financiersMult > 0) ? financiers * (financiersMult + 1) : financiers)
+        + ((scienceMult > 0) ? science * scienceMult : science)
+        + ((energyMult > 0) ? energy * energyMult : energy) 
+        + ((goldMult > 0) ? gold * goldMult : gold) 
+        + ((explorationMult > 0) ? exploration * explorationMult : exploration)
+        + ((generalsMult > 0) ? generals * generalsMult : generals)
+        + ((financiersMult > 0) ? financiers * financiersMult : financiers)
     );
 
     resultInput.value = result;

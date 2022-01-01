@@ -1,11 +1,11 @@
-document.addEventListener("DOMContentLoaded", function(){  
+document.addEventListener("DOMContentLoaded", function () {
     document.addEventListener('input', function (evt) {
         calculateScore();
     });
 });
 
 function calculateScore() {
-    
+
     var resultInput = document.getElementById("resultInput")
     resultInput.value = 0;
 
@@ -23,13 +23,13 @@ function calculateScore() {
     var financiers = parseInt(document.getElementById("financiersVictoryPointsInput").value || 0);
     var financiersMult = parseInt(document.getElementById("financiersMultiplierInput").value || 0);
 
-    var result = (gross 
-        + ((scienceMult > 0) ? science * scienceMult : science)
-        + ((energyMult > 0) ? energy * energyMult : energy) 
-        + ((goldMult > 0) ? gold * goldMult : gold) 
-        + ((explorationMult > 0) ? exploration * explorationMult : exploration)
-        + ((generalsMult > 0) ? generals * generalsMult : generals)
-        + ((financiersMult > 0) ? financiers * financiersMult : financiers)
+    var result = (gross +
+        ((scienceMult > 0) ? science * scienceMult : 0) +
+        ((energyMult > 0) ? energy * energyMult : 0) +
+        ((goldMult > 0) ? gold * goldMult : 0) +
+        ((explorationMult > 0) ? exploration * explorationMult : 0) +
+        ((generalsMult > 0) ? generals * generalsMult : generals) +
+        ((financiersMult > 0) ? financiers * financiersMult : financiers)
     );
 
     resultInput.value = result;

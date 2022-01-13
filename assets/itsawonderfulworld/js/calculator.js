@@ -1,11 +1,11 @@
-document.addEventListener("DOMContentLoaded", function(){  
+document.addEventListener("DOMContentLoaded", function () {
     document.addEventListener('input', function (evt) {
         calculateScore();
     });
 });
 
 function calculateScore() {
-    
+
     var resultInput = document.getElementById("resultInput")
     resultInput.value = 0;
 

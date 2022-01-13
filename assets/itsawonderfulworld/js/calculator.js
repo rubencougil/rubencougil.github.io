@@ -28,8 +28,8 @@ function calculateScore() {
         + ((energyMult > 0) ? energy * energyMult : energy) 
         + ((goldMult > 0) ? gold * goldMult : gold) 
         + ((explorationMult > 0) ? exploration * explorationMult : exploration)
-        + ((generalsMult > 0) ? generals * generalsMult : generals)
-        + ((financiersMult > 0) ? financiers * financiersMult : financiers)
+        + ((generalsMult > 0) ? generals + (generals * generalsMult) : generals)
+        + ((financiersMult > 0) ? financiers + (financiers * financiersMult) : financiers)
     );
 
     resultInput.value = result;

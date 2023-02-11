@@ -47,11 +47,11 @@
         ]
     },
     "flags": {
-        "hint_ratio": 0,
+        "hint_ratio": 0.2,
         "categories": ["Flags"]
     },
     "animals": {
-        "hint_ratio": 0,
+        "hint_ratio": 0.2,
         "categories": ["Animals & Nature"]
     }
 }

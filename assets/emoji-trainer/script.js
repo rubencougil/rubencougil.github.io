@@ -111,10 +111,8 @@ function getRandomEmoji(emojis) {
         document.getElementById("input_submit").disabled = false;
         document.getElementById("input_answer").focus();
 
-        //console.log(params[level]['hint_ratio']);
         if (params[level]['hint_ratio'] > 0) {
             document.getElementById('block_hint').hidden = false;
-            //console.log(emoji['aliases'][0].length);
             var hints = [];
             emoji['aliases'].forEach(element => {
                 var hint = "";
@@ -127,13 +125,10 @@ function getRandomEmoji(emojis) {
                 }
                 hints.push("\"" + hint + "\"");
             });
-            //console.log(hints);
             document.getElementById("display_hint").innerHTML = hints.join(" </p><p> ");
         } else {
             document.getElementById('block_hint').hidden = true;
         }
-
-        //console.log(emoji['aliases']);
     }
 
     async function main() {

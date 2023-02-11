@@ -1,0 +1,57 @@
+{
+    "easy": {
+        "hint_ratio": 0.6,
+        "categories": [
+            "Smileys & Emotion"
+        ]
+    },
+    "medium": {
+        "hint_ratio": 0.4,
+        "categories": [
+            "Smileys & Emotion",
+            "People & Body"
+        ]
+    },
+    "hard": {
+        "hint_ratio": 0.2,
+        "categories": [
+            "Smileys & Emotion",
+            "People & Body",
+            "Animals & Nature",
+            "Food & Drink"
+        ]
+    },
+    "expert": {
+        "hint_ratio": 0.1,
+        "categories": [
+            "Smileys & Emotion",
+            "People & Body",
+            "Animals & Nature",
+            "Food & Drink",
+            "Travel & Places",
+            "Activities",
+            "Objects"
+        ]
+    },
+    "impossible": {
+        "hint_ratio": 0,
+        "categories": [
+            "Smileys & Emotion",
+            "People & Body",
+            "Animals & Nature",
+            "Food & Drink",
+            "Travel & Places",
+            "Activities",
+            "Objects",
+            "Symbols"
+        ]
+    },
+    "flags": {
+        "hint_ratio": 0,
+        "categories": ["Flags"]
+    },
+    "animals": {
+        "hint_ratio": 0,
+        "categories": ["Animals & Nature"]
+    }
+}

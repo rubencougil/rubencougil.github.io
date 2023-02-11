@@ -1,0 +1,8 @@
+#display_emoji {
+    font-size: 10em;
+}
+
+#output_score_right,
+#output_score_wrong {
+    font-size: 1.5em;
+}

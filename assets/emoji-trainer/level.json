@@ -1,0 +1,35 @@
+{
+    "easy": [
+        "Smileys & Emotion"
+    ],
+    "medium": [
+        "Smileys & Emotion",
+        "People & Body"
+    ],
+    "hard": [
+        "Smileys & Emotion",
+        "People & Body",
+        "Animals & Nature",
+        "Food & Drink"
+    ],
+    "expert": [
+        "Smileys & Emotion",
+        "People & Body",
+        "Animals & Nature",
+        "Food & Drink",
+        "Travel & Places",
+        "Activities",
+        "Objects"
+    ],
+    "impossible": [
+        "Smileys & Emotion",
+        "People & Body",
+        "Animals & Nature",
+        "Food & Drink",
+        "Travel & Places",
+        "Activities",
+        "Objects",
+        "Symbols"
+    ],
+    "flags": ["Flags"]
+}

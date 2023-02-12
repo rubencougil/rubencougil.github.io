@@ -1,7 +1,5 @@
 var emojis = [];
 var params = [];
-
-var emoji = "";
 var level = "";
 
 async function getEmojis() {
@@ -12,10 +10,10 @@ async function getEmojis() {
 async function displayLives(total, remaining) {
     livesEmojis = "";
     for (var i = 0; i < remaining; i++) {
-        livesEmojis += "❤️";
+        livesEmojis += "❤️ ";
     }
     for (var i = 0; i < total - remaining; i++) {
-        livesEmojis += "🤍";
+        livesEmojis += "🤍 ";
     }
     document.getElementById('lives').innerHTML = livesEmojis;
 }
@@ -33,18 +31,53 @@ function getRandomEmoji(emojis) {
     return emoji;
 }
 
+function setCookie(name, value, days) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "") + expires + "; path=/";
+}
+
+function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+}
+
+function eraseCookie(name) {
+    document.cookie = name + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}
+
+function setLevel(level) {
+    var select = document.getElementById('select_level');
+    var option;
+
+    for (var i = 0; i < select.options.length; i++) {
+        option = select.options[i];
+
+        if (option.value == level) {
+            option.selected = true;
+        }
+    }
+}
+
 (async () => {
 
-    var emoji;
-    //var score_wrong = 0;
-    var score_right = 0;
-    //var attempt = 0;
+    var emoji = {};
+    var score = 0;
     var livesTotal = 5;
     var livesRemaining = 5;
 
     document.getElementById('input_submit').addEventListener("click", function (event) {
         event.preventDefault();
-        //console.log("value")
         var answer = document.getElementById('input_answer').value;
         submitAnswer(answer);
     });
@@ -56,16 +89,13 @@ function getRandomEmoji(emojis) {
     });
 
     function submitAnswer(answer) {
-        //console.log(emoji['aliases'])
-        //console.log(answer)
         document.getElementById("input_answer").disabled = true;
         document.getElementById("input_submit").disabled = true;
         if (emoji['aliases'].includes(answer.toLowerCase())) {
-            document.getElementById("output_score_right").innerHTML = ++score_right;
+            document.getElementById("display_score").innerHTML = ++score;
             document.getElementById("output_result").classList.add("alert-success");
             document.getElementById("output_result").innerHTML = 'OK!'
         } else {
-            //document.getElementById("output_score_wrong").innerHTML = ++score_wrong;
             document.getElementById("output_result").classList.add("alert-danger");
             document.getElementById("output_result").innerHTML = emoji['aliases'].join(" ,")
             if (livesRemaining > 0) {
@@ -93,16 +123,20 @@ function getRandomEmoji(emojis) {
         next()
     })
 
+    document.getElementById("select_level").addEventListener('change', function (event) {
+        setCookie('level', event.target.value);
+        start();
+    });
+
     async function next() {
 
         if (livesRemaining == 0) {
             var myModal = new bootstrap.Modal(document.getElementById('staticBackdrop'))
-            document.getElementById('game_over_message').innerHTML = "🕹️ Your final Score is <h2>" + score_right + "</h2>"
+            document.getElementById('game_over_message').innerHTML = "🕹️ Your final Score is <h2>" + score + "</h2>"
             myModal.show();
         }
 
         params = await getParams();
-        level = document.getElementById("select_level").value;
         emoji = getRandomEmoji(emojis)
         displayLives(livesTotal, livesRemaining)
         document.getElementById("display_hint").innerHTML = "";
@@ -131,12 +165,16 @@ function getRandomEmoji(emojis) {
         }
     }
 
-    async function main() {
+    async function start() {
         emojis = await getEmojis();
+        document.getElementById('display_score').innerHTML = 0;
+        livesRemaining = livesTotal;
         await displayLives(livesTotal, livesRemaining);
+        level = getCookie('level') ? getCookie('level') : document.getElementById("select_level").value;
+        setLevel(level);
         next()
     }
 
-    main();
+    start();
 
 })();

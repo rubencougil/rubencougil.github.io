@@ -1,6 +1,7 @@
 var emojis = [];
 var params = [];
 var level = "";
+var bestScore = [];
 
 async function getEmojis() {
     return await fetch('https://raw.githubusercontent.com/github/gemoji/master/db/emoji.json')
@@ -21,6 +22,16 @@ async function displayLives(total, remaining) {
 async function getParams() {
     return await fetch('./params.json')
         .then((response) => response.json());
+}
+
+async function displayStats() {
+    var params = await getParams();
+    Object.keys(params).forEach(level => {
+        var totalPlays = getCookie(level + '_total_plays');
+        document.getElementById(level + '_display_total_plays').innerHTML = totalPlays ? totalPlays : 0;
+        var bestScore = getCookie(level + '_best_score');
+        document.getElementById(level + '_display_best_score').innerHTML = bestScore ? bestScore : 0;
+    });
 }
 
 function getRandomEmoji(emojis) {
@@ -88,6 +99,18 @@ function setLevel(level) {
         }
     });
 
+    function setStats(level, score) {
+        var totalPlays = getCookie(level + '_total_plays');
+        eraseCookie(level + '_total_plays');
+        setCookie(level + '_total_plays', totalPlays ? ++totalPlays : 1);
+
+        var bestScore = getCookie(level + '_best_score');
+        if ((!bestScore) || (score > bestScore)) {
+            eraseCookie(level + '_best_score');
+            setCookie(level + '_best_score', score);
+        }
+    }
+
     function submitAnswer(answer) {
         document.getElementById("input_answer").disabled = true;
         document.getElementById("input_submit").disabled = true;
@@ -133,6 +156,7 @@ function setLevel(level) {
         if (livesRemaining == 0) {
             var myModal = new bootstrap.Modal(document.getElementById('staticBackdrop'))
             document.getElementById('game_over_message').innerHTML = "🕹️ Your final Score is <h2>" + score + "</h2>"
+            setStats(level, score);
             myModal.show();
         }
 
@@ -172,6 +196,7 @@ function setLevel(level) {
         await displayLives(livesTotal, livesRemaining);
         level = getCookie('level') ? getCookie('level') : document.getElementById("select_level").value;
         setLevel(level);
+        await displayStats();
         next()
     }
 

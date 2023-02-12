@@ -16,13 +16,13 @@
 </head>
 
 <body>
-    <div class="container-sm px-4 py-4 text-center">
-        <header class="pb-3 mb-4 border-bottom">
+    <div class="container-sm px-4 py-5 text-center">
+        <!--<header class="pb-3 mb-4 border-bottom">
             <a href="/"
                class="d-flex align-items-center text-dark text-decoration-none">
                 <span class="fs-4">🏋️‍♀️ Emoji Trainer</span>
             </a>
-        </header>
+        </header>-->
         <!-- Modal -->
         <div class="modal fade"
              id="staticBackdrop"
@@ -55,7 +55,7 @@
                         <div class="row my-2 justify-content-center">
                             <div class="col-auto pe-0">
                                 <label for="select_level"
-                                       class="col-form-label">Difficulty:</label>
+                                       class="col-form-label">Level:</label>
                             </div>
                             <div class="col-auto">
                                 <div class="form-group">
@@ -67,8 +67,6 @@
                                         <option value="hard">👨‍🔧 Hard</option>
                                         <option value="expert">👨‍🏫 Expert</option>
                                         <option value="impossible">😈 Impossible</option>
-                                        <option value="animals">🐫 Nature</option>
-                                        <option value="flags">🇬🇧 Flags</option>
                                     </select>
                                 </div>
                             </div>
@@ -137,20 +135,20 @@
                 </div>
             </div>
             <div class="col-sm-6 col-md-10 col-lg-5 mb-3">
-                <div class="h-100 p-5 bg-light border rounded-3">
+                <div class="h-100 px-5 py-3 bg-light border rounded-3">
                     <h2>🏋️‍♀️ Emoji Trainer</h2>
                     <hr>
                     <p>Emojis can be printed using their respective
                         <a href="https://cldr.unicode.org/translation/characters/short-names-and-keywords"
                            target="_blank">CLDR short names </a>.
-                        For example if you type <code>:smile</code>
-                        the output will be 😄, or <code>:scream_cat</code> for 🙀
+                        For example if you type <code>smile</code>
+                        the output will be 😄, or <code>scream_cat</code> for 🙀
                     </p>
                     <p>CLDR short names are standar for most applications like Whatsapp, Slack or Github.</p>
-                    <p>💪 Become an emoji expert with this trainer, save time and levearage all the emoji power.</p>
+                    <p>💪 Become an emoji expert with this trainer, save time and levearage all the emoji power ⚡️</p>
                     <p>
                         <a class="twitter-share-button"
-                           href="https://twitter.com/intent/tweet?text=🏋️‍♀️%20Become%20an%20emoji%20expert%20at"
+                           href="https://twitter.com/intent/tweet?text=%F0%9F%8F%8B%EF%B8%8F%E2%80%8D%E2%99%80%EF%B8%8F%20Become%20an%20emoji%20expert%20%F0%9F%91%A9%E2%80%8D%F0%9F%8F%AB.%20Try%20this%20game%20made%20by%20%40rcougil%20at%20"
                            data-size="large">
                             Tweet</a>
                         <a href="https://twitter.com/rcougil"
@@ -161,11 +159,61 @@
                                 src="https://platform.twitter.com/widgets.js"
                                 charset="utf-8"></script>
                     </p>
+                    <table class="table table-striped mt-4">
+                        <thead>
+                            <tr>
+                                <th scope="col">Level</th>
+                                <th class="text-center"
+                                    scope="col">Best Score</th>
+                                <th class="text-center"
+                                    scope="col">Total Plays</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class=>👶 Easy</td>
+                                <td class="text-center bold"
+                                    id="easy_display_best_score">0</td>
+                                <td class="text-center"
+                                    id="easy_display_total_plays">0</td>
+                            </tr>
+                            <tr>
+                                <td>👦 Medium</td>
+                                <td class="text-center"
+                                    id="medium_display_best_score">0</td>
+                                <td class="text-center"
+                                    id="medium_display_total_plays">0</td>
+                            </tr>
+                            <tr>
+                                <td>👨‍🔧 Hard</td>
+                                <td class="text-center"
+                                    id="hard_display_best_score">0</td>
+                                <td class="text-center"
+                                    id="hard_display_total_plays">0</td>
+                            </tr>
+                            <tr>
+                                <td>👨‍🏫 Expert</td>
+                                <td class="text-center"
+                                    id="expert_display_best_score">0</td>
+                                <td class="text-center"
+                                    id="expert_display_total_plays">0</td>
+                            </tr>
+                            <tr>
+                                <td>😈 Impossible</td>
+                                <td class="text-center"
+                                    id="impossible_display_best_score">0</td>
+                                <td class="text-center"
+                                    id="impossible_display_total_plays">0</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
-        <footer class="pt-3 mt-4 text-muted border-top">
-            © 2023
+        <footer class="pt-3 mt-4 text-muted border-top text-end">
+            <p> 🕹 <i>Created by <a href="http://ruben.cougil.com"
+                       rel="noopener"
+                       target="_blank"> Rubén Cougil</a></i></p>
         </footer>
     </div>
 </body>

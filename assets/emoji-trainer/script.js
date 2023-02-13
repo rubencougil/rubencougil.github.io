@@ -120,7 +120,7 @@ function setLevel(level) {
             document.getElementById("output_result").innerHTML = 'OK!'
         } else {
             document.getElementById("output_result").classList.add("alert-danger");
-            document.getElementById("output_result").innerHTML = emoji['aliases'].join(" ,")
+            document.getElementById("output_result").innerHTML = "❌ " + emoji['aliases'].join(" ,")
             if (livesRemaining > 0) {
                 livesRemaining--;
             }

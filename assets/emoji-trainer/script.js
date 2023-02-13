@@ -117,7 +117,7 @@ function setLevel(level) {
         if (emoji['aliases'].includes(answer.toLowerCase())) {
             document.getElementById("display_score").innerHTML = ++score;
             document.getElementById("output_result").classList.add("alert-success");
-            document.getElementById("output_result").innerHTML = 'OK!'
+            document.getElementById("output_result").innerHTML = '👍'
         } else {
             document.getElementById("output_result").classList.add("alert-danger");
             document.getElementById("output_result").innerHTML = "❌ " + emoji['aliases'].join(" ,")

@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Mochilo ZX</title>
+    <script src="jsspeccy/jsspeccy.js"></script>
+    <style>
+        body {
+            background-color: #444;
+        }
+
+        #jsspeccy {
+            width: 640px;
+            margin: auto;
+            background-color: white;
+        }
+
+    </style>
+</head>
+
+<body onload="emu = JSSpeccy(document.getElementById('jsspeccy'), {
+            zoom: 2, 
+            sandbox: false,
+            openUrl: 'https\:\/\/ruben.cougil.com/assets/mothilo-zx/game/Mochilo_ZX.tap'
+        })">
+    <div id="jsspeccy"></div>
+</body>
+
+</html>

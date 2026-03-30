@@ -1,8 +1,9 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8" />
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<title>GameBoy Yourself</title>
 	<link rel="shortcut icon" href="./assets/img/favicon.ico" type="image/x-icon" />
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -12,13 +13,11 @@
 	<link rel="stylesheet" href="./assets/css/style.css" />
 
 	<meta property="og:title" content="Game Boy Yourself!" />
-	<meta property="og:image" content="http://ruben.cougil.com/assets/gameboy/assets/img/examples/example1.png" />
+	<meta property="og:image" content="https://ruben.cougil.com/assets/gameboy/assets/img/examples/example1.png" />
 	<meta property="og:description" content="Upload an image and watch it on a classic Nintendo Game Boy screen style.
 								It is a tiny experimental converter that transforms your image with the aspect of
 								this classic 8-bit video game console." />
 	<meta property="og:type" content="website" />
-
-	<div id="fb-root"></div>
 	<script>
 		(function (d, s, id) {
 			var js,
@@ -34,6 +33,7 @@
 </head>
 
 <body>
+	<div id="fb-root"></div>
 	<div class="container-fluid">
 		<div class="row-fluid">
 			<div class="span4 offset1">
@@ -87,9 +87,9 @@
 								<strong>no server-side processing</strong>. When you upload an
 								image your javascript browser engine determines the color of
 								each pixel and selects the closest green tone from a default
-								Game Boy color palette. Time to acomplish the task depends on
+								Game Boy color palette. Time to accomplish the task depends on
 								the image size and resolution (it's directly related to the
-								amount of pixels to convert). Once finish it is shown inside
+								amount of pixels to convert). Once finished, it is shown inside
 								an <strong>HTML5 canvas</strong>.
 							</p>
 						</div>

@@ -1134,9 +1134,9 @@ html:is([data-theme="dark"], [data-theme="graphite"]) .nano-link:hover {
 
     .hero-actions {
         width: 100%;
-        justify-content: flex-end;
+        justify-content: flex-start;
         align-self: stretch;
-        gap: 8px;
+        gap: 10px;
     }
 
     .hero-kicker {
@@ -1144,19 +1144,68 @@ html:is([data-theme="dark"], [data-theme="graphite"]) .nano-link:hover {
     }
 
     .hero-name {
+        font-size: clamp(1.35rem, 7.2vw, 1.75rem);
+        line-height: 1.15;
         letter-spacing: 0.04em;
+        text-wrap: balance;
+    }
+
+    #language-selector {
+        width: 100%;
+        justify-content: center;
+        padding: 6px;
+    }
+
+    #language-selector .language-selector {
+        flex: 1 1 0;
+        min-width: 0;
+        height: 40px;
+        font-size: 0.76rem;
+    }
+
+    .hero-action-btn {
+        width: 100%;
+        height: 40px;
+    }
+
+    .theme-dropdown-wrap {
+        height: 36px;
+    }
+
+    .theme-selector {
+        height: 30px;
+        font-size: 0.78rem;
+    }
+
+    .social ul li a {
+        width: 44px;
+        height: 44px;
     }
 
     .listado li {
-        padding: 10px 0 12px 22px;
+        padding: 10px 0 12px 20px;
     }
 
     .ex-title > strong {
         min-width: 100%;
     }
 
+    .fecha {
+        display: block;
+        margin-top: 4px;
+    }
+
     .ex-title > img {
         margin-top: 2px;
+    }
+
+    .listado {
+        padding: 16px 12px 14px;
+    }
+
+    .ex-description,
+    .ex-description-displayed {
+        padding: 12px;
     }
 
     .ex-description img,
@@ -1202,19 +1251,31 @@ html:is([data-theme="dark"], [data-theme="graphite"]) .nano-link:hover {
     }
 
     .listado ul::before {
-        left: 12px;
+        left: 9px;
+        width: 2px;
+        top: 18px;
+        bottom: 14px;
     }
 
     .listado ul::after {
-        left: 10px;
+        left: 8px;
+        width: 4px;
+        top: 18px;
+        bottom: 14px;
+        filter: blur(0.8px);
     }
 
     .listado li::before {
-        left: 3px;
+        left: 4px;
+        top: 19px;
     }
 }
 
 @media (max-width: 420px) {
+    .hero-name {
+        letter-spacing: 0.02em;
+    }
+
     #bio {
         display: block;
     }

@@ -25,17 +25,6 @@
       <meta property="og:image"
             content="https://ruben.cougil.com/assets/mochilo-zx/img/mochilo-zx.png" />
 
-      <meta name="twitter:title"
-            content="¡Mochilo ZX!">
-      <meta name="twitter:description"
-            content="Juego desarrollado en ZX Game Maker.">
-      <meta name="twitter:image"
-            content="https://ruben.cougil.com/assets/mochilo-zx/img/mochilo-zx.png">
-      <meta name="twitter:card"
-            content="summary_large_image">
-      <meta name="twitter:site"
-            content="@rcougil">
-
       <style>
             body {
                   background-color: #444;
@@ -56,12 +45,46 @@
                   color: black;
                   text-align: center;
                   background-color: lightgrey;
-                  padding: 1px;
+                  padding: 10px 12px 12px;
                   margin-bottom: 10px;
                   margin-top: 10px;
                   width: min(960px, 100%);
                   font-family: 'Courier New', Courier, monospace;
                   opacity: 0.9;
+            }
+
+            #intro p {
+                  margin: 0;
+            }
+
+            .intro-actions {
+                  margin-top: 10px;
+            }
+
+            .itch-link {
+                  display: inline-flex;
+                  align-items: center;
+                  gap: 8px;
+                  padding: 6px 10px;
+                  border-radius: 999px;
+                  background: linear-gradient(135deg, #fa5c5c, #d63a3a);
+                  color: #fff;
+                  text-decoration: none;
+                  font-weight: 700;
+                  box-shadow: 0 8px 20px rgba(214, 58, 58, 0.28);
+                  transition: transform 150ms ease, box-shadow 150ms ease, filter 150ms ease;
+            }
+
+            .itch-link:hover {
+                  transform: translateY(-1px);
+                  box-shadow: 0 10px 22px rgba(214, 58, 58, 0.34);
+                  filter: saturate(1.08);
+            }
+
+            .itch-link img {
+                  width: 22px;
+                  height: 22px;
+                  display: block;
             }
 
       </style>
@@ -71,7 +94,8 @@
             sandbox: false,
             openUrl: 'https\:\/\/ruben.cougil.com/assets/mochilo-zx/game/Mochilo_ZX.tap',
             zoom: 3,
-            autoLoadTapes: true
+            autoLoadTapes: true,
+            autoStart: true
         })">
       <div id="intro">
             <p>
@@ -81,6 +105,17 @@
                      rel="noopener"
                      target="_blank">ZX Game Maker</a>
             </p>
+            <div class="intro-actions">
+                  <a class="itch-link"
+                     href="https://rcougil.itch.io/mochilo-zx"
+                     target="_blank"
+                     rel="noopener"
+                     aria-label="Jugar en itch.io">
+                        <img src="https://static.itch.io/images/itchio-textless-white.svg"
+                             alt="itch.io logo">
+                        Ver en itch.io
+                  </a>
+            </div>
       </div>
       <div id="jsspeccy"></div>
 </body>

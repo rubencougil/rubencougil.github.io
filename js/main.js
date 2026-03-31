@@ -263,6 +263,8 @@
     function setupScrollReveal() {
         const htmlNode = document.documentElement;
         htmlNode.classList.add('js-enhanced');
+        const experienceHeading = document.querySelector('section.listado h2[data-i18n="EXPERIENCE"]');
+        const experienceSection = experienceHeading instanceof HTMLElement ? experienceHeading.closest('section.listado') : null;
 
         const revealNodes = [
             ...document.querySelectorAll('.hero-topbar'),
@@ -283,6 +285,10 @@
             node.classList.add('reveal-on-scroll');
             node.style.setProperty('--reveal-delay', `${Math.min(index * 60, 300)}ms`);
         });
+
+        if (experienceSection instanceof HTMLElement) {
+            experienceSection.classList.add('is-visible');
+        }
 
         if (prefersReducedMotion || typeof IntersectionObserver !== 'function') {
             uniqueNodes.forEach((node) => {
@@ -311,6 +317,9 @@
 
         uniqueNodes.forEach((node) => {
             if (node instanceof HTMLElement) {
+                if (experienceSection instanceof HTMLElement && node === experienceSection) {
+                    return;
+                }
                 observer.observe(node);
             }
         });

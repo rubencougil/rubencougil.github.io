@@ -225,14 +225,37 @@
             crossorigin="anonymous"></script>
 
     <!-- Google Analytics -->
-    <script async
-            src="https://www.googletagmanager.com/gtag/js?id=G-XP27FQB93K"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
+        (function () {
+            const measurementId = 'G-XP27FQB93K';
+            window.dataLayer = window.dataLayer || [];
+            window.gtag = function gtag() { window.dataLayer.push(arguments); };
 
-        gtag('config', 'G-XP27FQB93K');
+            function loadAnalyticsScript() {
+                if (document.querySelector('script[data-gtag-loader="true"]')) {
+                    return;
+                }
+
+                const script = document.createElement('script');
+                script.async = true;
+                script.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
+                script.dataset.gtagLoader = 'true';
+                document.head.appendChild(script);
+            }
+
+            window.gtag('js', new Date());
+            window.gtag('config', measurementId);
+
+            if ('requestIdleCallback' in window) {
+                window.addEventListener('load', () => {
+                    window.requestIdleCallback(loadAnalyticsScript, { timeout: 4000 });
+                }, { once: true });
+            } else {
+                window.addEventListener('load', () => {
+                    window.setTimeout(loadAnalyticsScript, 1200);
+                }, { once: true });
+            }
+        })();
     </script>
 </head>
 

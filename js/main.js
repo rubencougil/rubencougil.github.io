@@ -161,11 +161,6 @@
                     return;
                 }
 
-                const isToggleTarget = target.matches('strong') || target.matches('img') || target === titleNode;
-                if (!isToggleTarget) {
-                    return;
-                }
-
                 const description = titleNode.nextElementSibling;
                 if (!(description instanceof HTMLElement)) {
                     return;

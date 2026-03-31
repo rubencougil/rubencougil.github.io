@@ -516,7 +516,7 @@ a:hover {
     content: "";
     position: absolute;
     left: 20px;
-    top: 22px;
+    top: 18px;
     bottom: 18px;
     width: 3px;
     border-radius: 999px;
@@ -532,7 +532,7 @@ a:hover {
     content: "";
     position: absolute;
     left: 18px;
-    top: 22px;
+    top: 18px;
     bottom: 18px;
     width: 7px;
     border-radius: 999px;
@@ -548,8 +548,8 @@ a:hover {
 
 .listado li {
     position: relative;
-    margin-bottom: 14px;
-    padding: 12px 0 16px 32px;
+    margin-bottom: 10px;
+    padding: 9px 0 12px 32px;
     border-radius: 0;
     border: 0;
     background: transparent;
@@ -565,7 +565,7 @@ a:hover {
     content: "";
     position: absolute;
     left: 14px;
-    top: 22px;
+    top: 15px;
     width: 10px;
     height: 10px;
     border-radius: 50%;
@@ -579,11 +579,15 @@ a:hover {
 }
 
 .ex-title {
-    margin: 0;
+    margin: -2px -4px 0 2px;
+    padding: 3px 5px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     gap: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 180ms ease, box-shadow 180ms ease;
 }
 
 .ex-title > strong {
@@ -591,22 +595,20 @@ a:hover {
     font-weight: 700;
     flex: 1 1 auto;
     min-width: 230px;
-    cursor: pointer;
-    transition: color 180ms ease;
+    transition: color 180ms ease, text-decoration-color 180ms ease;
 }
 
-.ex-title > img {
-    width: 15px;
-    height: 15px;
-    cursor: pointer;
-    opacity: 0.7;
-    transition: opacity 180ms ease, transform 180ms ease;
+.ex-title:hover,
+.ex-title:focus-within {
+    background: color-mix(in srgb, var(--brand-soft) 55%, transparent);
 }
 
-.ex-title > img:hover {
-    opacity: 1;
-    transform: scale(1.12);
+.ex-title:hover > strong,
+.ex-title:focus-within > strong {
+    color: var(--brand-dark);
+    text-decoration: none;
 }
+
 
 .fecha {
     font-size: 0.8rem;
@@ -762,10 +764,6 @@ a:hover {
     box-shadow: 0 8px 16px rgba(10, 33, 33, 0.06);
 }
 
-.listado:hover .ex-title>img {
-    transform: none;
-    opacity: 1;
-}
 
 .ex-description:hover,
 .ex-description-displayed:hover {
@@ -1183,7 +1181,8 @@ html:is([data-theme="dark"], [data-theme="graphite"]) .nano-link:hover {
     }
 
     .listado li {
-        padding: 10px 0 12px 20px;
+        margin-bottom: 8px;
+        padding: 8px 0 10px 20px;
     }
 
     .ex-title > strong {
@@ -1193,10 +1192,6 @@ html:is([data-theme="dark"], [data-theme="graphite"]) .nano-link:hover {
     .fecha {
         display: block;
         margin-top: 4px;
-    }
-
-    .ex-title > img {
-        margin-top: 2px;
     }
 
     .listado {
@@ -1267,7 +1262,7 @@ html:is([data-theme="dark"], [data-theme="graphite"]) .nano-link:hover {
 
     .listado li::before {
         left: 4px;
-        top: 19px;
+        top: 15px;
     }
 }
 

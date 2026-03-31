@@ -1,6 +1,8 @@
 (function () {
     const SUPPORTED_LOCALES = ['es', 'en'];
     const LOCALE_STORAGE_KEY = 'site-locale';
+    const SUPPORTED_THEMES = ['dark', 'graphite', 'nordic'];
+    const THEME_STORAGE_KEY = 'site-theme';
     const TRANSLATIONS = new Map();
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -27,6 +29,55 @@
         } catch (error) {
             // Ignore storage failures.
         }
+    }
+
+    function normalizeTheme(theme) {
+        if (theme === 'editorial' || theme === 'sunset' || theme === 'minimal' || theme === 'ocean') {
+            return 'nordic';
+        }
+        if (theme === 'sand') {
+            return 'graphite';
+        }
+        return SUPPORTED_THEMES.includes(theme) ? theme : 'nordic';
+    }
+
+    function getStoredTheme() {
+        try {
+            return normalizeTheme(localStorage.getItem(THEME_STORAGE_KEY));
+        } catch (error) {
+            return null;
+        }
+    }
+
+    function saveTheme(theme) {
+        try {
+            localStorage.setItem(THEME_STORAGE_KEY, theme);
+        } catch (error) {
+            // Ignore storage failures.
+        }
+    }
+
+    function applyTheme(theme) {
+        const normalizedTheme = normalizeTheme(theme);
+        document.documentElement.setAttribute('data-theme', normalizedTheme);
+
+        const selector = document.getElementById('theme-selector');
+        if (selector instanceof HTMLSelectElement) {
+            selector.value = normalizedTheme;
+        }
+    }
+
+    function setupThemeSelector() {
+        const selector = document.getElementById('theme-selector');
+        if (!(selector instanceof HTMLSelectElement)) {
+            return;
+        }
+
+        selector.addEventListener('change', () => {
+            const selectedTheme = normalizeTheme(selector.value);
+            applyTheme(selectedTheme);
+            saveTheme(selectedTheme);
+        });
     }
 
     async function loadLocale(locale) {
@@ -82,6 +133,7 @@
         try {
             await loadLocale(normalizedLocale);
             applyTranslations(normalizedLocale);
+            optimizeImages();
             setupExternalLinks();
             markActiveLanguage(normalizedLocale);
             saveLocale(normalizedLocale);
@@ -141,6 +193,23 @@
 
             link.setAttribute('target', '_blank');
             link.setAttribute('rel', 'noopener');
+        });
+    }
+
+    function optimizeImages() {
+        document.querySelectorAll('img').forEach((img) => {
+            if (!(img instanceof HTMLImageElement)) {
+                return;
+            }
+
+            if (!img.closest('#pic')) {
+                if (!img.hasAttribute('loading')) {
+                    img.setAttribute('loading', 'lazy');
+                }
+                if (!img.hasAttribute('decoding')) {
+                    img.setAttribute('decoding', 'async');
+                }
+            }
         });
     }
 
@@ -337,8 +406,13 @@
     }
 
     async function init() {
+        const initialTheme = getStoredTheme() || 'nordic';
+        applyTheme(initialTheme);
+
+        optimizeImages();
         setupExternalLinks();
         setupLanguageSelector();
+        setupThemeSelector();
         setupExperienceToggle();
         setupNanoVideoModal();
         setupScrollReveal();

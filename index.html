@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es"
-      class="no-js">
+      class="no-js"
+      data-theme="nordic">
 
 <head>
     <meta charset="utf-8">
@@ -32,7 +33,7 @@
     <meta itemprop="description"
           content="Senior Software Engineer @ Adobe. Backend, ecommerce, rendimiento web, observabilidad y arquitectura de software.">
     <meta itemprop="image"
-          content="https://ruben.cougil.com/img/pic-big.jpg">
+          content="https://ruben.cougil.com/img/og-cover.jpg">
     <meta itemprop="url"
           content="https://ruben.cougil.com/">
     <meta name="viewport"
@@ -43,8 +44,9 @@
           content="Spanish, English">
     <link rel="preload"
           as="image"
-          href="./img/pic.jpg"
-          imagesrcset="./img/pic.jpg 1x">
+          href="./img/pic.webp"
+          type="image/webp"
+          imagesrcset="./img/pic.webp 1x, ./img/pic.jpg 1x">
     <link rel="alternate"
           hreflang="es"
           href="https://ruben.cougil.com/">
@@ -81,9 +83,9 @@
     <meta property="og:description"
           content="Senior Software Engineer en Adobe. Backend, ecommerce, rendimiento web, observabilidad y arquitectura de software." />
     <meta property="og:image"
-          content="https://ruben.cougil.com/img/pic-big.jpg" />
+          content="https://ruben.cougil.com/img/og-cover.jpg" />
     <meta property="og:image:secure_url"
-          content="https://ruben.cougil.com/img/pic-big.jpg" />
+          content="https://ruben.cougil.com/img/og-cover.jpg" />
     <meta property="og:image:type"
           content="image/jpeg" />
     <meta property="og:image:width"
@@ -93,7 +95,17 @@
     <meta property="og:image:alt"
           content="Rubén Cougil Grande - Senior Software Engineer" />
     <meta property="og:updated_time"
-          content="2026-03-30T00:00:00+00:00" />
+          content="2026-03-31T00:00:00+00:00" />
+    <meta name="twitter:card"
+          content="summary_large_image" />
+    <meta name="twitter:title"
+          content="Rubén Cougil Grande | Senior Software Engineer @ Adobe" />
+    <meta name="twitter:description"
+          content="Backend, ecommerce, rendimiento web, observabilidad y arquitectura de software." />
+    <meta name="twitter:image"
+          content="https://ruben.cougil.com/img/og-cover.jpg" />
+    <meta name="twitter:image:alt"
+          content="Rubén Cougil Grande - Senior Software Engineer" />
     <meta property="profile:first_name"
           content="Rubén" />
     <meta property="profile:last_name"
@@ -112,27 +124,44 @@
       "inLanguage": [
         "es",
         "en"
-      ]
+      ],
+      "publisher": {
+        "@id": "https://ruben.cougil.com/#person"
+      }
     },
     {
       "@type": "Person",
       "@id": "https://ruben.cougil.com/#person",
       "name": "Rubén Cougil Grande",
       "url": "https://ruben.cougil.com/",
-      "image": "https://ruben.cougil.com/img/pic-big.jpg",
+      "image": "https://ruben.cougil.com/img/pic-big.webp",
       "jobTitle": "Senior Software Engineer",
+      "description": "Senior Software Engineer en Adobe Commerce, centrado en backend, rendimiento web, observabilidad y arquitectura de software.",
       "worksFor": {
         "@type": "Organization",
-        "name": "Adobe"
+        "name": "Adobe",
+        "url": "https://www.adobe.com/"
       },
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Barcelona",
         "addressCountry": "ES"
       },
+      "alumniOf": [
+        {
+          "@type": "CollegeOrUniversity",
+          "name": "Universidade de Vigo",
+          "url": "https://www.uvigo.gal/"
+        }
+      ],
+      "knowsLanguage": [
+        "es",
+        "en"
+      ],
       "sameAs": [
         "https://www.linkedin.com/in/rcougil/",
-        "https://github.com/rubencougil"
+        "https://github.com/rubencougil",
+        "https://www.getpaymentservices.com/"
       ],
       "knowsAbout": [
         "Backend Development",
@@ -162,7 +191,7 @@
       "mainEntity": {
         "@id": "https://ruben.cougil.com/#person"
       },
-      "dateModified": "2026-03-30T00:00:00+00:00"
+      "dateModified": "2026-03-31T00:00:00+00:00"
     }
   ]
 }
@@ -192,6 +221,29 @@
 </head>
 
 <body>
+    <a href="#main"
+       class="skip-link"
+       data-i18n="skip-to-content">Saltar al contenido</a>
+    <div class="site-top-controls">
+        <label class="sr-only"
+               for="theme-selector"
+               data-i18n="theme-selector-label">Tema visual</label>
+        <div class="theme-dropdown-wrap">
+            <span class="theme-dropdown-wrap__icon"
+                  aria-hidden="true">🎨</span>
+            <select id="theme-selector"
+                    class="theme-selector"
+                    aria-label="Visual theme">
+                <option value="dark"
+                        data-i18n="theme-dark">Dark suave</option>
+                <option value="graphite"
+                        data-i18n="theme-graphite">Graphite night</option>
+                <option value="nordic"
+                        data-i18n="theme-nordic">Nordic dusk</option>
+            </select>
+        </div>
+    </div>
+
     <div id="main-container"
          class="main-container">
         <main id="main"
@@ -227,8 +279,19 @@
                         </div>
                     </div>
                     <div id="bio">
-                        <div id="pic"><img alt="icon"
-                                 src="./img/pic.jpg" /></div>
+                        <div id="pic">
+                            <picture>
+                                <source srcset="./img/pic.webp"
+                                        type="image/webp" />
+                                <img alt="Foto de perfil de Rubén Cougil Grande"
+                                     src="./img/pic.jpg"
+                                     width="299"
+                                     height="300"
+                                     decoding="async"
+                                     loading="eager"
+                                     fetchpriority="high" />
+                            </picture>
+                        </div>
                         <p data-i18n="[html]hero-description">
                             Ingeniero Informático. <a href="https://www.linkedin.com/in/rcougil" target="_blank" rel="noopener">Sr.
                                 Software Engineer en Adobe.</a> Realizando desarrollo Web de
@@ -245,12 +308,12 @@
                         </p>
                         <div class="social">
                             <ul>
-                                <li><a href="https://www.linkedin.com/in/rcougil" target="_blank" rel="noopener"><img alt="icon"
+                                <li><a href="https://www.linkedin.com/in/rcougil" target="_blank" rel="noopener" aria-label="Perfil de LinkedIn de Rubén Cougil"><img alt="icon"
                                              src="./img/social-media/linkedin.png" /></a></li>
-                                <li><a href="mailto:rubencougil@gmail.com"><img alt="icon"
+                                <li><a href="mailto:rubencougil@gmail.com" aria-label="Enviar correo a Rubén Cougil"><img alt="icon"
                                              src="./img/social-media/email.png" /></a>
                                 </li>
-                                <li><a href="https://github.com/rubencougil" target="_blank" rel="noopener"><img alt="icon"
+                                <li><a href="https://github.com/rubencougil" target="_blank" rel="noopener" aria-label="Perfil de GitHub de Rubén Cougil"><img alt="icon"
                                              src="./img/social-media/github.png" /></a></li>
                             </ul>
                         </div>
@@ -390,7 +453,7 @@
                                     Mediolanum</i>, <i>D.O. Rías Baixas</i> o <i>Qualita</i> . Desarrollé una plataforma
                                 de uso interno: el <i>Social Media Objectives Framework</i> y el blog <a href="https://www.marketing4ecommerce.net" target="_blank" rel="noopener">
                                     marketing4ecommerce</a>. También colaboré como autor en el
-                                <a href="https://www.elogia.net/blog/autor/Ruben-Cougil/" target="_blank" rel="noopener">blog</a> de la compañía.
+                                blog de la compañía.
                                 <br />
                             </p>
                         </li>
@@ -406,7 +469,7 @@
                                class="ex-description">
                                 <img alt="tuglabweb"
                                      src="./img/rubick.jpg" />
-                                <a href="https://tuglabweb.uvigo.es/" target="_blank" rel="noopener">TUGlabWEB</a> es una interfaz para
+                                TUGlabWEB es una interfaz para
                                 juegos de Utilidad Transferible que provee una forma de realizar cálculos sobre la
                                 función característica que representa a un juego de 3 o 4 jugadores (coaliciones) en el
                                 marco de la <a href="https://es.wikipedia.org/wiki/Teor%C3%ADa_de_juegos" target="_blank" rel="noopener">
@@ -461,7 +524,7 @@
                                class="ex-description">
                                 <img alt="lasalle"
                                      src="./img/lasalle-logo.png" />
-                                Docente Universitario. Impartiendo la asignatura <a href="https://github.com/rubencougil/rendimiento-en-aplicaciones-web" target="_blank" rel="noopener">Rendimiento Web</a>, "Lenguajes de programación Backend", y dirigiendo TFM (Trabajo Fin de Master) en el
+                                Docente Universitario. Impartiendo la asignatura Rendimiento Web, "Lenguajes de programación Backend", y dirigiendo TFM (Trabajo Fin de Master) en el
                                 <a href="https://www.salleurl.edu/es/estudios/master-universitario-en-programacion-web-de-alto-rendimiento" target="_blank" rel="noopener"> Master de Desarollo Web de Alto Rendimiento</a>.
                                 Este master aporta una formación sólida de programación y tecnologías web, permitiendo a los
                                 estudiantes obtener las capacidades requeridas para incorporarse de manera inmediata a cualquier empresa
@@ -480,7 +543,7 @@
                                class="ex-description">
                                 <img alt="geekshubs"
                                      src="./img/geekshubs.jpg" />
-                                Profesor en <a href="https://geekshubs.com/" target="_blank" rel="noopener">GeeksHubs</a>:
+                                Profesor en GeeksHubs:
                                 Reinventando el futuro de la educación y el recruitment tech. Creemos en el poder de la tecnología para generar
                                 impacto. Docente en <a href="https://bootcamp.geekshubsacademy.com/online/devops/" target="_blank" rel="noopener"> DevOps Bootcamp
                                 </a>, dirigido a Profesionales con experiencia que quieran mejorar sus habilidades en esta área, especializarse en

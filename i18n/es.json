@@ -1,7 +1,7 @@
 {
     "hero-kicker": "Senior Software Engineer @ Adobe",
-    "hero-description": "Ingeniero Informático. <a href=\"https://www.linkedin.com/in/rcougil\" target=\"_blank\" rel=\"noopener\">Senior Software Engineer en Adobe desde 2016.</a> Desarrollo web de alto rendimiento en ecommerce y backend. Programador, gamer, retro-fan de los 8 bits, amante del rock y gallego orgulloso. Vivo en <b>Barcelona</b>.",
-    "hero-focus": "Ahora mismo estoy especialmente centrado en rendimiento web, observabilidad y arquitectura de software. Actualmente formo parte de Adobe Commerce desarrollando <a href=\"https://www.getpaymentservices.com/\" target=\"_blank\" rel=\"noopener\">Payment Services</a>.",
+    "hero-description": "<a href=\"https://www.linkedin.com/in/rcougil\" target=\"_blank\" rel=\"noopener\">Senior Software Engineer</a> en <a href=\"https://www.adobe.com/\" target=\"_blank\" rel=\"noopener\">Adobe</a> desde 2016, con experiencia en backend, ecommerce y sistemas de alto rendimiento.",
+    "hero-focus": "Mi trabajo se centra en optimizar arquitectura, rendimiento y observabilidad para productos de gran escala. En Adobe Commerce, formo parte del equipo de <a href=\"https://www.getpaymentservices.com/\" target=\"_blank\" rel=\"noopener\">Payment Services</a>, mejorando la plataforma de pagos para comercios y clientes.",
     "EXPERIENCE": "EXPERIENCIA",
     "exp-adobe-title": "Software Engineer en Adobe.",
     "exp-adobe-date": "(Barcelona, agosto 2016 - actualidad)",

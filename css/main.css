@@ -442,7 +442,7 @@ p {
     list-style: none;
     margin: 0;
     padding: 0;
-    justify-content: center;
+    justify-content: flex-end;
 }
 
 .social ul li {
@@ -471,8 +471,8 @@ p {
     width: 20px;
     height: 20px;
     object-fit: contain;
-    filter: grayscale(100%) contrast(112%);
-    opacity: 0.86;
+    filter: none;
+    opacity: 0.95;
     transition: filter 180ms ease, opacity 180ms ease;
 }
 

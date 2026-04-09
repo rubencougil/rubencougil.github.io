@@ -59,10 +59,8 @@
     "nano-open-project": "Open project",
     "nano-watch-video": "Watch video",
     "nano-rekomendo-video-title": "Rekomendo! - Video",
-    "download-pdf": "Download PDF",
     "skip-to-content": "Skip to content",
     "theme-selector-label": "Visual theme",
-    "theme-dark": "Soft dark",
-    "theme-graphite": "Graphite night",
-    "theme-nordic": "Nordic dusk"
+    "theme-light": "Light",
+    "theme-dark": "Dark"
 }

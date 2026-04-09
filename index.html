@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es"
       class="no-js"
-      data-theme="nordic">
+      data-theme="light">
 
 <head>
     <meta charset="utf-8">
@@ -248,22 +248,72 @@
        class="skip-link"
        data-i18n="skip-to-content">Saltar al contenido</a>
     <div class="site-top-controls">
-        <label class="sr-only"
-               for="theme-selector"
-               data-i18n="theme-selector-label">Tema visual</label>
-        <div class="theme-dropdown-wrap">
-            <span class="theme-dropdown-wrap__icon"
-                  aria-hidden="true">🎨</span>
-            <select id="theme-selector"
-                    class="theme-selector"
-                    aria-label="Visual theme">
-                <option value="dark"
-                        data-i18n="theme-dark">Dark suave</option>
-                <option value="graphite"
-                        data-i18n="theme-graphite">Graphite night</option>
-                <option value="nordic"
-                        data-i18n="theme-nordic">Nordic dusk</option>
-            </select>
+        <span class="sr-only"
+              id="theme-selector-label"
+              data-i18n="theme-selector-label">Tema visual</span>
+        <div id="theme-selector"
+             class="theme-toggle"
+             role="group"
+             aria-labelledby="theme-selector-label">
+            <button type="button"
+                    class="theme-toggle-btn"
+                    data-theme="light"
+                    aria-pressed="true">
+                <span class="theme-toggle-btn__icon"
+                      aria-hidden="true">
+                    <svg viewBox="0 0 24 24"
+                         class="theme-toggle-btn__icon-svg"
+                         focusable="false"
+                         aria-hidden="true">
+                        <circle cx="12"
+                                cy="12"
+                                r="4.1" />
+                        <circle cx="12"
+                                cy="3.2"
+                                r="1.2" />
+                        <circle cx="12"
+                                cy="20.8"
+                                r="1.2" />
+                        <circle cx="3.2"
+                                cy="12"
+                                r="1.2" />
+                        <circle cx="20.8"
+                                cy="12"
+                                r="1.2" />
+                        <circle cx="5.8"
+                                cy="5.8"
+                                r="1.1" />
+                        <circle cx="18.2"
+                                cy="5.8"
+                                r="1.1" />
+                        <circle cx="5.8"
+                                cy="18.2"
+                                r="1.1" />
+                        <circle cx="18.2"
+                                cy="18.2"
+                                r="1.1" />
+                    </svg>
+                </span>
+                <span class="sr-only"
+                      data-i18n="theme-light">Claro</span>
+            </button>
+            <button type="button"
+                    class="theme-toggle-btn"
+                    data-theme="dark"
+                    aria-pressed="false">
+                <span class="theme-toggle-btn__icon"
+                      aria-hidden="true">
+                    <svg viewBox="0 0 24 24"
+                         class="theme-toggle-btn__icon-svg"
+                         focusable="false"
+                         aria-hidden="true">
+                        <path d="M20.2 14.3A8.2 8.2 0 1 1 9.7 3.8a6.6 6.6 0 0 0 10.5 10.5Z" />
+                        <path d="M17.2 4.2l.6 1.2 1.2.6-1.2.6-.6 1.2-.6-1.2-1.2-.6 1.2-.6.6-1.2Z" />
+                    </svg>
+                </span>
+                <span class="sr-only"
+                      data-i18n="theme-dark">Oscuro</span>
+            </button>
         </div>
     </div>
 
@@ -295,10 +345,6 @@
                                     🌍 EN
                                 </button>
                             </div>
-                            <button type="button"
-                                    id="pdf-download"
-                                    class="hero-action-btn"
-                                    data-i18n="download-pdf">Descargar PDF</button>
                         </div>
                     </div>
                     <div id="bio">
@@ -765,6 +811,8 @@
         </div>
     </div>
 
+    <script defer
+            src="js/i18n-inline.js"></script>
     <script defer
             src="js/main.js"></script>
 </body>

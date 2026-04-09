@@ -1,10 +1,12 @@
 (function () {
     const SUPPORTED_LOCALES = ['es', 'en'];
     const LOCALE_STORAGE_KEY = 'site-locale';
-    const SUPPORTED_THEMES = ['dark', 'graphite', 'nordic'];
+    const SUPPORTED_THEMES = ['dark', 'light'];
     const THEME_STORAGE_KEY = 'site-theme';
     const TRANSLATIONS = new Map();
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const prefersReducedMotion = typeof window.matchMedia === 'function'
+        ? window.matchMedia('(prefers-reduced-motion: reduce)').matches
+        : false;
 
     function normalizeLocale(locale) {
         return SUPPORTED_LOCALES.includes(locale) ? locale : 'es';
@@ -32,13 +34,13 @@
     }
 
     function normalizeTheme(theme) {
-        if (theme === 'editorial' || theme === 'sunset' || theme === 'minimal' || theme === 'ocean') {
-            return 'nordic';
+        if (theme === 'light' || theme === 'nordic' || theme === 'editorial' || theme === 'sunset' || theme === 'minimal' || theme === 'ocean') {
+            return 'light';
         }
-        if (theme === 'sand') {
-            return 'graphite';
+        if (theme === 'graphite' || theme === 'sand') {
+            return 'dark';
         }
-        return SUPPORTED_THEMES.includes(theme) ? theme : 'nordic';
+        return SUPPORTED_THEMES.includes(theme) ? theme : 'light';
     }
 
     function getStoredTheme() {
@@ -60,23 +62,27 @@
     function applyTheme(theme) {
         const normalizedTheme = normalizeTheme(theme);
         document.documentElement.setAttribute('data-theme', normalizedTheme);
-
-        const selector = document.getElementById('theme-selector');
-        if (selector instanceof HTMLSelectElement) {
-            selector.value = normalizedTheme;
-        }
+        document.querySelectorAll('#theme-selector .theme-toggle-btn').forEach((node) => {
+            if (!(node instanceof HTMLButtonElement)) {
+                return;
+            }
+            node.classList.toggle('is-active', node.dataset.theme === normalizedTheme);
+            node.setAttribute('aria-pressed', node.dataset.theme === normalizedTheme ? 'true' : 'false');
+        });
     }
 
     function setupThemeSelector() {
-        const selector = document.getElementById('theme-selector');
-        if (!(selector instanceof HTMLSelectElement)) {
-            return;
-        }
-
-        selector.addEventListener('change', () => {
-            const selectedTheme = normalizeTheme(selector.value);
-            applyTheme(selectedTheme);
-            saveTheme(selectedTheme);
+        document.querySelectorAll('#theme-selector .theme-toggle-btn').forEach((node) => {
+            node.addEventListener('click', (event) => {
+                event.preventDefault();
+                const target = event.currentTarget;
+                if (!(target instanceof HTMLButtonElement)) {
+                    return;
+                }
+                const selectedTheme = normalizeTheme(target.dataset.theme);
+                applyTheme(selectedTheme);
+                saveTheme(selectedTheme);
+            });
         });
     }
 
@@ -84,6 +90,12 @@
         const normalizedLocale = normalizeLocale(locale);
         if (TRANSLATIONS.has(normalizedLocale)) {
             return TRANSLATIONS.get(normalizedLocale);
+        }
+
+        const embeddedTranslations = window.__I18N && window.__I18N[normalizedLocale];
+        if (embeddedTranslations && typeof embeddedTranslations === 'object') {
+            TRANSLATIONS.set(normalizedLocale, embeddedTranslations);
+            return embeddedTranslations;
         }
 
         const response = await fetch(`./i18n/${normalizedLocale}.json`, { cache: 'no-store' });
@@ -138,6 +150,11 @@
             markActiveLanguage(normalizedLocale);
             saveLocale(normalizedLocale);
         } catch (error) {
+            // Fallback for environments where fetch is blocked (e.g. direct file:// open).
+            markActiveLanguage(normalizedLocale);
+            saveLocale(normalizedLocale);
+            document.documentElement.lang = normalizedLocale;
+
             if (normalizedLocale !== 'es') {
                 await switchLocale('es');
             }
@@ -325,103 +342,8 @@
         });
     }
 
-    function ensureHtml2PdfLoaded() {
-        if (typeof window.html2pdf === 'function') {
-            return Promise.resolve();
-        }
-
-        function loadScript(src, marker) {
-            return new Promise((resolve, reject) => {
-                const selector = `script[data-html2pdf-source="${marker}"]`;
-                const existingScript = document.querySelector(selector);
-                if (existingScript) {
-                    existingScript.addEventListener('load', () => resolve());
-                    existingScript.addEventListener('error', () => reject(new Error('Could not load PDF library')));
-                    return;
-                }
-
-                const script = document.createElement('script');
-                script.src = src;
-                script.async = true;
-                script.dataset.html2pdfSource = marker;
-                script.addEventListener('load', () => resolve());
-                script.addEventListener('error', () => reject(new Error('Could not load PDF library')));
-                document.head.appendChild(script);
-            });
-        }
-
-        return loadScript('./js/vendor/html2pdf/html2pdf.bundle.min.js', 'local')
-            .catch(() => loadScript('https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js', 'cdn'));
-    }
-
-    async function setupPdfDownload() {
-        const pdfButton = document.getElementById('pdf-download');
-        if (!(pdfButton instanceof HTMLButtonElement)) {
-            return;
-        }
-
-        pdfButton.addEventListener('click', async () => {
-            const profileNode = document.getElementById('main');
-            if (!(profileNode instanceof HTMLElement)) {
-                return;
-            }
-
-            const originalButtonText = pdfButton.textContent || '';
-            const loadingText = document.documentElement.lang === 'en' ? 'Generating PDF...' : 'Generando PDF...';
-            const hiddenSections = [];
-
-            document.querySelectorAll('.ex-description').forEach((section) => {
-                if (!(section instanceof HTMLElement)) {
-                    return;
-                }
-                if (window.getComputedStyle(section).display === 'none') {
-                    hiddenSections.push(section);
-                    section.style.display = 'block';
-                }
-            });
-
-            pdfButton.disabled = true;
-            pdfButton.textContent = loadingText;
-            document.body.classList.add('pdf-exporting');
-
-            try {
-                await ensureHtml2PdfLoaded();
-                // Wait two frames so PDF styles are fully applied before canvas capture.
-                await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
-
-                const options = {
-                    margin: [0.24, 0.28, 0.34, 0.28],
-                    filename: 'ruben_cougil_profile.pdf',
-                    image: { type: 'jpeg', quality: 0.98 },
-                    html2canvas: {
-                        scale: 2,
-                        useCORS: true,
-                        logging: false,
-                        scrollY: 0,
-                        backgroundColor: '#ffffff',
-                        windowWidth: profileNode.scrollWidth,
-                        windowHeight: profileNode.scrollHeight
-                    },
-                    jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' },
-                    pagebreak: { mode: ['css', 'legacy', 'avoid-all'] }
-                };
-
-                await window.html2pdf().set(options).from(profileNode).save();
-            } catch (error) {
-                console.error(error);
-            } finally {
-                hiddenSections.forEach((section) => {
-                    section.style.display = 'none';
-                });
-                document.body.classList.remove('pdf-exporting');
-                pdfButton.disabled = false;
-                pdfButton.textContent = originalButtonText;
-            }
-        });
-    }
-
     async function init() {
-        const initialTheme = getStoredTheme() || 'nordic';
+        const initialTheme = getStoredTheme() || 'light';
         applyTheme(initialTheme);
 
         optimizeImages();
@@ -431,7 +353,6 @@
         setupExperienceToggle();
         setupNanoVideoModal();
         setupScrollReveal();
-        await setupPdfDownload();
 
         const storedLocale = getStoredLocale();
         const initialLocale = storedLocale || getBrowserLocale();

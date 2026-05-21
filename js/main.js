@@ -145,6 +145,7 @@
         try {
             await loadLocale(normalizedLocale);
             applyTranslations(normalizedLocale);
+            refreshNanoVideoTriggerLabels();
             optimizeImages();
             setupExternalLinks();
             markActiveLanguage(normalizedLocale);
@@ -186,6 +187,32 @@
                 const currentlyHidden = window.getComputedStyle(description).display === 'none';
                 description.style.display = currentlyHidden ? 'block' : 'none';
             });
+        });
+    }
+
+    function resolveVideoTranslation(key) {
+        const locale = normalizeLocale(document.documentElement.lang || 'es');
+        const dictionary = window.__I18N && window.__I18N[locale];
+        if (!dictionary || typeof key !== 'string') {
+            return '';
+        }
+
+        return typeof dictionary[key] === 'string' ? dictionary[key] : '';
+    }
+
+    function refreshNanoVideoTriggerLabels() {
+        document.querySelectorAll('.nano-modal-trigger').forEach((trigger) => {
+            if (!(trigger instanceof HTMLElement) || !trigger.dataset.videoLabelKey) {
+                return;
+            }
+
+            const label = resolveVideoTranslation(trigger.dataset.videoLabelKey);
+            if (!label) {
+                return;
+            }
+
+            trigger.setAttribute('aria-label', label);
+            trigger.setAttribute('title', label);
         });
     }
 
@@ -233,6 +260,7 @@
     function setupNanoVideoModal() {
         const modal = document.getElementById('nano-video-modal');
         const iframe = document.getElementById('nano-video-iframe');
+        const modalTitle = document.getElementById('nano-video-title');
         if (!(modal instanceof HTMLElement) || !(iframe instanceof HTMLIFrameElement)) {
             return;
         }
@@ -244,13 +272,19 @@
             document.body.style.overflow = '';
         }
 
-        function openModal(videoId) {
+        function openModal(videoId, videoTitle) {
             const safeVideoId = String(videoId || '').trim();
             if (!safeVideoId) {
                 return;
             }
 
+            const safeVideoTitle = String(videoTitle || '').trim();
+            const resolvedTitle = safeVideoTitle || resolveVideoTranslation('nano-rekomendo-video-title') || 'Video';
             iframe.src = `https://www.youtube.com/embed/${safeVideoId}?autoplay=1&rel=0`;
+            iframe.title = resolvedTitle;
+            if (modalTitle instanceof HTMLElement) {
+                modalTitle.textContent = resolvedTitle;
+            }
             modal.classList.add('is-open');
             modal.setAttribute('aria-hidden', 'false');
             document.body.style.overflow = 'hidden';
@@ -262,7 +296,10 @@
                 if (!(trigger instanceof HTMLElement)) {
                     return;
                 }
-                openModal(trigger.dataset.videoId);
+                const videoTitle = trigger.dataset.videoTitle
+                    || resolveVideoTranslation(trigger.dataset.videoTitleKey || '')
+                    || '';
+                openModal(trigger.dataset.videoId, videoTitle);
             });
         });
 

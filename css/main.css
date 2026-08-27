@@ -2,7 +2,7 @@
     --bg-base: #081425;
     --bg-accent: #0d1b2f;
     --bg-accent-2: #11253d;
-    --paper: rgba(7, 17, 32, 0.78);
+    --paper: rgba(7, 17, 32, 0.9);
     --paper-strong: #0c1a2d;
     --text-main: #eaf2ff;
     --text-muted: #9eb4ce;
@@ -26,8 +26,8 @@
     --control-text: #e7f2ff;
     --focus-outline: #7dd9ff;
     --focus-ring: rgba(68, 211, 255, 0.24);
-    --surface-soft: rgba(13, 28, 46, 0.64);
-    --surface-soft-hover: rgba(18, 35, 56, 0.78);
+    --surface-soft: rgba(13, 28, 46, 0.8);
+    --surface-soft-hover: rgba(18, 35, 56, 0.9);
     --surface-border: rgba(139, 173, 211, 0.24);
     --card-bg: rgba(12, 26, 44, 0.66);
     --card-border: rgba(130, 164, 205, 0.22);
@@ -62,7 +62,7 @@ html[data-theme="light"] {
     --bg-base: #eef3fb;
     --bg-accent: #e7edf8;
     --bg-accent-2: #f1f5fb;
-    --paper: rgba(255, 255, 255, 0.9);
+    --paper: rgba(255, 255, 255, 0.98);
     --paper-strong: #ffffff;
     --text-main: #18263a;
     --text-muted: #4d5f76;
@@ -86,8 +86,8 @@ html[data-theme="light"] {
     --control-text: #173651;
     --focus-outline: #0f7b9e;
     --focus-ring: rgba(13, 125, 184, 0.18);
-    --surface-soft: rgba(255, 255, 255, 0.62);
-    --surface-soft-hover: rgba(255, 255, 255, 0.8);
+    --surface-soft: rgba(255, 255, 255, 0.8);
+    --surface-soft-hover: rgba(255, 255, 255, 0.94);
     --surface-border: rgba(33, 57, 87, 0.15);
     --card-bg: rgba(255, 255, 255, 0.6);
     --card-border: rgba(27, 69, 99, 0.16);
@@ -180,7 +180,7 @@ body::before {
 
 .main {
     background: var(--paper);
-    border: 0;
+    border: 1px solid var(--surface-border);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-soft);
     padding: 26px 22px 36px;
@@ -297,7 +297,8 @@ p {
     border-radius: 14px;
     border: 1px solid var(--surface-border);
     background: linear-gradient(140deg, var(--surface-soft-hover), var(--surface-soft));
-    transition: box-shadow 200ms ease;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    transition: box-shadow 200ms ease, border-color 200ms ease;
 }
 
 .hero-kicker {
@@ -476,7 +477,7 @@ html[data-theme="dark"] .theme-toggle-btn[data-theme="dark"].is-active .theme-to
     margin: 0 auto;
     padding: 22px;
     border-radius: var(--radius-md);
-    border: 0;
+    border: 1px solid var(--surface-border);
     background: var(--surface-soft);
     position: relative;
     overflow: hidden;
@@ -586,13 +587,13 @@ a:hover {
 }
 
 .listado {
-    background: transparent;
-    border: 0;
+    background: var(--surface-soft);
+    border: 1px solid var(--surface-border);
     border-radius: var(--radius-md);
     padding: 18px 14px 14px;
     position: relative;
-    box-shadow: 0 8px 26px rgba(18, 34, 35, 0.06);
-    transition: box-shadow 200ms ease;
+    box-shadow: 0 10px 28px rgba(18, 34, 35, 0.08);
+    transition: box-shadow 200ms ease, border-color 200ms ease, background-color 200ms ease;
 }
 
 .listado ul {
@@ -760,16 +761,16 @@ a:hover {
 
 .nano-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    gap: 14px;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 10px;
 }
 
 .nano-card {
     height: 100%;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    padding: 14px;
+    gap: 8px;
+    padding: 12px;
     border-radius: 12px;
     border: 1px solid var(--card-border);
     background: var(--card-bg);
@@ -779,23 +780,23 @@ a:hover {
 
 .nano-card h3 {
     margin: 0;
-    font-size: 1.01rem;
-    line-height: 1.35;
+    font-size: 0.98rem;
+    line-height: 1.3;
     color: var(--card-title);
 }
 
 .nano-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
+    gap: 5px;
 }
 
 .nano-tag {
     display: inline-flex;
     align-items: center;
     border-radius: 999px;
-    padding: 2px 9px;
-    font-size: 0.72rem;
+    padding: 2px 8px;
+    font-size: 0.68rem;
     font-weight: 700;
     letter-spacing: 0.02em;
     color: var(--chip-text);
@@ -806,14 +807,14 @@ a:hover {
 .nano-card p {
     margin: 0;
     color: var(--text-muted);
-    font-size: 0.9rem;
-    line-height: 1.5;
+    font-size: 0.82rem;
+    line-height: 1.45;
 }
 
 .nano-link {
     margin-top: auto;
     width: fit-content;
-    padding: 7px 11px;
+    padding: 6px 10px;
     border-radius: 999px;
     text-decoration: none;
     font-weight: 700;
@@ -836,7 +837,7 @@ a:hover {
     margin-top: auto;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     flex-wrap: wrap;
 }
 
@@ -846,8 +847,8 @@ a:hover {
 
 .nano-video-trigger {
     margin-top: 0;
-    width: 38px;
-    height: 38px;
+    width: 36px;
+    height: 36px;
     padding: 0;
     flex: 0 0 auto;
     border-radius: 999px;
@@ -864,7 +865,7 @@ a:hover {
 .listado:hover,
 #bio:hover,
 .hero-topbar:hover {
-    box-shadow: 0 8px 16px rgba(10, 33, 33, 0.06);
+    box-shadow: 0 12px 24px rgba(10, 33, 33, 0.08);
 }
 
 

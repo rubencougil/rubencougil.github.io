@@ -778,6 +778,28 @@ a:hover {
     transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
 }
 
+.nano-card,
+.nano-card__body {
+    text-decoration: none;
+    color: inherit;
+}
+
+.nano-card__body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.nano-card--split {
+    gap: 10px;
+}
+
+.nano-card--project {
+    cursor: pointer;
+}
+
 .nano-card h3 {
     margin: 0;
     font-size: 0.98rem;
@@ -860,6 +882,16 @@ a:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 16px rgba(8, 50, 48, 0.08);
     border-color: var(--card-border);
+}
+
+.nano-card--project:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(8, 50, 48, 0.08);
+}
+
+.nano-card--project:focus-visible {
+    outline: 2px solid var(--focus-outline);
+    outline-offset: 3px;
 }
 
 .listado:hover,

@@ -1,7 +1,7 @@
 :root {
-    --bg-base: #081425;
-    --bg-accent: #0d1b2f;
-    --bg-accent-2: #11253d;
+    --bg-base: #061221;
+    --bg-accent: #0a1b31;
+    --bg-accent-2: #102740;
     --paper: rgba(7, 17, 32, 0.9);
     --paper-strong: #0c1a2d;
     --text-main: #eaf2ff;
@@ -13,10 +13,12 @@
     --accent: #3ee2b8;
     --accent-soft: rgba(62, 226, 184, 0.16);
     --shadow-soft: 0 22px 56px rgba(1, 8, 19, 0.52);
-    --bg-glow-1: rgba(68, 211, 255, 0.24);
-    --bg-glow-2: rgba(62, 226, 184, 0.18);
-    --bg-glow-3: rgba(53, 83, 125, 0.18);
-    --noise-dot: rgba(150, 178, 213, 0.13);
+    --bg-glow-1: rgba(68, 211, 255, 0.3);
+    --bg-glow-2: rgba(62, 226, 184, 0.22);
+    --bg-glow-3: rgba(53, 83, 125, 0.22);
+    --bg-glow-4: rgba(128, 92, 246, 0.18);
+    --bg-grid-line: rgba(134, 183, 228, 0.1);
+    --bg-orbit: rgba(113, 214, 242, 0.16);
     --main-overlay: rgba(163, 190, 224, 0.09);
     --main-orb: rgba(68, 211, 255, 0.17);
     --kicker: #8ddfef;
@@ -59,9 +61,9 @@
 }
 
 html[data-theme="light"] {
-    --bg-base: #eef3fb;
-    --bg-accent: #e7edf8;
-    --bg-accent-2: #f1f5fb;
+    --bg-base: #e7f0fa;
+    --bg-accent: #dce8f7;
+    --bg-accent-2: #ebf1fb;
     --paper: rgba(255, 255, 255, 0.98);
     --paper-strong: #ffffff;
     --text-main: #18263a;
@@ -73,10 +75,12 @@ html[data-theme="light"] {
     --accent: #0b9f8a;
     --accent-soft: rgba(11, 159, 138, 0.14);
     --shadow-soft: 0 20px 50px rgba(32, 50, 76, 0.13);
-    --bg-glow-1: rgba(13, 125, 184, 0.13);
-    --bg-glow-2: rgba(11, 159, 138, 0.1);
-    --bg-glow-3: rgba(100, 116, 139, 0.11);
-    --noise-dot: rgba(51, 65, 85, 0.06);
+    --bg-glow-1: rgba(13, 125, 184, 0.2);
+    --bg-glow-2: rgba(11, 159, 138, 0.14);
+    --bg-glow-3: rgba(73, 101, 139, 0.15);
+    --bg-glow-4: rgba(125, 92, 208, 0.14);
+    --bg-grid-line: rgba(29, 84, 126, 0.085);
+    --bg-orbit: rgba(18, 124, 166, 0.14);
     --main-overlay: rgba(255, 255, 255, 0.76);
     --main-orb: rgba(13, 125, 184, 0.12);
     --kicker: #0f5f7a;
@@ -133,21 +137,40 @@ body {
     color: var(--text-main);
     line-height: 1.65;
     background:
-        radial-gradient(circle at 85% 8%, var(--bg-glow-1), transparent 34%),
-        radial-gradient(circle at 8% 88%, var(--bg-glow-2), transparent 42%),
-        radial-gradient(circle at 50% 50%, var(--bg-glow-3), transparent 45%),
+        radial-gradient(ellipse 70% 48% at 52% -8%, var(--bg-glow-1), transparent 72%),
+        radial-gradient(circle at 7% 24%, var(--bg-glow-2), transparent 30%),
+        radial-gradient(circle at 94% 72%, var(--bg-glow-4), transparent 32%),
+        radial-gradient(circle at 48% 58%, var(--bg-glow-3), transparent 46%),
         linear-gradient(135deg, var(--bg-base), var(--bg-accent) 52%, var(--bg-accent-2));
+    background-attachment: fixed;
     min-height: 100vh;
+    position: relative;
+    isolation: isolate;
 }
 
 body::before {
     content: "";
     position: fixed;
     inset: 0;
+    z-index: -1;
     pointer-events: none;
-    background-image: radial-gradient(var(--noise-dot) 0.7px, transparent 0.7px);
-    background-size: 22px 22px;
-    opacity: 0.18;
+    background-image:
+        linear-gradient(var(--bg-grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--bg-grid-line) 1px, transparent 1px);
+    background-size: 54px 54px;
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0.72) 48%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0.72) 48%, transparent 100%);
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at 4% 17%, transparent 0 116px, var(--bg-orbit) 117px 118px, transparent 119px 184px, var(--bg-orbit) 185px 186px, transparent 187px),
+        radial-gradient(circle at 98% 76%, transparent 0 146px, var(--bg-orbit) 147px 148px, transparent 149px 226px, var(--bg-orbit) 227px 228px, transparent 229px);
 }
 
 .skip-link {

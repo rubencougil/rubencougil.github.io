@@ -19,7 +19,7 @@
 </head>
 
 <body>
-    <main role="main" class="container-flex m-0 p-0 justify-content-center">
+    <main class="container-flex m-0 p-0 justify-content-center">
         <div class="row justify-content-center">
             <div class="col-12 col-xl-6 col-lg-8 p-0 mb-3 text-center">
                 <img src="img/banner.webp" class="img-fluid" alt="It's a Wonderful World">
@@ -42,9 +42,9 @@
                         <div class="col-7">
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-lg">💰 Gross</span>
+                                    <label class="input-group-text mb-0" for="grossVictoryPointsInput">💰 Gross</label>
                                 </div>
-                                <input type="number" name="grossVictoryPointsInput" id="grossVictoryPointsInput" class="text-center form-control" aria-describedby="grossVictoryPointsInputHelpId">
+                                <input type="number" name="grossVictoryPointsInput" id="grossVictoryPointsInput" class="text-center form-control">
                             </div>
                         </div>
                     </div>
@@ -53,37 +53,37 @@
                         <div class="col-7">
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-lg">🧪 Science</span>
+                                    <label class="input-group-text mb-0" for="scienceVictoryPointsInput">🧪 Science</label>
                                 </div>
-                                <input type="number" name="scienceVictoryPointsInput" id="scienceVictoryPointsInput" class="text-center form-control" aria-describedby="scienceVictoryPointsInputHelpId">
+                                <input type="number" name="scienceVictoryPointsInput" id="scienceVictoryPointsInput" class="text-center form-control">
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-lg">Mult.</span>
+                                    <label class="input-group-text mb-0" for="scienceMultiplierInput"><span class="sr-only">Science </span>Mult.</label>
                                 </div>
-                                <input type="number" class="text-center form-control" name="scienceMultiplierInput" id="scienceMultiplierInput" aria-describedby="scienceMultiplierInputHelpId">
+                                <input type="number" class="text-center form-control" name="scienceMultiplierInput" id="scienceMultiplierInput">
                             </div>
 
                         </div>
                     </div>
 
-                    <div class="form-row mt-3 mb-3 ">
+                    <div class="form-row mt-3 mb-3">
                         <div class="col-7">
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-lg">⚡️ Energy</span>
+                                    <label class="input-group-text mb-0" for="energyVictoryPointsInput">⚡️ Energy</label>
                                 </div>
-                                <input type="number" name="energyVictoryPointsInput" id="energyVictoryPointsInput" class="text-center form-control" aria-describedby="energyVictoryPointsInputHelpId">
+                                <input type="number" name="energyVictoryPointsInput" id="energyVictoryPointsInput" class="text-center form-control">
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-lg">Mult.</span>
+                                    <label class="input-group-text mb-0" for="energyMultiplierInput"><span class="sr-only">Energy </span>Mult.</label>
                                 </div>
-                                <input type="number" class="text-center form-control" name="energyMultiplierInput" id="energyMultiplierInput" aria-describedby="energyeMultiplierInputHelpId">
+                                <input type="number" class="text-center form-control" name="energyMultiplierInput" id="energyMultiplierInput">
                             </div>
                         </div>
                     </div>
@@ -92,17 +92,17 @@
                         <div class="col-7">
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-lg">👑 Gold</span>
+                                    <label class="input-group-text mb-0" for="goldVictoryPointsInput">👑 Gold</label>
                                 </div>
-                                <input type="number" name="goldVictoryPointsInput" id="goldVictoryPointsInput" class="text-center form-control" aria-describedby="goldVictoryPointsInputHelpId">
+                                <input type="number" name="goldVictoryPointsInput" id="goldVictoryPointsInput" class="text-center form-control">
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-lg">Mult.</span>
+                                    <label class="input-group-text mb-0" for="goldMultiplierInput"><span class="sr-only">Gold </span>Mult.</label>
                                 </div>
-                                <input type="number" class="text-center form-control" name="goldMultiplierInput" id="goldMultiplierInput" aria-describedby="goldMultiplierInputHelpId">
+                                <input type="number" class="text-center form-control" name="goldMultiplierInput" id="goldMultiplierInput">
                             </div>
                         </div>
                     </div>
@@ -111,17 +111,17 @@
                         <div class="col-7">
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-lg">🗺 Exploration</span>
+                                    <label class="input-group-text mb-0" for="explorationVictoryPointsInput">🗺 Exploration</label>
                                 </div>
-                                <input type="number" name="explorationVictoryPointsInput" id="explorationVictoryPointsInput" class="text-center form-control" aria-describedby="explorationVictoryPointsInputHelpId">
+                                <input type="number" name="explorationVictoryPointsInput" id="explorationVictoryPointsInput" class="text-center form-control">
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-lg">Mult.</span>
+                                    <label class="input-group-text mb-0" for="explorationMultiplierInput"><span class="sr-only">Exploration </span>Mult.</label>
                                 </div>
-                                <input type="number" class="text-center form-control" name="explorationMultiplierInput" id="explorationMultiplierInput" aria-describedby="explorationMultiplierInputHelpId">
+                                <input type="number" class="text-center form-control" name="explorationMultiplierInput" id="explorationMultiplierInput">
                             </div>
                         </div>
                     </div>
@@ -130,17 +130,17 @@
                         <div class="col-7">
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-lg">⚔️ Generals</span>
+                                    <label class="input-group-text mb-0" for="generalsVictoryPointsInput">⚔️ Generals</label>
                                 </div>
-                                <input type="number" name="generalsVictoryPointsInput" id="generalsVictoryPointsInput" class="text-center form-control" aria-describedby="generalsVictoryPointsInputHelpId">
+                                <input type="number" name="generalsVictoryPointsInput" id="generalsVictoryPointsInput" class="text-center form-control">
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-lg">Mult.</span>
+                                    <label class="input-group-text mb-0" for="generalsMultiplierInput"><span class="sr-only">Generals </span>Mult.</label>
                                 </div>
-                                <input type="number" class="text-center form-control" name="generalsMultiplierInput" id="generalsMultiplierInput" aria-describedby="generalsMultiplierInputHelpId">
+                                <input type="number" class="text-center form-control" name="generalsMultiplierInput" id="generalsMultiplierInput">
                             </div>
                         </div>
                     </div>
@@ -149,17 +149,17 @@
                         <div class="col-7">
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-lg">🏦 Financiers</span>
+                                    <label class="input-group-text mb-0" for="financiersVictoryPointsInput">🏦 Financiers</label>
                                 </div>
-                                <input type="number" name="financiersVictoryPointsInput" id="financiersVictoryPointsInput" class="text-center form-control" aria-describedby="financiersVictoryPointsInputHelpId">
+                                <input type="number" name="financiersVictoryPointsInput" id="financiersVictoryPointsInput" class="text-center form-control">
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-lg">Mult.</span>
+                                    <label class="input-group-text mb-0" for="financiersMultiplierInput"><span class="sr-only">Financiers </span>Mult.</label>
                                 </div>
-                                <input type="number" class="text-center form-control" name="financiersMultiplierInput" id="financiersMultiplierInput" aria-describedby="financiersMultiplierInputHelpId">
+                                <input type="number" class="text-center form-control" name="financiersMultiplierInput" id="financiersMultiplierInput">
                             </div>
                         </div>
                     </div>
@@ -170,9 +170,9 @@
                         <div class="offset-6 col-5">
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-lg">Total</span>
+                                    <label class="input-group-text mb-0" for="resultInput">Total</label>
                                 </div>
-                                <input disabled type="number" class="text-center form-control" name="resultInput" id="resultInput" aria-describedby="resultInputHelpId" placeholder="">
+                                <input disabled type="number" class="text-center form-control" name="resultInput" id="resultInput">
                             </div>
                         </div>
                     </div>
@@ -203,8 +203,7 @@
             </div>
         </footer>
     </main>
+    <script src="js/calculator.js"></script>
 </body>
-
-<script src="js/calculator.js"></script>
 
 </html>

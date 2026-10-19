@@ -10,8 +10,6 @@
     --brand: #44d3ff;
     --brand-soft: rgba(68, 211, 255, 0.16);
     --brand-dark: #8ae6ff;
-    --accent: #3ee2b8;
-    --accent-soft: rgba(62, 226, 184, 0.16);
     --shadow-soft: 0 22px 56px rgba(1, 8, 19, 0.52);
     --bg-glow-1: rgba(68, 211, 255, 0.3);
     --bg-glow-2: rgba(62, 226, 184, 0.22);
@@ -72,8 +70,6 @@ html[data-theme="light"] {
     --brand: #0d7db8;
     --brand-soft: rgba(13, 125, 184, 0.14);
     --brand-dark: #086596;
-    --accent: #0b9f8a;
-    --accent-soft: rgba(11, 159, 138, 0.14);
     --shadow-soft: 0 20px 50px rgba(32, 50, 76, 0.13);
     --bg-glow-1: rgba(13, 125, 184, 0.2);
     --bg-glow-2: rgba(11, 159, 138, 0.14);
@@ -576,7 +572,6 @@ html[data-theme="dark"] .theme-toggle-btn[data-theme="dark"].is-active .theme-to
 
 .social ul li a:hover {
     transform: translateY(-2px);
-    background: var(--accent-soft);
     box-shadow: 0 8px 16px rgba(17, 42, 71, 0.2);
     background: var(--control-bg-hover);
 }

@@ -1,7 +1,6 @@
 var emojis = [];
 var params = [];
 var level = "";
-var bestScore = [];
 
 async function getEmojis() {
     return await fetch('https://raw.githubusercontent.com/github/gemoji/master/db/emoji.json')

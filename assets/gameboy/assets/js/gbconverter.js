@@ -1,8 +1,3 @@
-function componentToHex(c) {
-    var hex = c.toString(16);
-    return hex.length == 1 ? "0" + hex : hex;
-}
-
 function hex2rgb(colour) {
     var r, g, b;
     if (colour.charAt(0) == "#") {
@@ -17,22 +12,6 @@ function hex2rgb(colour) {
     g = parseInt(g, 16);
     b = parseInt(b, 16);
     return r + "," + g + "," + b;
-}
-
-function closestTo(number, set) {
-    var closest = set[0];
-    var prev = Math.abs(set[0] - number);
-
-    for (var i = 1; i < set.length; i++) {
-        var diff = Math.abs(set[i] - number);
-
-        if (diff < prev) {
-            prev = diff;
-            closest = set[i];
-        }
-    }
-
-    return closest;
 }
 
 Array.min = function (array) {
@@ -67,30 +46,7 @@ $(document).ready(function () {
             canvas.width = 308;
             canvas.height = 282;
 
-            var maxWidth = canvas.width,
-                maxHeight = canvas.height,
-                imageWidth = 308,
-                imageHeight = 282;
-
-            if (imageWidth > imageHeight) {
-                if (imageWidth > maxWidth) {
-                    imageHeight *= maxWidth / imageWidth;
-                    imageWidth = maxWidth;
-                }
-            } else {
-                if (imageHeight > maxHeight) {
-                    imageWidth *= maxHeight / imageHeight;
-                    imageHeight = maxHeight;
-                }
-            }
-
-            context.drawImage(
-                imageObj,
-                (canvas.width - imageWidth) / 2,
-                (canvas.height - imageHeight) / 2,
-                imageWidth,
-                imageHeight
-            );
+            context.drawImage(imageObj, 0, 0, canvas.width, canvas.height);
             imageData = context.getImageData(0, 0, imageObj.width, imageObj.height);
 
             var pixels = imageData.data;

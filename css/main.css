@@ -455,10 +455,6 @@ html[data-theme="dark"] .theme-toggle-btn[data-theme="dark"] .theme-toggle-btn__
     background: transparent;
 }
 
-html[data-theme="dark"] .theme-toggle-btn[data-theme="dark"].is-active .theme-toggle-btn__icon {
-    background: transparent;
-}
-
 .theme-toggle:focus-within {
     border-color: var(--focus-outline);
     box-shadow: 0 0 0 3px var(--focus-ring);
@@ -902,11 +898,6 @@ a:hover {
     border-color: var(--card-border);
 }
 
-.nano-card--project:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 16px rgba(8, 50, 48, 0.08);
-}
-
 .nano-card--project:focus-visible {
     outline: 2px solid var(--focus-outline);
     outline-offset: 3px;
@@ -1101,14 +1092,6 @@ html.js-enhanced .reveal-on-scroll.is-visible {
         align-self: start;
     }
 
-    #pic img {
-        height: auto;
-    }
-
-    #language-selector {
-        margin-bottom: 0;
-    }
-
     .hero-topbar {
         padding: 12px;
         gap: 8px;
@@ -1273,10 +1256,6 @@ html.js-enhanced .reveal-on-scroll.is-visible {
         width: 110px;
         margin: 0 auto 12px;
         align-self: start;
-    }
-
-    #pic img {
-        height: auto;
     }
 
 }

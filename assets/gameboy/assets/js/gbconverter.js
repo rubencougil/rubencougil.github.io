@@ -1,22 +1,14 @@
 function hex2rgb(colour) {
-    var r, g, b;
     if (colour.charAt(0) == "#") {
         colour = colour.substr(1);
     }
 
-    r = colour.charAt(0) + colour.charAt(1);
-    g = colour.charAt(2) + colour.charAt(3);
-    b = colour.charAt(4) + colour.charAt(5);
-
-    r = parseInt(r, 16);
-    g = parseInt(g, 16);
-    b = parseInt(b, 16);
-    return r + "," + g + "," + b;
+    return [
+        parseInt(colour.substr(0, 2), 16),
+        parseInt(colour.substr(2, 2), 16),
+        parseInt(colour.substr(4, 2), 16)
+    ];
 }
-
-Array.min = function (array) {
-    return Math.min.apply(Math, array);
-};
 
 $(document).ready(function () {
     $("#download-image").on("click", function (event) {
@@ -30,6 +22,7 @@ $(document).ready(function () {
 
     var canvas = document.getElementById("canvas");
     var context = canvas.getContext("2d");
+    var gb_palette_rgb = ["1f1f1f", "4e533d", "8b9570", "c3cfa1"].map(hex2rgb);
 
     function handleImage(e) {
         var reader = new FileReader();
@@ -47,73 +40,34 @@ $(document).ready(function () {
             canvas.height = 282;
 
             context.drawImage(imageObj, 0, 0, canvas.width, canvas.height);
-            imageData = context.getImageData(0, 0, imageObj.width, imageObj.height);
+            var imageData = context.getImageData(0, 0, imageObj.width, imageObj.height);
 
             var pixels = imageData.data;
             var numPixels = pixels.length;
 
-            var pixels_w_alpha = new Array();
+            for (var i = 0; i < numPixels; i += 4) {
+                var closestIndex = 0;
+                var closestDistance = Infinity;
 
-            for (var i = 0; i < numPixels; i++) {
-                pixels_w_alpha.push(pixels[i]);
-                pixels_w_alpha.push(pixels[i + 1]);
-                pixels_w_alpha.push(pixels[i + 2]);
-                i = i + 3;
-            }
-
-            var gb_palette_hex = new Array("1f1f1f", "4e533d", "8b9570", "c3cfa1");
-            //var gb_palette_hex = new Array('9bbc0f', '8bac0f', '306230', '0f380f');
-
-            var gb_palette_rgb = new Array();
-            var pixels_converted = new Array();
-
-            for (var j = 0; j < numPixels; j++) {
-                var color_r = pixels_w_alpha[j];
-                var color_g = pixels_w_alpha[j + 1];
-                var color_b = pixels_w_alpha[j + 2];
-
-                var differenceArray = [];
-
-                for (var i = 0; i < gb_palette_hex.length; i++) {
-                    gb_palette_rgb[i] = hex2rgb(gb_palette_hex[i]);
-                    var base_colors_r = gb_palette_rgb[i].split(",")[0];
-                    var base_colors_g = gb_palette_rgb[i].split(",")[1];
-                    var base_colors_b = gb_palette_rgb[i].split(",")[2];
-
-                    differenceArray.push(
-                        Math.sqrt(
-                            (color_r - base_colors_r) * (color_r - base_colors_r) +
-                            (color_g - base_colors_g) * (color_g - base_colors_g) +
-                            (color_b - base_colors_b) * (color_b - base_colors_b)
-                        )
-                    );
+                for (var j = 0; j < gb_palette_rgb.length; j++) {
+                    var red = pixels[i] - gb_palette_rgb[j][0];
+                    var green = pixels[i + 1] - gb_palette_rgb[j][1];
+                    var blue = pixels[i + 2] - gb_palette_rgb[j][2];
+                    var distance = red * red + green * green + blue * blue;
+                    if (distance < closestDistance) {
+                        closestDistance = distance;
+                        closestIndex = j;
+                    }
                 }
 
-                var lowest = Array.min(differenceArray);
-                var index = differenceArray.indexOf(lowest);
-                if (index == -1) {
-                    index = 0;
+                var color = gb_palette_rgb[closestIndex];
+                for (var channel = 0; channel < 3; channel++) {
+                    pixels[i + channel] = color[channel] - (color[channel] % 64);
                 }
-                pixels_converted.push(parseInt(gb_palette_rgb[index].split(",")[0]));
-                pixels_converted.push(parseInt(gb_palette_rgb[index].split(",")[1]));
-                pixels_converted.push(parseInt(gb_palette_rgb[index].split(",")[2]));
-                pixels_converted.push(255);
-
-                j = j + 2;
-            }
-
-            for (var i = 0; i < pixels_converted.length; i++) {
-                pixels[i] = pixels_converted[i];
+                pixels[i + 3] = 255;
             }
 
             context.clearRect(0, 0, canvas.width, canvas.height);
-
-            for (var i = 0; i < numPixels; i++) {
-                pixels[i * 4] = pixels[i * 4] - (pixels[i * 4] % 64);
-                pixels[i * 4 + 1] = pixels[i * 4 + 1] - (pixels[i * 4 + 1] % 64);
-                pixels[i * 4 + 2] = pixels[i * 4 + 2] - (pixels[i * 4 + 2] % 64);
-            }
-
             context.putImageData(imageData, 0, 0);
         };
     }

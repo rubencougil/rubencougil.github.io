@@ -192,7 +192,7 @@
 
     function resolveVideoTranslation(key) {
         const locale = normalizeLocale(document.documentElement.lang || 'es');
-        const dictionary = window.__I18N && window.__I18N[locale];
+        const dictionary = TRANSLATIONS.get(locale) || (window.__I18N && window.__I18N[locale]);
         if (!dictionary || typeof key !== 'string') {
             return '';
         }
@@ -279,7 +279,7 @@
             }
 
             const safeVideoTitle = String(videoTitle || '').trim();
-            const resolvedTitle = safeVideoTitle || resolveVideoTranslation('nano-rekomendo-video-title') || 'Video';
+            const resolvedTitle = safeVideoTitle || resolveVideoTranslation('nano-watch-video') || 'Video';
             iframe.src = `https://www.youtube.com/embed/${safeVideoId}?autoplay=1&rel=0`;
             iframe.title = resolvedTitle;
             if (modalTitle instanceof HTMLElement) {

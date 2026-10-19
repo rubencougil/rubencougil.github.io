@@ -2,29 +2,19 @@ var emojis = [];
 var params = [];
 var level = "";
 
-async function getEmojis() {
-    return await fetch('https://raw.githubusercontent.com/github/gemoji/master/db/emoji.json')
-        .then((response) => response.json());
-}
-
-async function displayLives(total, remaining) {
-    livesEmojis = "";
-    for (var i = 0; i < remaining; i++) {
-        livesEmojis += "❤️ ";
+async function loadJson(url) {
+    var response = await fetch(url);
+    if (!response.ok) {
+        throw new Error("Could not load " + url + ": " + response.status);
     }
-    for (var i = 0; i < total - remaining; i++) {
-        livesEmojis += "🤍 ";
-    }
-    document.getElementById('lives').innerHTML = livesEmojis;
+    return response.json();
 }
 
-async function getParams() {
-    return await fetch('./params.json')
-        .then((response) => response.json());
+function displayLives(total, remaining) {
+    document.getElementById('lives').innerHTML = "❤️ ".repeat(remaining) + "🤍 ".repeat(total - remaining);
 }
 
-async function displayStats() {
-    var params = await getParams();
+function displayStats() {
     Object.keys(params).forEach(level => {
         var totalPlays = getCookie(level + '_total_plays');
         document.getElementById(level + '_display_total_plays').innerHTML = totalPlays ? totalPlays : 0;
@@ -62,10 +52,6 @@ function getCookie(name) {
     return null;
 }
 
-function eraseCookie(name) {
-    document.cookie = name + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-}
-
 function setLevel(level) {
     var select = document.getElementById('select_level');
     var option;
@@ -85,14 +71,39 @@ function setLevel(level) {
     var score = 0;
     var livesTotal = 5;
     var livesRemaining = 5;
+    var nextTimeout;
+    var answerInput = document.getElementById("input_answer");
+    var submitButton = document.getElementById("input_submit");
+    var levelSelect = document.getElementById("select_level");
+    var outputResult = document.getElementById("output_result");
+    var spinner = document.getElementById("spinner");
+    var displayScore = document.getElementById("display_score");
+    var displayHint = document.getElementById("display_hint");
+    var blockHint = document.getElementById("block_hint");
 
-    document.getElementById('input_submit').addEventListener("click", function (event) {
+    answerInput.disabled = true;
+    submitButton.disabled = true;
+    levelSelect.disabled = true;
+
+    try {
+        [emojis, params] = await Promise.all([
+            loadJson('https://raw.githubusercontent.com/github/gemoji/master/db/emoji.json'),
+            loadJson('./params.json')
+        ]);
+    } catch (error) {
+        console.error("Could not initialize Emoji Trainer:", error);
+        outputResult.classList.add("alert-danger");
+        outputResult.textContent = "Unable to load game data. Please reload to try again.";
+        return;
+    }
+    levelSelect.disabled = false;
+
+    submitButton.addEventListener("click", function (event) {
         event.preventDefault();
-        var answer = document.getElementById('input_answer').value;
-        submitAnswer(answer);
+        submitAnswer(answerInput.value);
     });
 
-    document.getElementById('input_answer').addEventListener('keypress', function (event) {
+    answerInput.addEventListener('keypress', function (event) {
         if (event.key === 'Enter') {
             submitAnswer(event.target.value)
         }
@@ -100,38 +111,42 @@ function setLevel(level) {
 
     function setStats(level, score) {
         var totalPlays = getCookie(level + '_total_plays');
-        eraseCookie(level + '_total_plays');
         setCookie(level + '_total_plays', totalPlays ? ++totalPlays : 1);
 
         var bestScore = getCookie(level + '_best_score');
         if ((!bestScore) || (score > bestScore)) {
-            eraseCookie(level + '_best_score');
             setCookie(level + '_best_score', score);
         }
     }
 
+    function resetAnswer() {
+        answerInput.value = "";
+        outputResult.classList.remove("alert-danger", "alert-success");
+        outputResult.innerHTML = "";
+        spinner.innerHTML = "";
+    }
+
     function submitAnswer(answer) {
-        document.getElementById("input_answer").disabled = true;
-        document.getElementById("input_submit").disabled = true;
+        if (answerInput.disabled) {
+            return;
+        }
+        answerInput.disabled = true;
+        submitButton.disabled = true;
         if (emoji['aliases'].includes(answer.toLowerCase())) {
-            document.getElementById("display_score").innerHTML = ++score;
-            document.getElementById("output_result").classList.add("alert-success");
-            document.getElementById("output_result").innerHTML = '👍'
+            displayScore.innerHTML = ++score;
+            outputResult.classList.add("alert-success");
+            outputResult.innerHTML = '👍'
         } else {
-            document.getElementById("output_result").classList.add("alert-danger");
-            document.getElementById("output_result").innerHTML = "❌ " + emoji['aliases'].join(" ,")
+            outputResult.classList.add("alert-danger");
+            outputResult.innerHTML = "❌ " + emoji['aliases'].join(" ,")
             if (livesRemaining > 0) {
                 livesRemaining--;
             }
         }
 
-        document.getElementById("spinner").innerHTML = '<div class="spinner-border text-secondary text-center" role="status"></div>';
-        setTimeout(() => {
-            document.getElementById("input_answer").value = "";
-            document.getElementById("output_result").classList.remove("alert-danger");
-            document.getElementById("output_result").classList.remove("alert-success");
-            document.getElementById("output_result").innerHTML = "";
-            document.getElementById("spinner").innerHTML = "";
+        spinner.innerHTML = '<div class="spinner-border text-secondary text-center" role="status"></div>';
+        nextTimeout = setTimeout(() => {
+            resetAnswer();
             next()
         }, 2000)
     }
@@ -140,36 +155,31 @@ function setLevel(level) {
         location.reload();
     })
 
-    document.getElementById("select_level").addEventListener('change', function (event) {
-        level = event.target.value;
-        next()
-    })
-
-    document.getElementById("select_level").addEventListener('change', function (event) {
+    levelSelect.addEventListener('change', function (event) {
         setCookie('level', event.target.value);
         start();
     });
 
-    async function next() {
+    function next() {
+        displayLives(livesTotal, livesRemaining);
 
         if (livesRemaining == 0) {
             var myModal = new bootstrap.Modal(document.getElementById('staticBackdrop'))
             document.getElementById('game_over_message').innerHTML = "🕹️ Your final Score is <h2>" + score + "</h2>"
             setStats(level, score);
             myModal.show();
+            return;
         }
 
-        params = await getParams();
         emoji = getRandomEmoji(emojis)
-        displayLives(livesTotal, livesRemaining)
-        document.getElementById("display_hint").innerHTML = "";
+        displayHint.innerHTML = "";
         document.getElementById("display_emoji").innerHTML = emoji["emoji"];
-        document.getElementById("input_answer").disabled = false;
-        document.getElementById("input_submit").disabled = false;
-        document.getElementById("input_answer").focus();
+        answerInput.disabled = false;
+        submitButton.disabled = false;
+        answerInput.focus();
 
         if (params[level]['hint_ratio'] > 0) {
-            document.getElementById('block_hint').hidden = false;
+            blockHint.hidden = false;
             var hints = [];
             emoji['aliases'].forEach(element => {
                 var hint = "";
@@ -182,20 +192,21 @@ function setLevel(level) {
                 }
                 hints.push("\"" + hint + "\"");
             });
-            document.getElementById("display_hint").innerHTML = hints.join(" </p><p> ");
+            displayHint.innerHTML = hints.join(" </p><p> ");
         } else {
-            document.getElementById('block_hint').hidden = true;
+            blockHint.hidden = true;
         }
     }
 
-    async function start() {
-        emojis = await getEmojis();
-        document.getElementById('display_score').innerHTML = 0;
+    function start() {
+        clearTimeout(nextTimeout);
+        resetAnswer();
+        score = 0;
+        displayScore.innerHTML = score;
         livesRemaining = livesTotal;
-        await displayLives(livesTotal, livesRemaining);
-        level = getCookie('level') ? getCookie('level') : document.getElementById("select_level").value;
+        level = getCookie('level') || levelSelect.value;
         setLevel(level);
-        await displayStats();
+        displayStats();
         next()
     }
 

@@ -17,17 +17,17 @@
         return normalizeLocale(userLocale.split('-')[0]);
     }
 
-    function getStoredLocale() {
+    function getStoredPreference(key, normalize) {
         try {
-            return normalizeLocale(localStorage.getItem(LOCALE_STORAGE_KEY));
+            return normalize(localStorage.getItem(key));
         } catch (error) {
             return null;
         }
     }
 
-    function saveLocale(locale) {
+    function savePreference(key, value) {
         try {
-            localStorage.setItem(LOCALE_STORAGE_KEY, locale);
+            localStorage.setItem(key, value);
         } catch (error) {
             // Ignore storage failures.
         }
@@ -41,22 +41,6 @@
             return 'dark';
         }
         return SUPPORTED_THEMES.includes(theme) ? theme : 'light';
-    }
-
-    function getStoredTheme() {
-        try {
-            return normalizeTheme(localStorage.getItem(THEME_STORAGE_KEY));
-        } catch (error) {
-            return null;
-        }
-    }
-
-    function saveTheme(theme) {
-        try {
-            localStorage.setItem(THEME_STORAGE_KEY, theme);
-        } catch (error) {
-            // Ignore storage failures.
-        }
     }
 
     function applyTheme(theme) {
@@ -81,7 +65,7 @@
                 }
                 const selectedTheme = normalizeTheme(target.dataset.theme);
                 applyTheme(selectedTheme);
-                saveTheme(selectedTheme);
+                savePreference(THEME_STORAGE_KEY, selectedTheme);
             });
         });
     }
@@ -149,11 +133,11 @@
             optimizeImages();
             setupExternalLinks();
             markActiveLanguage(normalizedLocale);
-            saveLocale(normalizedLocale);
+            savePreference(LOCALE_STORAGE_KEY, normalizedLocale);
         } catch (error) {
             // Fallback for environments where fetch is blocked (e.g. direct file:// open).
             markActiveLanguage(normalizedLocale);
-            saveLocale(normalizedLocale);
+            savePreference(LOCALE_STORAGE_KEY, normalizedLocale);
             document.documentElement.lang = normalizedLocale;
 
             if (normalizedLocale !== 'es') {
@@ -320,22 +304,14 @@
         const experienceHeading = document.querySelector('section.listado h2[data-i18n="EXPERIENCE"]');
         const experienceSection = experienceHeading instanceof HTMLElement ? experienceHeading.closest('section.listado') : null;
 
-        const revealNodes = [
-            ...document.querySelectorAll('.hero-topbar'),
-            ...document.querySelectorAll('#bio'),
-            ...document.querySelectorAll('section.listado')
-        ];
+        const revealNodes = Array.from(document.querySelectorAll('.hero-topbar, #bio, section.listado'))
+            .filter((node) => node instanceof HTMLElement);
 
-        const uniqueNodes = Array.from(new Set(revealNodes));
-
-        if (!uniqueNodes.length) {
+        if (!revealNodes.length) {
             return;
         }
 
-        uniqueNodes.forEach((node, index) => {
-            if (!(node instanceof HTMLElement)) {
-                return;
-            }
+        revealNodes.forEach((node, index) => {
             node.classList.add('reveal-on-scroll');
             node.style.setProperty('--reveal-delay', `${Math.min(index * 60, 300)}ms`);
         });
@@ -345,10 +321,8 @@
         }
 
         if (prefersReducedMotion || typeof IntersectionObserver !== 'function') {
-            uniqueNodes.forEach((node) => {
-                if (node instanceof HTMLElement) {
-                    node.classList.add('is-visible');
-                }
+            revealNodes.forEach((node) => {
+                node.classList.add('is-visible');
             });
             return;
         }
@@ -369,18 +343,15 @@
             rootMargin: '0px 0px -6% 0px'
         });
 
-        uniqueNodes.forEach((node) => {
-            if (node instanceof HTMLElement) {
-                if (experienceSection instanceof HTMLElement && node === experienceSection) {
-                    return;
-                }
+        revealNodes.forEach((node) => {
+            if (node !== experienceSection) {
                 observer.observe(node);
             }
         });
     }
 
     async function init() {
-        const initialTheme = getStoredTheme() || 'light';
+        const initialTheme = getStoredPreference(THEME_STORAGE_KEY, normalizeTheme) || 'light';
         applyTheme(initialTheme);
 
         optimizeImages();
@@ -391,7 +362,7 @@
         setupNanoVideoModal();
         setupScrollReveal();
 
-        const storedLocale = getStoredLocale();
+        const storedLocale = getStoredPreference(LOCALE_STORAGE_KEY, normalizeLocale);
         const initialLocale = storedLocale || getBrowserLocale();
 
         await Promise.allSettled([loadLocale('es'), loadLocale('en')]);

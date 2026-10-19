@@ -144,12 +144,16 @@ body {
     isolation: isolate;
 }
 
-body::before {
+body::before,
+body::after {
     content: "";
     position: fixed;
     inset: 0;
     z-index: -1;
     pointer-events: none;
+}
+
+body::before {
     background-image:
         linear-gradient(var(--bg-grid-line) 1px, transparent 1px),
         linear-gradient(90deg, var(--bg-grid-line) 1px, transparent 1px);
@@ -159,11 +163,6 @@ body::before {
 }
 
 body::after {
-    content: "";
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-    pointer-events: none;
     background:
         radial-gradient(circle at 4% 17%, transparent 0 116px, var(--bg-orbit) 117px 118px, transparent 119px 184px, var(--bg-orbit) 185px 186px, transparent 187px),
         radial-gradient(circle at 98% 76%, transparent 0 146px, var(--bg-orbit) 147px 148px, transparent 149px 226px, var(--bg-orbit) 227px 228px, transparent 229px);
@@ -208,24 +207,27 @@ body::after {
     backdrop-filter: blur(10px);
 }
 
-.main::before {
+.main::before,
+.main::after,
+#bio::after,
+section + section::after {
     content: "";
     position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, var(--main-overlay) 0%, transparent 45%);
     pointer-events: none;
 }
 
+.main::before {
+    inset: 0;
+    background: linear-gradient(180deg, var(--main-overlay) 0%, transparent 45%);
+}
+
 .main::after {
-    content: "";
-    position: absolute;
     right: -140px;
     top: -120px;
     width: 360px;
     height: 360px;
     border-radius: 50%;
     background: radial-gradient(circle, var(--main-orb), transparent 68%);
-    pointer-events: none;
 }
 
 article {
@@ -371,18 +373,22 @@ p {
     backdrop-filter: blur(8px);
 }
 
-.theme-toggle-btn {
-    border: 1px solid transparent;
+.theme-toggle-btn,
+#language-selector .language-selector {
     border-radius: 999px;
-    min-height: 28px;
-    min-width: 44px;
-    padding: 0 10px;
     font-size: 0.78rem;
     font-weight: 700;
     letter-spacing: 0.03em;
     color: var(--control-text);
-    background: transparent;
     cursor: pointer;
+}
+
+.theme-toggle-btn {
+    border: 1px solid transparent;
+    min-height: 28px;
+    min-width: 44px;
+    padding: 0 10px;
+    background: transparent;
     transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease, border-color 180ms ease, color 180ms ease;
 }
 
@@ -462,16 +468,10 @@ html[data-theme="dark"] .theme-toggle-btn[data-theme="dark"] .theme-toggle-btn__
 
 #language-selector .language-selector {
     border: 1px solid var(--border);
-    border-radius: 999px;
     min-width: 68px;
     height: 36px;
     padding: 0 12px;
-    font-weight: 700;
-    font-size: 0.78rem;
-    letter-spacing: 0.03em;
-    color: var(--control-text);
     background: var(--control-bg);
-    cursor: pointer;
     transition: transform 180ms ease, box-shadow 180ms ease, opacity 180ms ease, border-color 180ms ease, filter 180ms ease;
     opacity: 0.72;
 }
@@ -488,13 +488,17 @@ html[data-theme="dark"] .theme-toggle-btn[data-theme="dark"] .theme-toggle-btn__
     box-shadow: 0 0 0 3px var(--focus-ring);
 }
 
-#bio {
-    margin: 0 auto;
-    padding: 22px;
+#bio,
+.listado {
     border-radius: var(--radius-md);
     border: 1px solid var(--surface-border);
     background: var(--surface-soft);
     position: relative;
+}
+
+#bio {
+    margin: 0 auto;
+    padding: 22px;
     overflow: hidden;
     box-shadow: inset 0 1px 0 rgba(24, 38, 58, 0.18);
     display: grid;
@@ -506,15 +510,12 @@ html[data-theme="dark"] .theme-toggle-btn[data-theme="dark"] .theme-toggle-btn__
 }
 
 #bio::after {
-    content: "";
-    position: absolute;
     right: -28px;
     bottom: -28px;
     width: 160px;
     height: 160px;
     border-radius: 50%;
     background: radial-gradient(circle, var(--main-orb), transparent 70%);
-    pointer-events: none;
 }
 
 #pic {
@@ -531,7 +532,6 @@ html[data-theme="dark"] .theme-toggle-btn[data-theme="dark"] .theme-toggle-btn__
 
 #pic img {
     width: 100%;
-    height: auto;
     display: block;
 }
 
@@ -540,18 +540,18 @@ html[data-theme="dark"] .theme-toggle-btn[data-theme="dark"] .theme-toggle-btn__
     grid-column: 1 / -1;
 }
 
+.social ul,
+.listado ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
 .social ul {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    list-style: none;
-    margin: 0;
-    padding: 0;
     justify-content: flex-end;
-}
-
-.social ul li {
-    margin: 0;
 }
 
 .social ul li a {
@@ -601,41 +601,33 @@ a:hover {
 }
 
 .listado {
-    background: var(--surface-soft);
-    border: 1px solid var(--surface-border);
-    border-radius: var(--radius-md);
     padding: 18px 14px 14px;
-    position: relative;
     box-shadow: 0 10px 28px rgba(18, 34, 35, 0.08);
     transition: box-shadow 200ms ease, border-color 200ms ease, background-color 200ms ease;
 }
 
 .listado ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
     position: relative;
 }
 
-.listado ul::before {
+.listado ul::before,
+.listado ul::after {
     content: "";
     position: absolute;
-    left: 20px;
     top: 18px;
     bottom: 18px;
-    width: 3px;
     border-radius: 999px;
+}
+
+.listado ul::before {
+    left: 20px;
+    width: 3px;
     background: var(--timeline-line);
 }
 
 .listado ul::after {
-    content: "";
-    position: absolute;
     left: 18px;
-    top: 18px;
-    bottom: 18px;
     width: 7px;
-    border-radius: 999px;
     background: var(--timeline-glow);
     filter: blur(1px);
     pointer-events: none;
@@ -669,10 +661,6 @@ a:hover {
     box-shadow: 0 0 0 3px rgba(10, 69, 65, 0.1);
 }
 
-.listado li:hover {
-    box-shadow: none;
-}
-
 .ex-title {
     margin: -2px -4px 0 2px;
     padding: 3px 5px;
@@ -703,7 +691,6 @@ a:hover {
     color: var(--brand-dark);
     text-decoration: none;
 }
-
 
 .fecha {
     font-size: 0.8rem;
@@ -762,14 +749,10 @@ a:hover {
 
 .nano-section li {
     padding: 0;
-    border: 0;
-    background: transparent;
-    box-shadow: none;
     margin-bottom: 0;
 }
 
 .nano-section li:hover {
-    box-shadow: none;
     border-color: transparent;
 }
 
@@ -781,9 +764,6 @@ a:hover {
 
 .nano-card {
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
     padding: 12px;
     border-radius: 12px;
     border: 1px solid var(--card-border);
@@ -794,14 +774,14 @@ a:hover {
 
 .nano-card,
 .nano-card__body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
     text-decoration: none;
     color: inherit;
 }
 
 .nano-card__body {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
     flex: 1 1 auto;
     min-width: 0;
 }
@@ -841,7 +821,6 @@ a:hover {
 }
 
 .nano-card p {
-    margin: 0;
     color: var(--text-muted);
     font-size: 0.82rem;
     line-height: 1.45;
@@ -887,7 +866,6 @@ a:hover {
     height: 36px;
     padding: 0;
     flex: 0 0 auto;
-    border-radius: 999px;
     font-size: 0.95rem;
     line-height: 1;
 }
@@ -895,7 +873,6 @@ a:hover {
 .nano-card:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 16px rgba(8, 50, 48, 0.08);
-    border-color: var(--card-border);
 }
 
 .nano-card--project:focus-visible {
@@ -908,7 +885,6 @@ a:hover {
 .hero-topbar:hover {
     box-shadow: 0 12px 24px rgba(10, 33, 33, 0.08);
 }
-
 
 .ex-description:hover,
 .ex-description-displayed:hover {
@@ -993,14 +969,11 @@ section + section {
 }
 
 section + section::after {
-    content: "";
-    position: absolute;
     top: -16px;
     left: 14px;
     right: 14px;
     height: 1px;
     background: var(--section-divider);
-    pointer-events: none;
 }
 
 html.js-enhanced .reveal-on-scroll {
@@ -1061,7 +1034,6 @@ html.js-enhanced .reveal-on-scroll.is-visible {
 
 @media (max-width: 560px) {
     .site-top-controls {
-        margin-top: 12px;
         margin-bottom: 4px;
         padding: 0 10px;
     }
@@ -1089,7 +1061,6 @@ html.js-enhanced .reveal-on-scroll.is-visible {
 
     #pic {
         width: 96px;
-        align-self: start;
     }
 
     .hero-topbar {
@@ -1101,7 +1072,6 @@ html.js-enhanced .reveal-on-scroll.is-visible {
         width: 100%;
         justify-content: flex-start;
         align-self: stretch;
-        gap: 10px;
     }
 
     .hero-kicker {
@@ -1135,7 +1105,6 @@ html.js-enhanced .reveal-on-scroll.is-visible {
     .theme-toggle-btn {
         min-height: 30px;
         min-width: 48px;
-        font-size: 0.78rem;
     }
 
     .social ul li a {
@@ -1179,10 +1148,6 @@ html.js-enhanced .reveal-on-scroll.is-visible {
         grid-template-columns: 1fr;
     }
 
-    .nano-card {
-        padding: 12px;
-    }
-
     .nano-link {
         width: 100%;
         text-align: center;
@@ -1198,8 +1163,6 @@ html.js-enhanced .reveal-on-scroll.is-visible {
 
     .nano-video-trigger {
         width: 38px;
-        text-align: center;
-        flex: 0 0 auto;
     }
 
     .video-modal {
@@ -1225,14 +1188,12 @@ html.js-enhanced .reveal-on-scroll.is-visible {
     .listado ul::before {
         left: 9px;
         width: 2px;
-        top: 18px;
         bottom: 14px;
     }
 
     .listado ul::after {
         left: 8px;
         width: 4px;
-        top: 18px;
         bottom: 14px;
         filter: blur(0.8px);
     }
@@ -1255,9 +1216,7 @@ html.js-enhanced .reveal-on-scroll.is-visible {
     #pic {
         width: 110px;
         margin: 0 auto 12px;
-        align-self: start;
     }
-
 }
 
 @media (prefers-reduced-motion: reduce) {

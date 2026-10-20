@@ -164,19 +164,15 @@
 
     function setupExperienceToggle() {
         document.querySelectorAll('.ex-title').forEach((titleNode) => {
-            titleNode.addEventListener('click', (event) => {
-                const target = event.target;
-                if (!(target instanceof HTMLElement)) {
-                    return;
-                }
-
-                const description = titleNode.nextElementSibling;
+            titleNode.addEventListener('click', () => {
+                const description = document.getElementById(titleNode.getAttribute('aria-controls'));
                 if (!(description instanceof HTMLElement)) {
                     return;
                 }
 
-                const currentlyHidden = window.getComputedStyle(description).display === 'none';
-                description.style.display = currentlyHidden ? 'block' : 'none';
+                const expanded = titleNode.getAttribute('aria-expanded') === 'true';
+                titleNode.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+                description.hidden = expanded;
             });
         });
     }
@@ -252,18 +248,31 @@
         const modal = document.getElementById('nano-video-modal');
         const iframe = document.getElementById('nano-video-iframe');
         const modalTitle = document.getElementById('nano-video-title');
-        if (!(modal instanceof HTMLElement) || !(iframe instanceof HTMLIFrameElement)) {
+        const closeButton = modal && modal.querySelector('.video-modal__close');
+        if (!(modal instanceof HTMLDialogElement) || !(iframe instanceof HTMLIFrameElement)
+            || !(closeButton instanceof HTMLButtonElement)) {
             return;
         }
+        let returnFocus = null;
+        let previousOverflow = '';
+
+        // Keep Tab navigation inside the dialog when crossing the embedded player.
+        const startGuard = document.createElement('span');
+        const endGuard = document.createElement('span');
+        [startGuard, endGuard].forEach((guard) => {
+            guard.tabIndex = 0;
+            guard.className = 'sr-only';
+        });
+        startGuard.addEventListener('focus', () => iframe.focus());
+        endGuard.addEventListener('focus', () => closeButton.focus());
+        modal.prepend(startGuard);
+        modal.append(endGuard);
 
         function closeModal() {
-            modal.classList.remove('is-open');
-            modal.setAttribute('aria-hidden', 'true');
-            iframe.src = '';
-            document.body.style.overflow = '';
+            modal.close();
         }
 
-        function openModal(videoId, videoTitle) {
+        function openModal(videoId, videoTitle, trigger) {
             const safeVideoId = String(videoId || '').trim();
             if (!safeVideoId) {
                 return;
@@ -271,13 +280,14 @@
 
             const safeVideoTitle = String(videoTitle || '').trim();
             const resolvedTitle = safeVideoTitle || resolveVideoTranslation('nano-watch-video') || 'Video';
+            returnFocus = trigger;
+            previousOverflow = document.body.style.overflow;
             iframe.src = `https://www.youtube.com/embed/${safeVideoId}?autoplay=1&rel=0`;
             iframe.title = resolvedTitle;
             if (modalTitle instanceof HTMLElement) {
                 modalTitle.textContent = resolvedTitle;
             }
-            modal.classList.add('is-open');
-            modal.setAttribute('aria-hidden', 'false');
+            modal.showModal();
             document.body.style.overflow = 'hidden';
         }
 
@@ -290,7 +300,7 @@
                 const videoTitle = trigger.dataset.videoTitle
                     || resolveVideoTranslation(trigger.dataset.videoTitleKey || '')
                     || '';
-                openModal(trigger.dataset.videoId, videoTitle);
+                openModal(trigger.dataset.videoId, videoTitle, trigger);
             });
         });
 
@@ -298,10 +308,19 @@
             button.addEventListener('click', closeModal);
         });
 
-        document.addEventListener('keydown', (event) => {
-            if (event.key === 'Escape' && modal.classList.contains('is-open')) {
+        modal.addEventListener('click', (event) => {
+            if (event.target === modal) {
                 closeModal();
             }
+        });
+
+        modal.addEventListener('close', () => {
+            iframe.removeAttribute('src');
+            document.body.style.overflow = previousOverflow;
+            if (returnFocus instanceof HTMLElement && returnFocus.isConnected) {
+                returnFocus.focus();
+            }
+            returnFocus = null;
         });
     }
 

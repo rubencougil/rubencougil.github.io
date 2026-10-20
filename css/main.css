@@ -706,6 +706,13 @@ a:hover {
 }
 
 .ex-title {
+    appearance: none;
+    width: 100%;
+    border: 0;
+    background: transparent;
+    color: var(--text-main);
+    font: inherit;
+    text-align: left;
     margin: -2px -4px 0 2px;
     padding: 3px 5px;
     display: flex;
@@ -728,6 +735,11 @@ a:hover {
 .ex-title:hover,
 .ex-title:focus-within {
     background: var(--brand-soft);
+}
+
+.ex-title:focus-visible {
+    outline: 2px solid var(--focus-outline);
+    outline-offset: 3px;
 }
 
 .ex-title:hover > strong,
@@ -759,7 +771,8 @@ a:hover {
     transition: transform 220ms ease, box-shadow 220ms ease;
 }
 
-.ex-description {
+.ex-description[hidden],
+.ex-description-displayed[hidden] {
     display: none;
 }
 
@@ -957,16 +970,21 @@ button.nano-link {
     align-items: center;
     justify-content: center;
     padding: 18px;
-    z-index: 30;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    max-height: none;
+    margin: 0;
+    border: 0;
+    background: transparent;
+    color: inherit;
 }
 
-.video-modal.is-open {
+.video-modal[open] {
     display: flex;
 }
 
-.video-modal__overlay {
-    position: absolute;
-    inset: 0;
+.video-modal::backdrop {
     background: var(--modal-overlay);
     backdrop-filter: blur(2px);
 }

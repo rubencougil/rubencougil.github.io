@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es"
+      prefix="og: https://ogp.me/ns# profile: https://ogp.me/ns/profile#"
       data-theme="light">
 
 <head>
@@ -12,6 +13,8 @@
           type="image/x-icon" />
     <link rel="canonical"
           href="https://ruben.cougil.com/">
+    <link rel="image_src"
+          href="https://ruben.cougil.com/img/og-cover.jpg">
 
     <meta name="description"
           data-i18n="[content]page-description"
@@ -36,6 +39,8 @@
           href="https://www.linkedin.com/in/rcougil/">
     <link rel="me"
           href="https://github.com/rubencougil">
+    <link rel="me"
+          href="https://x.com/rcougil">
     <link rel="preload"
           href="./fonts/bricolage-grotesque-latin.woff2"
           as="font"
@@ -72,11 +77,15 @@
           content="630" />
     <meta property="og:image:alt"
           data-i18n="[content]social-image-alt"
-          content="Rubén Cougil Grande - Senior Software Engineer" />
+          content="Retrato de Rubén Cougil Grande con su nombre, el cargo Senior Software Engineer @ Adobe Commerce y sus especialidades: rendimiento web, observabilidad y arquitectura de software." />
     <meta property="og:updated_time"
           content="2026-10-20T00:00:00+00:00" />
     <meta name="twitter:card"
           content="summary_large_image" />
+    <meta name="twitter:site"
+          content="@rcougil" />
+    <meta name="twitter:creator"
+          content="@rcougil" />
     <meta name="twitter:title"
           data-i18n="[content]page-title"
           content="Rubén Cougil Grande | Senior Software Engineer en Adobe" />
@@ -87,7 +96,7 @@
           content="https://ruben.cougil.com/img/og-cover.jpg" />
     <meta name="twitter:image:alt"
           data-i18n="[content]social-image-alt"
-          content="Rubén Cougil Grande - Senior Software Engineer" />
+          content="Retrato de Rubén Cougil Grande con su nombre, el cargo Senior Software Engineer @ Adobe Commerce y sus especialidades: rendimiento web, observabilidad y arquitectura de software." />
     <meta property="profile:first_name"
           content="Rubén" />
     <meta property="profile:last_name"
@@ -184,7 +193,21 @@
       "author": {
         "@id": "https://ruben.cougil.com/#person"
       },
+      "primaryImageOfPage": {
+        "@id": "https://ruben.cougil.com/#social-image"
+      },
       "dateModified": "2026-10-20T00:00:00+00:00"
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://ruben.cougil.com/#social-image",
+      "contentUrl": "https://ruben.cougil.com/img/og-cover.jpg",
+      "width": 1200,
+      "height": 630,
+      "representativeOfPage": true,
+      "about": {
+        "@id": "https://ruben.cougil.com/#person"
+      }
     }
   ]
 }

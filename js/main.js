@@ -301,11 +301,8 @@
     function setupScrollReveal() {
         const htmlNode = document.documentElement;
         htmlNode.classList.add('js-enhanced');
-        const experienceHeading = document.querySelector('section.listado h2[data-i18n="EXPERIENCE"]');
-        const experienceSection = experienceHeading instanceof HTMLElement ? experienceHeading.closest('section.listado') : null;
-
-        const revealNodes = Array.from(document.querySelectorAll('.hero-topbar, #bio, section.listado'))
-            .filter((node) => node instanceof HTMLElement);
+        const revealNodes = Array.from(document.querySelectorAll('section.listado'))
+            .filter((node) => node instanceof HTMLElement && node.getBoundingClientRect().top >= window.innerHeight);
 
         if (!revealNodes.length) {
             return;
@@ -315,10 +312,6 @@
             node.classList.add('reveal-on-scroll');
             node.style.setProperty('--reveal-delay', `${Math.min(index * 60, 300)}ms`);
         });
-
-        if (experienceSection instanceof HTMLElement) {
-            experienceSection.classList.add('is-visible');
-        }
 
         if (prefersReducedMotion || typeof IntersectionObserver !== 'function') {
             revealNodes.forEach((node) => {
@@ -343,11 +336,7 @@
             rootMargin: '0px 0px -6% 0px'
         });
 
-        revealNodes.forEach((node) => {
-            if (node !== experienceSection) {
-                observer.observe(node);
-            }
-        });
+        revealNodes.forEach((node) => observer.observe(node));
     }
 
     async function init() {

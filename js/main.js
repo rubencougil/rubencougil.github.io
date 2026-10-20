@@ -98,11 +98,17 @@
 
         translatableNodes.forEach((node) => {
             const rawKey = node.getAttribute('data-i18n') || '';
+            const attributeMatch = rawKey.match(/^\[(content|alt|aria-label)\](.+)$/);
             const isHtml = rawKey.startsWith('[html]');
-            const key = isHtml ? rawKey.replace('[html]', '') : rawKey;
+            const key = attributeMatch ? attributeMatch[2] : isHtml ? rawKey.slice(6) : rawKey;
             const translation = dictionary[key];
 
             if (typeof translation !== 'string') {
+                return;
+            }
+
+            if (attributeMatch) {
+                node.setAttribute(attributeMatch[1], translation);
                 return;
             }
 
@@ -120,6 +126,7 @@
     function markActiveLanguage(locale) {
         document.querySelectorAll('#language-selector .language-selector').forEach((node) => {
             node.classList.toggle('is-active', node.dataset.locale === locale);
+            node.setAttribute('aria-pressed', node.dataset.locale === locale ? 'true' : 'false');
         });
     }
 

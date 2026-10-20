@@ -261,6 +261,32 @@ section:last-child {
     margin-bottom: 0;
 }
 
+.section-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+    margin: 0 0 24px;
+    font-size: 0.9rem;
+}
+
+.section-nav a {
+    padding: 6px 0;
+}
+
+.section-nav a:focus-visible {
+    outline: 2px solid var(--focus-outline);
+    outline-offset: 3px;
+}
+
+.section-summary {
+    margin-bottom: 18px;
+    color: var(--text-muted);
+}
+
+section[id] {
+    scroll-margin-top: 20px;
+}
+
 h2 {
     margin: 0 0 14px;
     font-family: 'Archivo Expanded', 'Bricolage Grotesque', sans-serif;

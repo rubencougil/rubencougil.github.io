@@ -1,5 +1,4 @@
 User-Agent: *
 Allow: /
 
-Host: ruben.cougil.com
 Sitemap: https://ruben.cougil.com/sitemap.xml

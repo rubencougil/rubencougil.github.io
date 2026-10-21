@@ -1,123 +1,181 @@
 <!doctype html>
 <html lang="es">
-
 <head>
-      <meta charset="utf-8">
-      <title>¡Mochilo ZX!</title>
-      <script src="jsspeccy-3.1/jsspeccy/jsspeccy.js"></script>
-
-      <meta name="description"
-            content="Juego desarrollado en ZX Game Maker.">
-      <meta itemprop="image"
-            content="./img/mochilo-zx.png">
-      <meta name="viewport"
-            content="width=device-width">
-
-
-      <meta property="og:url"
-            content="https://ruben.cougil.com/assets/mochilo-zx/index.html" />
-      <meta property="og:type"
-            content="article" />
-      <meta property="og:title"
-            content="¡Mochilo ZX!" />
-      <meta property="og:description"
-            content="Juego desarrollado en ZX Game Maker." />
-      <meta property="og:image"
-            content="https://ruben.cougil.com/assets/mochilo-zx/img/mochilo-zx.png" />
-
-      <style>
-            body {
-                  background-color: #444;
-                  background-image: url(./img/jungle.jpg);
-                  background-repeat: no-repeat;
-                  background-size: cover;
-                  margin: 20px 0 0;
-            }
-
-            #jsspeccy {
-                  width: min(960px, 100%);
-                  margin: auto;
-                  background-color: rgb(255, 255, 255);
-            }
-
-            #intro {
-                  margin: auto;
-                  color: black;
-                  text-align: center;
-                  background-color: lightgrey;
-                  padding: 10px 12px 12px;
-                  margin-bottom: 10px;
-                  margin-top: 10px;
-                  width: min(960px, 100%);
-                  font-family: 'Courier New', Courier, monospace;
-                  opacity: 0.9;
-            }
-
-            #intro p {
-                  margin: 0;
-            }
-
-            .intro-actions {
-                  margin-top: 10px;
-            }
-
-            .itch-link {
-                  display: inline-flex;
-                  align-items: center;
-                  gap: 8px;
-                  padding: 6px 10px;
-                  border-radius: 999px;
-                  background: linear-gradient(135deg, #fa5c5c, #d63a3a);
-                  color: #fff;
-                  text-decoration: none;
-                  font-weight: 700;
-                  box-shadow: 0 8px 20px rgba(214, 58, 58, 0.28);
-                  transition: transform 150ms ease, box-shadow 150ms ease, filter 150ms ease;
-            }
-
-            .itch-link:hover {
-                  transform: translateY(-1px);
-                  box-shadow: 0 10px 22px rgba(214, 58, 58, 0.34);
-                  filter: saturate(1.08);
-            }
-
-            .itch-link img {
-                  width: 22px;
-                  height: 22px;
-                  display: block;
-            }
-
-      </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mochilo ZX: juega online al juego de ZX Spectrum | Rubén Cougil</title>
+  <meta name="description" content="Juega a Mochilo ZX en tu navegador: un juego retro para ZX Spectrum de Rubén Cougil, creado con ZX Game Maker. Controles, instrucciones y versión en itch.io.">
+  <meta name="author" content="Rubén Cougil Grande">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#101b18">
+  <link rel="canonical" href="https://ruben.cougil.com/assets/mochilo-zx/index.html">
+  <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+  <link rel="stylesheet" href="styles.css">
+  <script src="game.js" defer></script>
+  <meta property="og:url" content="https://ruben.cougil.com/assets/mochilo-zx/index.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Rubén Cougil Grande">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:title" content="¡Mochilo ZX! Juega online en tu navegador">
+  <meta property="og:description" content="Un juego retro para ZX Spectrum de Rubén Cougil, creado con ZX Game Maker. Pulsa Jugar aquí y vuelve a los 8 bits.">
+  <meta property="og:image" content="https://ruben.cougil.com/assets/mochilo-zx/img/social-card.jpg">
+  <meta property="og:image:secure_url" content="https://ruben.cougil.com/assets/mochilo-zx/img/social-card.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Mochilo ZX, juego de ZX Spectrum de Rubén Cougil: pantalla de inicio y enlace para jugar en ruben.cougil.com.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@rcougil">
+  <meta name="twitter:creator" content="@rcougil">
+  <meta name="twitter:title" content="¡Mochilo ZX! Juega online en tu navegador">
+  <meta name="twitter:description" content="Un juego retro para ZX Spectrum de Rubén Cougil, creado con ZX Game Maker. Juega aquí, sin instalar un emulador.">
+  <meta name="twitter:image" content="https://ruben.cougil.com/assets/mochilo-zx/img/social-card.jpg">
+  <meta name="twitter:image:alt" content="Mochilo ZX: pantalla de inicio del juego y una invitación a jugar online.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://ruben.cougil.com/assets/mochilo-zx/index.html#page",
+        "url": "https://ruben.cougil.com/assets/mochilo-zx/index.html",
+        "name": "Mochilo ZX: juega online al juego de ZX Spectrum",
+        "description": "Juega a Mochilo ZX en tu navegador y consulta sus controles, instrucciones y créditos.",
+        "inLanguage": "es",
+        "mainEntity": { "@id": "https://ruben.cougil.com/assets/mochilo-zx/index.html#game" },
+        "author": { "@id": "https://ruben.cougil.com/assets/mochilo-zx/index.html#creator" },
+        "primaryImageOfPage": { "@id": "https://ruben.cougil.com/assets/mochilo-zx/index.html#image" }
+      },
+      {
+        "@type": "VideoGame",
+        "@id": "https://ruben.cougil.com/assets/mochilo-zx/index.html#game",
+        "name": "Mochilo ZX",
+        "url": "https://ruben.cougil.com/assets/mochilo-zx/index.html",
+        "description": "Juego retro para ZX Spectrum creado por Rubén Cougil con ZX Game Maker. Se puede jugar en el navegador mediante el emulador JSSpeccy.",
+        "gamePlatform": "ZX Spectrum",
+        "creator": { "@id": "https://ruben.cougil.com/assets/mochilo-zx/index.html#creator" },
+        "image": { "@id": "https://ruben.cougil.com/assets/mochilo-zx/index.html#image" },
+        "sameAs": "https://rcougil.itch.io/mochilo-zx",
+        "potentialAction": {
+          "@type": "PlayAction",
+          "target": "https://ruben.cougil.com/assets/mochilo-zx/index.html#jugar"
+        }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://ruben.cougil.com/assets/mochilo-zx/index.html#creator",
+        "name": "Rubén Cougil Grande",
+        "alternateName": "Rubén Cougil",
+        "url": "https://ruben.cougil.com/",
+        "sameAs": ["https://github.com/rubencougil", "https://x.com/rcougil"]
+      },
+      {
+        "@type": "ImageObject",
+        "@id": "https://ruben.cougil.com/assets/mochilo-zx/index.html#image",
+        "contentUrl": "https://ruben.cougil.com/assets/mochilo-zx/img/social-card.jpg",
+        "width": 1200,
+        "height": 630,
+        "caption": "Mochilo ZX, juego de ZX Spectrum de Rubén Cougil."
+      }
+    ]
+  }
+  </script>
 </head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <header class="site-header page-width">
+    <a class="creator-link" href="https://ruben.cougil.com/">Rubén Cougil <span>/ proyectos</span></a>
+    <a href="#compartir">Compartir el juego</a>
+  </header>
 
-<body onload="emu = JSSpeccy(document.getElementById('jsspeccy'), {
-            sandbox: false,
-            openUrl: 'https\:\/\/ruben.cougil.com/assets/mochilo-zx/game/Mochilo_ZX.tap',
-            zoom: 3,
-            autoLoadTapes: true,
-            autoStart: true
-        })">
-      <div id="intro">
-            <p>
-                  🕹️ Controles: O (izquierda), P (derecha), Q (saltar)
-                  |
-                  👾 Desarrollado con <a href="https://gm.retrojuegos.org/"
-                     rel="noopener"
-                     target="_blank">ZX Game Maker</a>
-            </p>
-            <div class="intro-actions">
-                  <a class="itch-link"
-                     href="https://rcougil.itch.io/mochilo-zx"
-                     target="_blank"
-                     rel="noopener"
-                     aria-label="Jugar en itch.io">
-                        <img src="https://static.itch.io/images/itchio-textless-white.svg"
-                             alt="itch.io logo">
-                        Ver en itch.io
-                  </a>
-            </div>
+  <main id="contenido" class="page-width" tabindex="-1">
+    <section class="hero" aria-labelledby="game-title">
+      <p class="eyebrow">ZX Spectrum · ZX Game Maker</p>
+      <h1 id="game-title">¡Mochilo ZX!</h1>
+      <p class="hero-description">Vuelve a los 8 bits. Juega a <strong>Mochilo ZX</strong>, el juego de ZX Spectrum de <a href="https://ruben.cougil.com/">Rubén Cougil</a>, directamente en tu navegador.</p>
+      <div class="hero-links">
+        <a href="#instrucciones">Cómo jugar</a>
+        <a href="https://rcougil.itch.io/mochilo-zx" target="_blank" rel="noopener">Ficha en itch.io <span aria-hidden="true">↗</span></a>
       </div>
-      <div id="jsspeccy"></div>
-</body>
+    </section>
 
+    <section id="jugar" class="game-section" aria-label="Jugar a Mochilo ZX">
+      <div id="game-stage" class="game-stage">
+        <img id="game-preview" class="game-preview" src="img/mochilo-zx.webp" width="929" height="681" fetchpriority="high" alt="Pantalla de inicio de Mochilo ZX con las opciones de teclado y joystick.">
+        <div id="play-overlay" class="play-overlay">
+          <button id="play-button" class="button button-primary" type="button" aria-describedby="play-note" hidden>Jugar aquí <span aria-hidden="true">▶</span></button>
+          <p id="play-note">Sin instalar un emulador. Necesitas un teclado para jugar.</p>
+          <noscript><p>Activa JavaScript para jugar aquí o <a href="game/Mochilo_ZX.tap" download>descarga la cinta .TAP</a> para tu emulador.</p></noscript>
+        </div>
+      </div>
+      <p id="game-status" class="status" role="status" aria-live="polite">El emulador solo se carga al pulsar Jugar aquí.</p>
+      <p class="quick-controls"><span>Teclado: <kbd>1</kbd> empezar</span><span><kbd>O</kbd> izquierda</span><span><kbd>P</kbd> derecha</span><span><kbd>Q</kbd> saltar</span></p>
+      <button id="stop-button" class="button button-secondary" type="button" hidden>Cerrar el juego</button>
+    </section>
+
+    <section id="instrucciones" class="info-grid" aria-label="Acerca del juego e instrucciones">
+      <article class="panel">
+        <p class="eyebrow">Sobre el juego</p>
+        <h2>Un homenaje al ZX Spectrum</h2>
+        <p><strong>Mochilo ZX</strong> es un juego retro para ZX Spectrum creado por <a href="https://ruben.cougil.com/">Rubén Cougil</a> con <a href="https://gm.retrojuegos.org/" target="_blank" rel="noopener">ZX Game Maker</a>, con estética de 8 bits.</p>
+        <p>Esta página permite jugar en el navegador gracias a <a href="https://github.com/gasman/jsspeccy3" target="_blank" rel="noopener">JSSpeccy</a>. También puedes encontrar el juego en <a href="https://rcougil.itch.io/mochilo-zx" target="_blank" rel="noopener">itch.io</a>.</p>
+        <p class="credits">Desarrollo: Rubén Cougil. Efectos de sonido: Shiru.</p>
+      </article>
+      <article class="panel">
+        <p class="eyebrow">Controles</p>
+        <h2>Cómo empezar a jugar</h2>
+        <ol>
+          <li>Pulsa <strong>Jugar aquí</strong> para abrir el emulador.</li>
+          <li>Cuando aparezca el menú del juego, pulsa <kbd>1</kbd> para seleccionar <span lang="en">Keyboard</span>.</li>
+          <li>Usa <kbd>O</kbd> para ir a la izquierda, <kbd>P</kbd> para ir a la derecha y <kbd>Q</kbd> para saltar.</li>
+        </ol>
+        <p>Haz clic en la pantalla del juego para darle el foco. Puedes pausar el emulador o ponerlo a pantalla completa con sus botones.</p>
+      </article>
+    </section>
+
+    <section id="compartir" class="panel share-panel" aria-labelledby="share-title">
+      <div>
+        <p class="eyebrow">Los juegos se disfrutan más compartidos</p>
+        <h2 id="share-title">Pasa el juego a alguien</h2>
+        <p>Comparte el enlace para que más gente conozca Mochilo ZX y pueda jugar aquí.</p>
+      </div>
+      <div class="share-links" aria-label="Opciones para compartir">
+        <button id="native-share" class="button button-secondary" type="button" hidden>Compartir…</button>
+        <button id="copy-link" class="button button-secondary" type="button" hidden>Copiar enlace</button>
+        <a class="button button-secondary" href="https://wa.me/?text=Juega%20a%20Mochilo%20ZX%2C%20un%20juego%20de%20ZX%20Spectrum%20de%20Rub%C3%A9n%20Cougil%3A%20https%3A%2F%2Fruben.cougil.com%2Fassets%2Fmochilo-zx%2Findex.html" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        <a class="button button-secondary" href="https://twitter.com/intent/tweet?text=Juega%20a%20Mochilo%20ZX%2C%20un%20juego%20de%20ZX%20Spectrum&amp;url=https%3A%2F%2Fruben.cougil.com%2Fassets%2Fmochilo-zx%2Findex.html&amp;via=rcougil" target="_blank" rel="noopener noreferrer">Compartir en X</a>
+        <a class="button button-secondary" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fruben.cougil.com%2Fassets%2Fmochilo-zx%2Findex.html" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+      <p id="share-status" class="status" role="status" aria-live="polite"></p>
+      <label id="manual-copy" class="manual-copy" hidden>Enlace del juego: selecciónalo y cópialo
+        <input id="share-url" type="url" value="https://ruben.cougil.com/assets/mochilo-zx/index.html" readonly>
+      </label>
+    </section>
+
+    <section class="panel faq" aria-labelledby="faq-title">
+      <p class="eyebrow">Antes de jugar</p>
+      <h2 id="faq-title">Preguntas frecuentes</h2>
+      <details>
+        <summary>¿Necesito instalar algo?</summary>
+        <p>No necesitas instalar un emulador para jugar en esta página. Necesitas JavaScript, un navegador compatible con WebAssembly y un teclado. El emulador se descarga al pulsar Jugar aquí, no al abrir la página.</p>
+      </details>
+      <details>
+        <summary>¿Puedo jugar desde un móvil?</summary>
+        <p>La página y la pantalla del emulador se adaptan al móvil, pero los controles del juego necesitan un teclado físico. Para jugar con más comodidad, usa un ordenador con teclado.</p>
+      </details>
+      <details>
+        <summary>¿Puedo usar mi propio emulador de ZX Spectrum?</summary>
+        <p>Sí. Puedes <a href="game/Mochilo_ZX.tap" download>descargar la cinta Mochilo ZX en formato .TAP</a> y abrirla con un emulador compatible. La <a href="https://rcougil.itch.io/mochilo-zx" target="_blank" rel="noopener">ficha del juego en itch.io</a> es otra forma de encontrarlo.</p>
+      </details>
+      <details>
+        <summary>¿Quién ha creado Mochilo ZX?</summary>
+        <p>Rubén Cougil ha desarrollado el juego con ZX Game Maker. Puedes conocer sus otros proyectos en <a href="https://ruben.cougil.com/">ruben.cougil.com</a> y seguirle en <a href="https://x.com/rcougil" target="_blank" rel="noopener">X, @rcougil</a>.</p>
+      </details>
+    </section>
+  </main>
+  <footer class="page-width site-footer">
+    <a href="https://ruben.cougil.com/">Más proyectos de Rubén Cougil</a>
+    <span>Hecho con ZX Game Maker · Emulación con JSSpeccy</span>
+  </footer>
+</body>
 </html>

@@ -1,0 +1,103 @@
+:root {
+  color-scheme: dark;
+  --background: #101b18;
+  --panel: #16251f;
+  --ink: #f3f4df;
+  --muted: #bdcbbd;
+  --accent: #b8ee69;
+  --line: #435348;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  line-height: 1.6;
+  background: var(--background);
+  color: var(--ink);
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-padding-top: 24px; }
+body {
+  margin: 0;
+  background: linear-gradient(#101b18e8, #101b18fa 900px), url("img/jungle.webp") center top / 1920px auto no-repeat;
+}
+a { color: var(--accent); text-underline-offset: 0.2em; }
+a:hover { text-decoration-thickness: 2px; }
+button, input { font: inherit; }
+button { cursor: pointer; }
+:focus-visible { outline: 3px solid #f4d96a; outline-offset: 5px; }
+.page-width { width: min(960px, calc(100% - 40px)); margin-inline: auto; }
+.site-header, .site-footer { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+.site-header { padding-block: 22px; font-size: 0.9rem; }
+.site-header a { display: inline-flex; align-items: center; min-height: 44px; }
+.creator-link { color: var(--ink); font-weight: 700; text-decoration: none; gap: 8px; }
+.creator-link span, .site-footer, .credits { color: var(--muted); }
+.hero { padding-block: 22px 28px; max-width: 730px; }
+.eyebrow { margin: 0 0 12px; color: var(--accent); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; }
+h1, h2 { line-height: 1.15; text-wrap: balance; }
+h1 { margin: 0 0 18px; font-family: "Courier New", monospace; font-size: clamp(2.5rem, 8vw, 4.3rem); letter-spacing: -0.06em; }
+h2 { margin: 0 0 18px; font-size: clamp(1.25rem, 3vw, 1.6rem); }
+p { margin: 0 0 16px; }
+.hero-description { color: var(--muted); font-size: clamp(1rem, 2vw, 1.18rem); }
+.hero-description strong { color: var(--ink); }
+.hero-links, .share-links, .quick-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 24px; }
+.hero-links a { display: inline-flex; align-items: center; min-height: 44px; gap: 6px; }
+.game-stage { position: relative; overflow: hidden; background: #000; border: 1px solid var(--line); border-radius: 18px; box-shadow: 0 24px 64px #0005; }
+.game-stage::before { content: ""; display: block; padding-top: calc(75% + 96px); }
+.game-preview, .game-player { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.game-preview { object-fit: contain; image-rendering: pixelated; }
+.play-overlay { position: absolute; inset: 0; padding: 20px; display: grid; align-content: center; justify-items: center; gap: 12px; text-align: center; background: linear-gradient(#0002, #0007); }
+.play-overlay p { padding: 4px 8px; border-radius: 6px; background: #000d; }
+.play-overlay p { margin: 0; color: var(--muted); font-size: 0.88rem; }
+.button { display: inline-flex; justify-content: center; align-items: center; gap: 12px; min-height: 46px; padding: 10px 18px; border: 1px solid var(--line); border-radius: 10px; text-decoration: none; font-size: 0.95rem; font-weight: 700; }
+.button-primary { background: var(--accent); color: #14200e; border-color: var(--accent); font-size: 1.1rem; padding: 14px 28px; box-shadow: 0 0 30px #b8ee6926; }
+.button-primary:hover { background: #d4ff96; }
+.button-secondary { color: var(--ink); background: #21382c; }
+.button-secondary:hover { background: #2f4a37; }
+.button:disabled { cursor: wait; opacity: 0.7; }
+.status { color: var(--muted); font-size: 0.88rem; margin-block: 12px; }
+.game-section > .status { min-height: 2.8em; }
+.quick-controls { color: var(--ink); gap: 10px 20px; font-size: 0.9rem; margin-block: 12px 0; }
+kbd { display: inline-block; min-width: 28px; padding: 1px 7px; border: 1px solid #6d7e69; border-bottom-width: 3px; border-radius: 5px; font: 700 0.9rem/1.6 "Courier New", monospace; text-align: center; background: #263c2b; color: #f3f4df; }
+.info-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; margin-top: 36px; }
+.panel { min-width: 0; padding: 28px; background: var(--panel); border: 1px solid var(--line); border-radius: 18px; overflow-wrap: anywhere; }
+.panel p:last-child { margin-bottom: 0; }
+.panel ol { padding-left: 22px; }
+.panel li { padding-left: 4px; margin-bottom: 10px; }
+.credits { font-size: 0.9rem; }
+.share-panel, .faq { margin-top: 20px; }
+.share-links { gap: 10px; }
+.share-panel .status:empty { margin: 0; }
+.manual-copy { display: grid; gap: 8px; margin-top: 12px; }
+.manual-copy input { width: 100%; min-height: 44px; border: 1px solid var(--line); border-radius: 6px; padding: 10px; background: var(--background); color: var(--ink); }
+.faq details { border-top: 1px solid var(--line); padding-block: 14px; }
+.faq details:last-child { padding-bottom: 0; }
+.faq summary { cursor: pointer; min-height: 44px; padding-block: 8px; font-weight: 700; }
+.faq details p { padding-top: 12px; color: var(--muted); }
+.site-footer { padding-block: 28px 40px; font-size: 0.85rem; }
+.site-footer a { display: inline-flex; align-items: center; min-height: 44px; }
+.skip-link { position: fixed; top: 12px; left: 12px; z-index: 10; padding: 12px 20px; background: var(--accent); color: #14200e; transform: translateY(-160%); }
+.skip-link:focus { transform: translateY(0); }
+
+.player-page { background: #000; }
+.player-page #jsspeccy { width: 100%; }
+.player-page #jsspeccy > div:last-child { margin-inline: auto; max-width: 100%; }
+.player-page #jsspeccy button { min-width: 44px; min-height: 44px; border-radius: 4px; color-scheme: light; color: #111; font: 14px/1.2 system-ui, sans-serif; }
+.player-page #jsspeccy canvas { max-width: 100%; image-rendering: pixelated; }
+.player-page #jsspeccy :focus-visible { outline: 3px solid #14682a; outline-offset: -3px; }
+.player-error { margin: 0; padding: 16px; color: #fff; background: #4c2020; }
+
+@media (max-width: 640px) {
+  body { background-image: linear-gradient(#101b18de, #101b18fa 700px), url("img/jungle-mobile.webp"); background-size: auto, 960px auto; }
+  .page-width { width: calc(100% - 24px); }
+  .site-header { padding-block: 10px; gap: 4px 14px; }
+  .hero { padding-block: 14px 20px; }
+  .hero-links { gap: 8px 20px; }
+  .info-grid { grid-template-columns: 1fr; gap: 16px; margin-top: 24px; }
+  .panel { padding: 22px 18px; }
+  .play-overlay { padding-inline: 12px; }
+  .play-overlay p { font-size: 0.8rem; }
+  .share-links .button { flex: 1 1 auto; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}

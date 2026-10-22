@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title description">
+  <title id="title">It's a Wonderful World Score Calculator</title>
+  <desc id="description">Every point counted. A free, unofficial scorecard with live totals and local saving.</desc>
+  <rect width="1200" height="630" fill="#f7f5ef"/>
+  <circle cx="1155" cy="595" r="300" fill="#efe2c3"/>
+  <circle cx="1030" cy="-60" r="250" fill="#e4e9e6"/>
+  <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">
+    <rect x="64" y="52" width="44" height="44" rx="13" fill="#f0d9a7"/>
+    <text x="86" y="84" text-anchor="middle" font-size="31" fill="#263b48">◆</text>
+    <text x="123" y="83" fill="#263b48" font-size="29" font-weight="800" letter-spacing="-1">wonderful<tspan fill="#88601e">world</tspan></text>
+    <text x="64" y="170" fill="#88601e" font-size="17" font-weight="700" letter-spacing="2">IT'S A WONDERFUL WORLD SCORE CALCULATOR</text>
+    <text x="60" y="267" fill="#263b48" font-size="82" font-weight="800" letter-spacing="-4">Every point.</text>
+    <text x="60" y="359" fill="#88601e" font-size="82" font-weight="800" letter-spacing="-4">Counted.</text>
+    <text x="64" y="415" fill="#617079" font-size="24">Less counting. More conquering.</text>
+    <rect x="64" y="452" width="137" height="43" rx="22" fill="#e4e9e6"/>
+    <text x="132" y="480" text-anchor="middle" fill="#263b48" font-size="17" font-weight="600">Live totals</text>
+    <rect x="213" y="452" width="221" height="43" rx="22" fill="#efe2c3"/>
+    <text x="323" y="480" text-anchor="middle" fill="#73511c" font-size="17" font-weight="600">Saved on your device</text>
+    <text x="64" y="565" fill="#617079" font-size="18">Free, unofficial score companion · ruben.cougil.com</text>
+    <rect x="792" y="98" width="338" height="430" rx="26" fill="#263b48"/>
+    <text x="826" y="145" fill="#e9ce97" font-size="13" font-weight="700" letter-spacing="2">YOUR EMPIRE'S FINAL SCORE</text>
+    <text x="826" y="259" fill="#ffffff" font-size="100" font-weight="800" letter-spacing="-4">125</text>
+    <text x="826" y="295" fill="#c9d4d9" font-size="19">victory points</text>
+    <path d="M826 326H1096" stroke="#596a74"/>
+    <g fill="#d1dce0" font-size="18">
+      <text x="826" y="367">Printed VP</text>
+      <text x="826" y="410">Card bonuses</text>
+      <text x="826" y="453">Characters</text>
+    </g>
+    <g fill="#ffffff" text-anchor="end" font-size="20" font-weight="700">
+      <text x="1096" y="367">32</text>
+      <text x="1096" y="410">51</text>
+      <text x="1096" y="453">42</text>
+    </g>
+  </g>
+</svg>

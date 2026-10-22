@@ -1,229 +1,233 @@
 <!doctype html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1, maximum-scale=5">
-    <link rel="icon"
-          href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏋️‍♀️</text></svg>">
-
-
-    <!-- Primary Meta Tags -->
-    <title>Emoji Trainer</title>
-    <meta name="title"
-          content="Emoji Trainer, become an emoji master">
-    <meta name="description"
-          content="Emojis can be printed using their respective CLDR short names. For example, if you type smile the output will be 😄, or scream_cat for 🙀. CLDR short names are standard in apps like WhatsApp, Slack, or GitHub. 💪 Become an emoji expert with this trainer, save time, and leverage all the emoji power ⚡️">
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type"
-          content="website">
-    <meta property="og:url"
-          content="https://ruben.cougil.com/assets/emoji-trainer/">
-    <meta property="og:title"
-          content="Emoji Trainer">
-    <meta property="og:description"
-          content="Emojis can be printed using their respective CLDR short names. For example, if you type smile the output will be 😄, or scream_cat for 🙀. CLDR short names are standard in apps like WhatsApp, Slack, or GitHub. 💪 Become an emoji expert with this trainer, save time, and leverage all the emoji power ⚡️">
-    <meta property="og:image"
-          content="https://ruben.cougil.com/assets/emoji-trainer/screenshot.png">
-
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
-          rel="stylesheet"
-          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
-          crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-            crossorigin="anonymous"></script>
-
-    <link rel="stylesheet"
-          href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f7f8f2">
+    <title>Emoji Trainer — Practice GitHub &amp; Slack Emoji Shortcodes</title>
+    <meta name="description" content="Learn emoji shortcodes with a free typing game. Guess GitHub-style emoji names, explore five difficulty levels, and track your best scores on your device.">
+    <meta name="author" content="Rubén Cougil">
+    <meta name="application-name" content="Emoji Trainer">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://ruben.cougil.com/assets/emoji-trainer/">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🏋️%3C/text%3E%3C/svg%3E">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ruben.cougil.com/assets/emoji-trainer/">
+    <meta property="og:site_name" content="Emoji Trainer">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:title" content="Emoji Trainer — Practice GitHub &amp; Slack Emoji Shortcodes">
+    <meta property="og:description" content="Learn emoji shortcodes with a free typing game. Guess GitHub-style emoji names, explore five difficulty levels, and track your best scores on your device.">
+    <meta property="og:image" content="https://ruben.cougil.com/assets/emoji-trainer/social-card.png">
+    <meta property="og:image:secure_url" content="https://ruben.cougil.com/assets/emoji-trainer/social-card.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Emoji Trainer: learn GitHub-style emoji shortcodes in a free game with five difficulty levels.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Emoji Trainer — Practice GitHub &amp; Slack Emoji Shortcodes">
+    <meta name="twitter:description" content="Learn emoji shortcodes with a free typing game. Guess GitHub-style emoji names, explore five difficulty levels, and track your best scores on your device.">
+    <meta name="twitter:image" content="https://ruben.cougil.com/assets/emoji-trainer/social-card.png">
+    <meta name="twitter:image:alt" content="Emoji Trainer: learn GitHub-style emoji shortcodes in a free game with five difficulty levels.">
+    <link rel="stylesheet" href="style.css">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": ["WebPage", "FAQPage"],
+                "@id": "https://ruben.cougil.com/assets/emoji-trainer/#webpage",
+                "url": "https://ruben.cougil.com/assets/emoji-trainer/",
+                "name": "Emoji Trainer — Practice GitHub & Slack Emoji Shortcodes",
+                "description": "Learn emoji shortcodes with a free typing game. Guess GitHub-style emoji names, explore five difficulty levels, and track your best scores on your device.",
+                "inLanguage": "en",
+                "about": {"@id": "https://ruben.cougil.com/assets/emoji-trainer/#app"},
+                "author": {"@id": "https://ruben.cougil.com/#person"},
+                "primaryImageOfPage": {"@id": "https://ruben.cougil.com/assets/emoji-trainer/#social-image"},
+                "citation": [
+                    "https://github.com/github/gemoji",
+                    "https://cldr.unicode.org/translation/characters/short-names-and-keywords"
+                ],
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "How do I play?",
+                        "acceptedAnswer": {"@type": "Answer", "text": "Type a shortcode for the emoji, such as :smile: for 😄 or :scream_cat: for 🙀, then press Enter or Check. Each correct answer earns one point. A wrong answer reveals the accepted names and costs one of your five lives. Your score is recorded when you run out of lives. Restarting or changing level begins a new, unrecorded game."}
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "What changes between difficulty levels?",
+                        "acceptedAnswer": {"@type": "Answer", "text": "Easy starts with smileys and emotion, with about 60% of the letters revealed. Medium adds people and body (40% hints); Hard adds animals, nature, food, and drink (20%); Expert adds travel, activities, and objects (10%). Impossible adds symbols and removes hints entirely."}
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Are these Unicode emoji names?",
+                        "acceptedAnswer": {"@type": "Answer", "text": "This game uses aliases from GitHub's open-source gemoji dataset, not official Unicode CLDR short names. Many aliases also work in Slack, but support varies by app. For example, GitHub's :smile: is called “grinning face with smiling eyes” in Unicode CLDR."}
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Where is my progress saved?",
+                        "acceptedAnswer": {"@type": "Answer", "text": "Your best score and completed-game count for each level are stored locally in this browser, not on a server. They do not sync between devices and can be removed by clearing site data. If browser storage is blocked, you can still play, but new scores will only last for the current page session."}
+                    }
+                ]
+            },
+            {
+                "@type": "WebApplication",
+                "@id": "https://ruben.cougil.com/assets/emoji-trainer/#app",
+                "name": "Emoji Trainer",
+                "url": "https://ruben.cougil.com/assets/emoji-trainer/",
+                "description": "A free typing game for learning GitHub-style emoji shortcodes, with five difficulty levels and personal scores stored on your device.",
+                "applicationCategory": "GameApplication",
+                "operatingSystem": "Any",
+                "browserRequirements": "Requires JavaScript and a modern web browser.",
+                "inLanguage": "en",
+                "isAccessibleForFree": true,
+                "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+                "author": {"@id": "https://ruben.cougil.com/#person"},
+                "mainEntityOfPage": {"@id": "https://ruben.cougil.com/assets/emoji-trainer/#webpage"},
+                "image": {"@id": "https://ruben.cougil.com/assets/emoji-trainer/#social-image"},
+                "screenshot": "https://ruben.cougil.com/assets/emoji-trainer/screenshot.png",
+                "featureList": ["Five difficulty levels", "Progressive letter hints", "Five lives per game", "Personal best scores stored in your browser"],
+                "potentialAction": {"@type": "PlayAction", "target": "https://ruben.cougil.com/assets/emoji-trainer/#game"}
+            },
+            {
+                "@type": "Person",
+                "@id": "https://ruben.cougil.com/#person",
+                "name": "Rubén Cougil",
+                "url": "https://ruben.cougil.com/"
+            },
+            {
+                "@type": "ImageObject",
+                "@id": "https://ruben.cougil.com/assets/emoji-trainer/#social-image",
+                "url": "https://ruben.cougil.com/assets/emoji-trainer/social-card.png",
+                "contentUrl": "https://ruben.cougil.com/assets/emoji-trainer/social-card.png",
+                "width": 1200,
+                "height": 630,
+                "caption": "Emoji Trainer: learn GitHub-style emoji shortcodes in a free game with five difficulty levels."
+            }
+        ]
+    }
+    </script>
+    <script src="script.js" defer></script>
 </head>
-
 <body>
-    <div class="container-sm px-4 py-5 text-center">
-        <!-- Modal -->
-        <div class="modal fade"
-             id="staticBackdrop"
-             data-bs-backdrop="static"
-             data-bs-keyboard="false"
-             tabindex="-1"
-             aria-labelledby="staticBackdropLabel"
-             aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title"
-                            id="staticBackdropLabel">Game Over</h5>
-                    </div>
-                    <div class="modal-body"
-                         id="game_over_message">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button"
-                                id="try_again_button"
-                                class="btn btn-primary">Try again</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row justify-content-md-center">
-            <div class="col-sm-12 col-md-10 col-lg-4 mb-3">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="row my-2 justify-content-center">
-                            <div class="col-auto pe-0">
-                                <label for="select_level"
-                                       class="col-form-label">Level:</label>
-                            </div>
-                            <div class="col-auto">
-                                <div class="form-group">
-                                    <select id="select_level"
-                                            class="form-select">
-                                        <option selected
-                                                value="easy">👶 Easy</option>
-                                        <option value="medium">👦 Medium</option>
-                                        <option value="hard">👨‍🔧 Hard</option>
-                                        <option value="expert">👨‍🏫 Expert</option>
-                                        <option value="impossible">😈 Impossible</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="row justify-content-md-center fs-6">
-                            <div class="col col-sm-6">
-                                <span class="fst-italic text-secondary">Score</span>
-                                <div id="display_score"
-                                     class="p-2 mb-2 alert alert-success text-center">0
-                                </div>
-                            </div>
-                            <div class="col col-sm-6">
-                                <span class="fst-italic text-secondary">Lives</span>
-                                <div id="lives"
-                                     class="p-2 mb-2 alert alert-secondary text-center">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row justify-content-md-center">
-                        <div class="col col-sm-12">
-                            <div class="text-center">
-                                <div id="display_emoji"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row justify-content-md-center">
-                        <div class="col col-sm-12">
-                            <div class="text-center mb-4"
-                                 hidden
-                                 id="block_hint">
-                                <div class="badge bg-primary text-wrap me-1">
-                                    Hint:
-                                </div>
-                                <p id="display_hint"
-                                   class="d-inline text-secondary"></p>
-                            </div>
-                        </div>
-                        <div class="row justify-content-md-center mt-3">
-                            <div class="col col-sm-10 col-md-9 d-flex justify-content-center h-100">
-                                <div class="form-group">
-                                    <input class="form-control"
-                                           type="text"
-                                           name="input_answer"
-                                           id="input_answer"
-                                           placeholder="Type the name ..." />
-                                </div>
-                                <button type="button"
-                                        id="input_submit"
-                                        class="btn btn-primary ms-3">Submit</button>
-                            </div>
-                        </div>
-                        <div class="row mt-4">
-                            <div class="col col-12 d-flex justify-content-center h-100">
-                                <div class="alert py-1 px-3"
-                                     role="alert"
-                                     id="output_result">
-                                </div>
-                                <div id="spinner"
-                                     class="d-inline ms-3"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-12 col-md-10 col-lg-5 mb-3">
-                <div class="h-100 px-5 py-3 bg-light border rounded-3">
-                    <h2>🏋️‍♀️ Emoji Trainer</h2>
-                    <hr>
-                    <p>Emojis can be printed using their respective
-                        <a href="https://cldr.unicode.org/translation/characters/short-names-and-keywords"
-                           target="_blank">CLDR short names </a>.
-                        For example, if you type <code>smile</code>
-                        the output will be 😄, or <code>scream_cat</code> for 🙀.
-                    </p>
-                    <p>CLDR short names are standard in apps like WhatsApp, Slack, or GitHub.</p>
-                    <p>💪 Become an emoji expert with this trainer, save time, and leverage all the emoji power ⚡️</p>
-                    <table class="table table-striped mt-4">
-                        <thead>
-                            <tr>
-                                <th scope="col">Level</th>
-                                <th class="text-center"
-                                    scope="col">Best Score</th>
-                                <th class="text-center"
-                                    scope="col">Total Plays</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>👶 Easy</td>
-                                <td class="text-center bold"
-                                    id="easy_display_best_score">0</td>
-                                <td class="text-center"
-                                    id="easy_display_total_plays">0</td>
-                            </tr>
-                            <tr>
-                                <td>👦 Medium</td>
-                                <td class="text-center"
-                                    id="medium_display_best_score">0</td>
-                                <td class="text-center"
-                                    id="medium_display_total_plays">0</td>
-                            </tr>
-                            <tr>
-                                <td>👨‍🔧 Hard</td>
-                                <td class="text-center"
-                                    id="hard_display_best_score">0</td>
-                                <td class="text-center"
-                                    id="hard_display_total_plays">0</td>
-                            </tr>
-                            <tr>
-                                <td>👨‍🏫 Expert</td>
-                                <td class="text-center"
-                                    id="expert_display_best_score">0</td>
-                                <td class="text-center"
-                                    id="expert_display_total_plays">0</td>
-                            </tr>
-                            <tr>
-                                <td>😈 Impossible</td>
-                                <td class="text-center"
-                                    id="impossible_display_best_score">0</td>
-                                <td class="text-center"
-                                    id="impossible_display_total_plays">0</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-        <footer class="pt-3 mt-4 border-top text-end">
-            <p> 🕹 <i>Created by <a href="http://ruben.cougil.com"
-                       rel="noopener"
-                       target="_blank"> Rubén Cougil</a></i></p>
-        </footer>
-    </div>
-    <script src="script.js"></script>
-</body>
+    <a class="skip-link" href="#game">Skip to the game</a>
+    <div class="site-shell">
+        <header class="site-header">
+            <a class="brand" href="./" aria-label="emojitrainer home"><span class="brand-icon" aria-hidden="true">🏋️</span> emoji<span>trainer</span></a>
+            <a class="text-link" href="#how-to-play">How to play <span aria-hidden="true">↗</span></a>
+        </header>
 
+        <main>
+            <section class="intro" aria-labelledby="page-title">
+                <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> SMALL GAME. BIG EMOJI ENERGY.</p>
+                <h1 id="page-title"><span class="sr-only">Emoji Trainer: </span>Less searching.<br>More <span>expressing.</span> <span class="hero-emoji" aria-hidden="true">✌️</span></h1>
+                <p class="intro-copy">Give your emoji vocabulary a little workout.<br class="desktop-break"> Guess the shortcode, learn a new name, and make it stick.</p>
+            </section>
+
+            <div class="play-layout">
+                <section class="game-card" id="game" aria-labelledby="game-title" tabindex="-1" aria-busy="false">
+                    <div class="game-toolbar">
+                        <h2 id="game-title"><span aria-hidden="true">✦</span> Your daily emoji workout</h2>
+                        <button class="quiet-button" id="restart_button" type="button" disabled>Restart</button>
+                    </div>
+                    <div class="game-settings">
+                        <div class="level-control">
+                            <label for="select_level">Difficulty</label>
+                            <select id="select_level" disabled>
+                                <option value="easy">👶 Easy</option>
+                                <option value="medium">👦 Medium</option>
+                                <option value="hard">👨‍🔧 Hard</option>
+                                <option value="expert">👨‍🏫 Expert</option>
+                                <option value="impossible">😈 Impossible</option>
+                            </select>
+                        </div>
+                        <div class="score-stat"><span class="stat-label">Score</span><strong id="display_score">0</strong></div>
+                        <div class="lives-stat"><span class="stat-label">Lives</span><span id="lives" role="img" aria-label="5 of 5 lives remaining">❤️❤️❤️❤️❤️</span></div>
+                    </div>
+                    <div class="emoji-stage">
+                        <p class="stage-label" id="challenge-label">NAME THIS EMOJI</p>
+                        <div id="display_emoji" aria-live="polite" aria-atomic="true">🏋️</div>
+                        <div class="hint-area">
+                            <p id="block_hint" hidden><span class="hint-label">A little hint</span><span id="display_hint"></span></p>
+                            <p id="no_hint" hidden>No hints. You've got this.</p>
+                        </div>
+                    </div>
+                    <form id="answer_form">
+                        <label for="input_answer">What's the shortcode?</label>
+                        <div class="answer-row">
+                            <div class="input-wrap"><span aria-hidden="true">:</span><input type="text" id="input_answer" name="answer" placeholder="type_your_answer" autocomplete="off" autocapitalize="none" spellcheck="false" aria-describedby="answer_help" maxlength="120" required disabled><span aria-hidden="true">:</span></div>
+                            <button class="primary-button" id="input_submit" type="submit" disabled>Check <span aria-hidden="true">↵</span></button>
+                        </div>
+                        <p id="answer_help" class="field-help">Any matching alias works. Colons are optional.</p>
+                    </form>
+                    <div class="feedback-area">
+                        <p id="output_result" role="status" aria-live="polite" aria-atomic="true">Ready for your emoji workout?</p>
+                        <button id="next_button" class="quiet-button" type="button" hidden>Next emoji <span aria-hidden="true">→</span></button>
+                        <button id="reload_button" class="quiet-button" type="button" hidden>Retry loading</button>
+                    </div>
+                    <div class="game-footnote"><span aria-hidden="true">⌨</span> Type a name + press Enter. Five lives. Make them count.</div>
+                    <noscript><p class="noscript-message">JavaScript is needed to play. You can still read the shortcode guide below.</p></noscript>
+                </section>
+
+                <aside class="side-panel" aria-label="Your progress and tips">
+                    <section class="progress-card" aria-labelledby="progress-title">
+                        <div class="section-heading"><span class="eyebrow">YOU VS. YOU</span><span aria-hidden="true">🏆</span></div>
+                        <h2 id="progress-title">Your personal bests</h2>
+                        <p class="muted">Little wins. Lasting muscle memory.</p>
+                        <table>
+                            <caption class="sr-only">Best score and completed games for each difficulty level</caption>
+                            <thead><tr><th scope="col">Level</th><th scope="col">Best</th><th scope="col">Plays</th></tr></thead>
+                            <tbody>
+                                <tr data-level="easy"><th scope="row"><span aria-hidden="true">👶</span> Easy</th><td id="easy_display_best_score">0</td><td id="easy_display_total_plays">0</td></tr>
+                                <tr data-level="medium"><th scope="row"><span aria-hidden="true">👦</span> Medium</th><td id="medium_display_best_score">0</td><td id="medium_display_total_plays">0</td></tr>
+                                <tr data-level="hard"><th scope="row"><span aria-hidden="true">👨‍🔧</span> Hard</th><td id="hard_display_best_score">0</td><td id="hard_display_total_plays">0</td></tr>
+                                <tr data-level="expert"><th scope="row"><span aria-hidden="true">👨‍🏫</span> Expert</th><td id="expert_display_best_score">0</td><td id="expert_display_total_plays">0</td></tr>
+                                <tr data-level="impossible"><th scope="row"><span aria-hidden="true">😈</span> Impossible</th><td id="impossible_display_best_score">0</td><td id="impossible_display_total_plays">0</td></tr>
+                            </tbody>
+                        </table>
+                        <p class="storage-note" id="storage_notice">Saved in this browser. No account needed.</p>
+                    </section>
+                    <section class="tip-card" aria-labelledby="tip-title">
+                        <span class="tip-icon" aria-hidden="true">💡</span>
+                        <div><h2 id="tip-title">Less scrolling. More <code>:tada:</code></h2><p>Practice here. Use what you learn in GitHub, Slack, and other apps that support emoji shortcodes.</p></div>
+                    </section>
+                </aside>
+            </div>
+
+            <section class="share-card" aria-labelledby="share-title">
+                <div><h2 id="share-title">Good emoji energy is better shared.</h2><p>Challenge a friend to learn their emoji shortcodes.</p></div>
+                <div class="share-actions" role="group" aria-label="Share Emoji Trainer">
+                    <a class="share-link" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fruben.cougil.com%2Fassets%2Femoji-trainer%2F&amp;text=Practice%20emoji%20shortcodes%20with%20Emoji%20Trainer." target="_blank" rel="noopener noreferrer" aria-label="Share on X">X</a>
+                    <a class="share-link" href="https://wa.me/?text=Practice%20emoji%20shortcodes%20with%20Emoji%20Trainer.%20https%3A%2F%2Fruben.cougil.com%2Fassets%2Femoji-trainer%2F" target="_blank" rel="noopener noreferrer" aria-label="Share on WhatsApp">WhatsApp</a>
+                    <a class="share-link" href="https://t.me/share/url?url=https%3A%2F%2Fruben.cougil.com%2Fassets%2Femoji-trainer%2F&amp;text=Practice%20emoji%20shortcodes%20with%20Emoji%20Trainer." target="_blank" rel="noopener noreferrer" aria-label="Share on Telegram">Telegram</a>
+                    <a class="share-link" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fruben.cougil.com%2Fassets%2Femoji-trainer%2F" target="_blank" rel="noopener noreferrer" aria-label="Share on Facebook">Facebook</a>
+                    <a class="share-link" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fruben.cougil.com%2Fassets%2Femoji-trainer%2F" target="_blank" rel="noopener noreferrer" aria-label="Share on LinkedIn">LinkedIn</a>
+                    <button id="copy_link_button" class="share-link" type="button" disabled>Copy link</button>
+                </div>
+                <div id="share_link" hidden><label for="share_url">Select and copy this link:</label><input id="share_url" type="url" readonly value="https://ruben.cougil.com/assets/emoji-trainer/" spellcheck="false"></div>
+                <p id="share_status" role="status" aria-live="polite" aria-atomic="true"></p>
+            </section>
+
+            <section class="guide" id="how-to-play" aria-labelledby="guide-title">
+                <div class="guide-intro"><p class="eyebrow">THE SHORT VERSION</p><h2 id="guide-title">Learn emoji shortcodes, one guess at a time.</h2><p>Emoji Trainer is a free browser game for learning GitHub-style emoji aliases. An emoji shortcode is a text alias wrapped in colons, such as <code>:smile:</code> for 😄. GitHub, Slack, and other apps can turn supported shortcodes into emoji; available names vary by app.</p></div>
+                <div class="guide-content">
+                    <details open><summary>How do I play?</summary><p>Type a shortcode for the emoji, such as <code>:smile:</code> for 😄 or <code>:scream_cat:</code> for 🙀, then press Enter or Check. Each correct answer earns one point. A wrong answer reveals the accepted names and costs one of your five lives. Your score is recorded when you run out of lives. Restarting or changing level begins a new, unrecorded game.</p></details>
+                    <details><summary>What changes between difficulty levels?</summary><p>Easy starts with smileys and emotion, with about 60% of the letters revealed. Medium adds people and body (40% hints); Hard adds animals, nature, food, and drink (20%); Expert adds travel, activities, and objects (10%). Impossible adds symbols and removes hints entirely.</p></details>
+                    <details><summary>Are these Unicode emoji names?</summary><p>This game uses aliases from <a href="https://github.com/github/gemoji">GitHub's open-source gemoji dataset</a>, not official Unicode CLDR short names. Many aliases also work in Slack, but support varies by app. For example, GitHub's <code>:smile:</code> is called “grinning face with smiling eyes” in <a href="https://cldr.unicode.org/translation/characters/short-names-and-keywords">Unicode CLDR</a>.</p></details>
+                    <details><summary>Where is my progress saved?</summary><p>Your best score and completed-game count for each level are stored locally in this browser, not on a server. They do not sync between devices and can be removed by clearing site data. If browser storage is blocked, you can still play, but new scores will only last for the current page session.</p></details>
+                </div>
+            </section>
+        </main>
+        <footer class="site-footer"><p>A little project by <a href="https://ruben.cougil.com/">Rubén Cougil</a></p><p>Built for the fun of it. <span aria-hidden="true">✌️</span></p></footer>
+    </div>
+    <dialog id="game_over_dialog" aria-labelledby="game_over_title" aria-describedby="game_over_message">
+        <span class="dialog-emoji" aria-hidden="true">🙌</span>
+        <p class="eyebrow">WORKOUT COMPLETE</p>
+        <h2 id="game_over_title">That's a wrap!</h2>
+        <p id="game_over_message"></p>
+        <p class="final-score" id="final_score">0</p>
+        <p class="muted">A little practice goes a long way.</p>
+        <form method="dialog"><button class="primary-button" id="try_again_button" autofocus>Play again <span aria-hidden="true">→</span></button></form>
+    </dialog>
+</body>
 </html>

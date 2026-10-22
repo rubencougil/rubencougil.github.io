@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title description">
+  <title id="title">Emoji Trainer — Learn emoji shortcodes</title>
+  <desc id="description">A free emoji typing game with five difficulty levels. Practice aliases like smile, tada, and rocket.</desc>
+  <rect width="1200" height="630" fill="#f7f8f2"/>
+  <circle cx="1090" cy="90" r="260" fill="#e6f0db"/>
+  <circle cx="1160" cy="620" r="230" fill="#ece6f8"/>
+  <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">
+    <rect x="64" y="52" width="48" height="48" rx="14" fill="#e6f0db"/>
+    <text x="88" y="87" text-anchor="middle" font-size="31" font-family="Apple Color Emoji, Segoe UI Emoji, sans-serif">🏋️</text>
+    <text x="126" y="85" fill="#242b28" font-size="30" font-weight="800">emoji<tspan fill="#6043b9">trainer</tspan></text>
+    <text x="64" y="166" fill="#606961" font-size="17" font-weight="700" letter-spacing="3">FREE EMOJI SHORTCODE GAME</text>
+    <text x="60" y="252" fill="#242b28" font-size="68" font-weight="800" letter-spacing="-3">Know the emoji.</text>
+    <text x="60" y="336" fill="#6043b9" font-size="68" font-weight="800" letter-spacing="-3">Learn the shortcode.</text>
+    <text x="64" y="395" fill="#606961" font-size="24">A little practice. A lot more expression.</text>
+    <rect x="64" y="438" width="190" height="48" rx="24" fill="#e6f0db"/>
+    <text x="159" y="469" text-anchor="middle" fill="#34452c" font-size="18" font-weight="600">5 difficulty levels</text>
+    <rect x="268" y="438" width="177" height="48" rx="24" fill="#ece6f8"/>
+    <text x="356" y="469" text-anchor="middle" fill="#4a3194" font-size="18" font-weight="600">No signup needed</text>
+    <text x="64" y="570" fill="#606961" font-size="19">ruben.cougil.com/assets/emoji-trainer/</text>
+    <g text-anchor="middle">
+      <rect x="853" y="130" width="250" height="132" rx="22" fill="#ffffff" stroke="#dfe4da" transform="rotate(6 978 196)"/>
+      <text x="978" y="207" font-size="64" font-family="Apple Color Emoji, Segoe UI Emoji, sans-serif">😄</text>
+      <text x="978" y="242" fill="#6043b9" font-family="ui-monospace, monospace" font-size="20">:smile:</text>
+      <rect x="820" y="288" width="250" height="132" rx="22" fill="#ffffff" stroke="#dfe4da" transform="rotate(-5 945 354)"/>
+      <text x="945" y="365" font-size="64" font-family="Apple Color Emoji, Segoe UI Emoji, sans-serif">🎉</text>
+      <text x="945" y="400" fill="#6043b9" font-family="ui-monospace, monospace" font-size="20">:tada:</text>
+      <text x="1125" y="478" font-size="64" font-family="Apple Color Emoji, Segoe UI Emoji, sans-serif" transform="rotate(12 1125 478)">🚀</text>
+    </g>
+  </g>
+</svg>

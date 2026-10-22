@@ -1,209 +1,250 @@
 <!doctype html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8" />
-    <title>It's a Wonderful World</title>
-    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon" />
-
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-    <meta name="description" content="It's a Wonderful World Board Game Score calculator. Calculate your score easier and faster.">
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f7f5ef">
+    <title>It's a Wonderful World Score Calculator — Free Scorecard</title>
+    <meta name="description" content="Calculate your It's a Wonderful World board game score. Add card bonuses, Generals, and Financiers with a live breakdown, local autosave, and clear scoring tips.">
+    <meta name="author" content="Rubén Cougil">
+    <meta name="application-name" content="It's a Wonderful World Score Calculator">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://ruben.cougil.com/assets/itsawonderfulworld/">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ruben.cougil.com/assets/itsawonderfulworld/">
+    <meta property="og:site_name" content="It's a Wonderful World Score Calculator">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:title" content="It's a Wonderful World Score Calculator — Free Scorecard">
+    <meta property="og:description" content="Calculate your It's a Wonderful World board game score. Add card bonuses, Generals, and Financiers with a live breakdown, local autosave, and clear scoring tips.">
+    <meta property="og:image" content="https://ruben.cougil.com/assets/itsawonderfulworld/img/social-card.png">
+    <meta property="og:image:secure_url" content="https://ruben.cougil.com/assets/itsawonderfulworld/img/social-card.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="It's a Wonderful World score calculator: count every point with a free, live board game scorecard.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="It's a Wonderful World Score Calculator — Free Scorecard">
+    <meta name="twitter:description" content="Calculate your It's a Wonderful World board game score. Add card bonuses, Generals, and Financiers with a live breakdown, local autosave, and clear scoring tips.">
+    <meta name="twitter:image" content="https://ruben.cougil.com/assets/itsawonderfulworld/img/social-card.png">
+    <meta name="twitter:image:alt" content="It's a Wonderful World score calculator: count every point with a free, live board game scorecard.">
     <link rel="stylesheet" href="css/style.css">
-
-    <meta property="og:url" content="https://ruben.cougil.com/assets/itsawonderfulworld/index.html" />
-    <meta property="og:title" content="It's a Wonderful World Board Game Score calculator." />
-    <meta property="og:description" content="It's a Wonderful World Board Game Score calculator." />
-    <meta property="og:image" content="https://ruben.cougil.com/assets/itsawonderfulworld/img/banner.png" />
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": ["WebPage", "FAQPage"],
+                "@id": "https://ruben.cougil.com/assets/itsawonderfulworld/#webpage",
+                "url": "https://ruben.cougil.com/assets/itsawonderfulworld/",
+                "name": "It's a Wonderful World Score Calculator — Free Scorecard",
+                "description": "Calculate your It's a Wonderful World board game score. Add card bonuses, Generals, and Financiers with a live breakdown, local autosave, and clear scoring tips.",
+                "inLanguage": "en",
+                "dateModified": "2026-10-22",
+                "about": {"@id": "https://ruben.cougil.com/assets/itsawonderfulworld/#app"},
+                "author": {"@id": "https://ruben.cougil.com/#person"},
+                "primaryImageOfPage": {"@id": "https://ruben.cougil.com/assets/itsawonderfulworld/#social-image"},
+                "citation": [
+                    "https://www.laboitedejeu.fr/en/its-a-wonderful-world/",
+                    "https://www.laboitedejeu.fr/wp-content/uploads/2021/01/ITS-EN-STD-rules-web.pdf"
+                ],
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "How is my total calculated?",
+                        "acceptedAnswer": {"@type": "Answer", "text": "Total = printed victory points + card-type bonuses + General points + Financier points. Each card-type bonus is its completed-card count multiplied by the sum of its matching VP multipliers. Characters score one point each, plus any additional VP multipliers. Blank fields count as zero."}
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "What goes in the card and bonus fields?",
+                        "acceptedAnswer": {"@type": "Answer", "text": "Count completed green (Science), black (Energy), yellow (Gold), and blue (Exploration) cards in your Empire, not resource cubes. Add together the matching victory-point multipliers on your cards and Empire card, then enter that sum in Bonus ×. Count only General and Financier tokens remaining in your Empire. Cards under construction and leftover Krystallium do not score."}
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Why do characters score with no bonus?",
+                        "acceptedAnswer": {"@type": "Answer", "text": "Each General and Financier is worth one victory point before bonuses. This calculator adds that base point automatically. For example, three Generals with a Bonus × of 2 score 3 × (1 + 2) = 9 VP. Do not include their base points again in Printed VP."}
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "How are ties broken?",
+                        "acceptedAnswer": {"@type": "Answer", "text": "Compare the number of cards in the tied players' Empires first; the greater number wins. If still tied, compare Character tokens. If both counts tie, share the victory."}
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Does this handle expansions and solo ratings?",
+                        "acceptedAnswer": {"@type": "Answer", "text": "This is a single scorecard, not a multiplayer leaderboard or solo-rating tool. It covers the original calculator's standard scoring categories. Expansion-specific sets, bonuses, and scenario conditions are not evaluated automatically. Resolve those with your rulebook and add any resulting fixed VP adjustment to Printed VP. This unofficial tool does not replace the rules."}
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Where is my score saved?",
+                        "acceptedAnswer": {"@type": "Answer", "text": "Your current scorecard is saved locally in this browser, not on a server. It does not sync between devices. Clear score removes the current entries after confirmation. Clearing site data also removes the saved scorecard. If storage is unavailable, a notice explains that your entries will only last until you leave or reload the page."}
+                    }
+                ]
+            },
+            {
+                "@type": "WebApplication",
+                "@id": "https://ruben.cougil.com/assets/itsawonderfulworld/#app",
+                "name": "It's a Wonderful World Score Calculator",
+                "url": "https://ruben.cougil.com/assets/itsawonderfulworld/",
+                "description": "An unofficial, free score calculator for It's a Wonderful World, with live category subtotals and a scorecard saved locally in your browser.",
+                "applicationCategory": "UtilitiesApplication",
+                "operatingSystem": "Any",
+                "browserRequirements": "Requires JavaScript and a modern web browser.",
+                "inLanguage": "en",
+                "isAccessibleForFree": true,
+                "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+                "author": {"@id": "https://ruben.cougil.com/#person"},
+                "mainEntityOfPage": {"@id": "https://ruben.cougil.com/assets/itsawonderfulworld/#webpage"},
+                "image": {"@id": "https://ruben.cougil.com/assets/itsawonderfulworld/#social-image"},
+                "featureList": ["Live score breakdown", "Card and character bonuses", "Local scorecard autosave", "Confirmed reset", "Social sharing links and explicit copy-link action"]
+            },
+            {
+                "@type": "Person",
+                "@id": "https://ruben.cougil.com/#person",
+                "name": "Rubén Cougil",
+                "url": "https://ruben.cougil.com/"
+            },
+            {
+                "@type": "ImageObject",
+                "@id": "https://ruben.cougil.com/assets/itsawonderfulworld/#social-image",
+                "url": "https://ruben.cougil.com/assets/itsawonderfulworld/img/social-card.png",
+                "contentUrl": "https://ruben.cougil.com/assets/itsawonderfulworld/img/social-card.png",
+                "width": 1200,
+                "height": 630,
+                "caption": "It's a Wonderful World score calculator: count every point with a free, live board game scorecard."
+            }
+        ]
+    }
+    </script>
+    <script type="module" src="js/calculator.js"></script>
 </head>
-
 <body>
-    <main class="container-flex m-0 p-0 justify-content-center">
-        <div class="row justify-content-center">
-            <div class="col-12 col-xl-6 col-lg-8 p-0 mb-3 text-center">
-                <img src="img/banner.webp" class="img-fluid" alt="It's a Wonderful World">
-            </div>
-        </div>
-        <div class="row justify-content-center mb-2 mt-2">
-            <div class="col-10 col-xl-6 col-lg-8">
-                <div class="alert alert-secondary mb-0">
-                    Welcome to the
-                    <a href="https://www.laboitedejeu.fr/en/its-a-wonderful-world/" rel="noopener" target="_blank">It's a Wonderful World</a>
-                    Board Game Score calculator.
+    <a class="skip-link" href="#score-form">Skip to the calculator</a>
+    <div class="site-shell">
+        <header class="site-header">
+            <a class="brand" href="./"><span class="brand-mark" aria-hidden="true">◆</span> wonderful<span>world</span><span class="brand-caption">SCORE COMPANION</span></a>
+            <a class="text-link" href="#scoring-guide">Scoring guide <span aria-hidden="true">↗</span></a>
+        </header>
+        <main>
+            <section class="hero" aria-labelledby="page-title">
+                <div>
+                    <p class="eyebrow">BUILD YOUR EMPIRE. COUNT EVERY POINT.</p>
+                    <h1 id="page-title">It's a Wonderful World<br><span>score calculator.</span></h1>
+                    <p class="hero-copy">Less counting. More conquering. Add your cards, bonuses,<br class="desktop-break"> and characters. We'll handle the arithmetic.</p>
                 </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-1 col-xl-3 col-lg-2"></div>
-            <div class="col-10 col-xl-6 col-lg-8">
-                <div class="form-group mt-1">
-                    <div class="form-row mt-3 mb-3">
-                        <div class="col-7">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <label class="input-group-text mb-0" for="grossVictoryPointsInput">💰 Gross</label>
-                                </div>
-                                <input type="number" name="grossVictoryPointsInput" id="grossVictoryPointsInput" class="text-center form-control">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="col-7">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <label class="input-group-text mb-0" for="scienceVictoryPointsInput">🧪 Science</label>
-                                </div>
-                                <input type="number" name="scienceVictoryPointsInput" id="scienceVictoryPointsInput" class="text-center form-control">
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <label class="input-group-text mb-0" for="scienceMultiplierInput"><span class="sr-only">Science </span>Mult.</label>
-                                </div>
-                                <input type="number" class="text-center form-control" name="scienceMultiplierInput" id="scienceMultiplierInput">
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="form-row mt-3 mb-3">
-                        <div class="col-7">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <label class="input-group-text mb-0" for="energyVictoryPointsInput">⚡️ Energy</label>
-                                </div>
-                                <input type="number" name="energyVictoryPointsInput" id="energyVictoryPointsInput" class="text-center form-control">
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <label class="input-group-text mb-0" for="energyMultiplierInput"><span class="sr-only">Energy </span>Mult.</label>
-                                </div>
-                                <input type="number" class="text-center form-control" name="energyMultiplierInput" id="energyMultiplierInput">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-row mt-3 mb-3">
-                        <div class="col-7">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <label class="input-group-text mb-0" for="goldVictoryPointsInput">👑 Gold</label>
-                                </div>
-                                <input type="number" name="goldVictoryPointsInput" id="goldVictoryPointsInput" class="text-center form-control">
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <label class="input-group-text mb-0" for="goldMultiplierInput"><span class="sr-only">Gold </span>Mult.</label>
-                                </div>
-                                <input type="number" class="text-center form-control" name="goldMultiplierInput" id="goldMultiplierInput">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-row mb-3 mt-3">
-                        <div class="col-7">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <label class="input-group-text mb-0" for="explorationVictoryPointsInput">🗺 Exploration</label>
-                                </div>
-                                <input type="number" name="explorationVictoryPointsInput" id="explorationVictoryPointsInput" class="text-center form-control">
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <label class="input-group-text mb-0" for="explorationMultiplierInput"><span class="sr-only">Exploration </span>Mult.</label>
-                                </div>
-                                <input type="number" class="text-center form-control" name="explorationMultiplierInput" id="explorationMultiplierInput">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-row mb-3 mt-3">
-                        <div class="col-7">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <label class="input-group-text mb-0" for="generalsVictoryPointsInput">⚔️ Generals</label>
-                                </div>
-                                <input type="number" name="generalsVictoryPointsInput" id="generalsVictoryPointsInput" class="text-center form-control">
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <label class="input-group-text mb-0" for="generalsMultiplierInput"><span class="sr-only">Generals </span>Mult.</label>
-                                </div>
-                                <input type="number" class="text-center form-control" name="generalsMultiplierInput" id="generalsMultiplierInput">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-row mb-3 mt-3">
-                        <div class="col-7">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <label class="input-group-text mb-0" for="financiersVictoryPointsInput">🏦 Financiers</label>
-                                </div>
-                                <input type="number" name="financiersVictoryPointsInput" id="financiersVictoryPointsInput" class="text-center form-control">
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <label class="input-group-text mb-0" for="financiersMultiplierInput"><span class="sr-only">Financiers </span>Mult.</label>
-                                </div>
-                                <input type="number" class="text-center form-control" name="financiersMultiplierInput" id="financiersMultiplierInput">
-                            </div>
-                        </div>
-                    </div>
-
-                    <hr />
-
-                    <div class="form-row">
-                        <div class="offset-6 col-5">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <label class="input-group-text mb-0" for="resultInput">Total</label>
-                                </div>
-                                <input disabled type="number" class="text-center form-control" name="resultInput" id="resultInput">
-                            </div>
-                        </div>
-                    </div>
+                <div class="hero-art">
+                    <img src="img/banner.webp" width="819" height="205" alt="It's a Wonderful World board game artwork" decoding="async">
+                    <p>AN UNOFFICIAL COMPANION FOR GAME NIGHT</p>
                 </div>
-                <div class="row">
-                    <div class="col-12">
-                        <div class="alert alert-info mb-4 mt-2">
-                            <b>
-                                In case of tie:
-                            </b>
-                            <i>
-                                Tied player with the most cards in their Empire wins. If there is still a tie, the tied
-                                player with the most Character tokens wins. If the tie still persists, the tied
-                                players share the victory.
-                            </i>
-                        </div>
-                    </div>
+            </section>
 
-                </div>
+            <div class="calculator-layout">
+                <section class="scorecard" aria-labelledby="scorecard-title">
+                    <div class="card-header"><div><p class="eyebrow">YOUR EMPIRE, ON ONE SHEET</p><h2 id="scorecard-title">Let's tally it up.</h2></div><button id="reset_button" class="quiet-button" type="button" disabled>Clear score</button></div>
+                    <noscript><p class="notice">JavaScript is needed for live scoring and saving. The scoring guide below works without it.</p></noscript>
+                    <form id="score-form" novalidate tabindex="-1">
+                        <fieldset disabled id="score-fields">
+                            <legend class="sr-only">Victory points, completed cards, and character tokens</legend>
+                            <div class="printed-row">
+                                <div><label for="grossVictoryPointsInput"><span aria-hidden="true">✦</span> Printed VP <span class="label-detail">(Gross)</span></label><p id="printed-help">Fixed points on your completed cards. Exclude bonuses and characters.</p></div>
+                                <div class="field"><input id="grossVictoryPointsInput" name="grossVictoryPointsInput" type="number" step="1" placeholder="0" inputmode="text" aria-describedby="printed-help grossVictoryPointsInputError"><p class="field-error" id="grossVictoryPointsInputError" hidden></p></div>
+                            </div>
+                            <div class="column-headings" aria-hidden="true"><span>Card bonuses</span><span>Count</span><span>Bonus ×</span><span>VP</span></div>
+                            <div class="score-row" data-category="science">
+                                <div class="category"><span class="category-icon science" aria-hidden="true">🧪</span><div><h3>Science</h3><p id="science-help">Green cards</p></div></div>
+                                <div class="field"><label class="sr-only" for="scienceVictoryPointsInput">Science card count</label><input id="scienceVictoryPointsInput" name="scienceVictoryPointsInput" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-describedby="science-help scienceVictoryPointsInputError"><p class="field-error" id="scienceVictoryPointsInputError" hidden></p></div>
+                                <div class="field"><label class="sr-only" for="scienceMultiplierInput">Science bonus multiplier</label><input id="scienceMultiplierInput" name="scienceMultiplierInput" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-describedby="bonus-help scienceMultiplierInputError"><p class="field-error" id="scienceMultiplierInputError" hidden></p></div>
+                                <output id="scienceSubtotal" aria-label="Science victory points" aria-live="off">0</output>
+                            </div>
+                            <div class="score-row" data-category="energy">
+                                <div class="category"><span class="category-icon energy" aria-hidden="true">⚡</span><div><h3>Energy</h3><p id="energy-help">Black cards</p></div></div>
+                                <div class="field"><label class="sr-only" for="energyVictoryPointsInput">Energy card count</label><input id="energyVictoryPointsInput" name="energyVictoryPointsInput" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-describedby="energy-help energyVictoryPointsInputError"><p class="field-error" id="energyVictoryPointsInputError" hidden></p></div>
+                                <div class="field"><label class="sr-only" for="energyMultiplierInput">Energy bonus multiplier</label><input id="energyMultiplierInput" name="energyMultiplierInput" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-describedby="bonus-help energyMultiplierInputError"><p class="field-error" id="energyMultiplierInputError" hidden></p></div>
+                                <output id="energySubtotal" aria-label="Energy victory points" aria-live="off">0</output>
+                            </div>
+                            <div class="score-row" data-category="gold">
+                                <div class="category"><span class="category-icon gold" aria-hidden="true">👑</span><div><h3>Gold</h3><p id="gold-help">Yellow cards</p></div></div>
+                                <div class="field"><label class="sr-only" for="goldVictoryPointsInput">Gold card count</label><input id="goldVictoryPointsInput" name="goldVictoryPointsInput" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-describedby="gold-help goldVictoryPointsInputError"><p class="field-error" id="goldVictoryPointsInputError" hidden></p></div>
+                                <div class="field"><label class="sr-only" for="goldMultiplierInput">Gold bonus multiplier</label><input id="goldMultiplierInput" name="goldMultiplierInput" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-describedby="bonus-help goldMultiplierInputError"><p class="field-error" id="goldMultiplierInputError" hidden></p></div>
+                                <output id="goldSubtotal" aria-label="Gold victory points" aria-live="off">0</output>
+                            </div>
+                            <div class="score-row" data-category="exploration">
+                                <div class="category"><span class="category-icon exploration" aria-hidden="true">🗺️</span><div><h3>Exploration</h3><p id="exploration-help">Blue cards</p></div></div>
+                                <div class="field"><label class="sr-only" for="explorationVictoryPointsInput">Exploration card count</label><input id="explorationVictoryPointsInput" name="explorationVictoryPointsInput" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-describedby="exploration-help explorationVictoryPointsInputError"><p class="field-error" id="explorationVictoryPointsInputError" hidden></p></div>
+                                <div class="field"><label class="sr-only" for="explorationMultiplierInput">Exploration bonus multiplier</label><input id="explorationMultiplierInput" name="explorationMultiplierInput" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-describedby="bonus-help explorationMultiplierInputError"><p class="field-error" id="explorationMultiplierInputError" hidden></p></div>
+                                <output id="explorationSubtotal" aria-label="Exploration victory points" aria-live="off">0</output>
+                            </div>
+                            <p class="form-note" id="bonus-help">Bonus × = the sum of your matching victory-point multipliers, not production icons.</p>
+                            <div class="column-headings character-headings" aria-hidden="true"><span>Characters</span><span>Count</span><span>Bonus ×</span><span>VP</span></div>
+                            <div class="score-row" data-category="generals">
+                                <div class="category"><span class="category-icon generals" aria-hidden="true">⚔️</span><div><h3>Generals</h3><p id="generals-help">1 base VP each</p></div></div>
+                                <div class="field"><label class="sr-only" for="generalsVictoryPointsInput">General token count</label><input id="generalsVictoryPointsInput" name="generalsVictoryPointsInput" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-describedby="generals-help generalsVictoryPointsInputError"><p class="field-error" id="generalsVictoryPointsInputError" hidden></p></div>
+                                <div class="field"><label class="sr-only" for="generalsMultiplierInput">General additional bonus multiplier</label><input id="generalsMultiplierInput" name="generalsMultiplierInput" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-describedby="character-help generalsMultiplierInputError"><p class="field-error" id="generalsMultiplierInputError" hidden></p></div>
+                                <output id="generalsSubtotal" aria-label="General victory points" aria-live="off">0</output>
+                            </div>
+                            <div class="score-row" data-category="financiers">
+                                <div class="category"><span class="category-icon financiers" aria-hidden="true">🏦</span><div><h3>Financiers</h3><p id="financiers-help">1 base VP each</p></div></div>
+                                <div class="field"><label class="sr-only" for="financiersVictoryPointsInput">Financier token count</label><input id="financiersVictoryPointsInput" name="financiersVictoryPointsInput" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-describedby="financiers-help financiersVictoryPointsInputError"><p class="field-error" id="financiersVictoryPointsInputError" hidden></p></div>
+                                <div class="field"><label class="sr-only" for="financiersMultiplierInput">Financier additional bonus multiplier</label><input id="financiersMultiplierInput" name="financiersMultiplierInput" type="number" min="0" step="1" inputmode="numeric" placeholder="0" aria-describedby="character-help financiersMultiplierInputError"><p class="field-error" id="financiersMultiplierInputError" hidden></p></div>
+                                <output id="financiersSubtotal" aria-label="Financier victory points" aria-live="off">0</output>
+                            </div>
+                            <p class="form-note" id="character-help">We add the base point automatically: count × (1 + Bonus ×).</p>
+                        </fieldset>
+                    </form>
+                    <p class="scorecard-footer" id="storage_notice" role="status">Your score stays in this browser. No account needed.</p>
+                </section>
+
+                <aside class="score-sidebar" aria-label="Score summary and reminders">
+                    <section class="total-card" aria-labelledby="total-label">
+                        <p class="eyebrow">THE BIG REVEAL</p>
+                        <h2 id="total-label">Total victory points</h2>
+                        <output id="resultInput" form="score-form" aria-labelledby="total-label" aria-live="polite" aria-atomic="true">0</output>
+                        <p id="score_status" role="status">Loading calculator. If it stays disabled, reload or enable JavaScript.</p>
+                        <dl class="breakdown">
+                            <div><dt>Printed VP</dt><dd id="printed-breakdown">0</dd></div>
+                            <div><dt>Card bonuses</dt><dd id="cards-breakdown">0</dd></div>
+                            <div><dt>Generals</dt><dd id="generals-breakdown">0</dd></div>
+                            <div><dt>Financiers</dt><dd id="financiers-breakdown">0</dd></div>
+                        </dl>
+                        <p class="total-note">Every card. Every character. Every point.</p>
+                    </section>
+                    <section class="tie-card" aria-labelledby="tie-title"><span aria-hidden="true">🤝</span><div><h2 id="tie-title">A tie? Here's the order.</h2><p>Most cards in your Empire. Then most Character tokens. Still tied? Share the victory.</p><a href="#tie-rules">See the scoring guide <span aria-hidden="true">→</span></a></div></section>
+                    <section class="share-card" aria-labelledby="share-title">
+                        <h2 id="share-title">Bring it to your next game night.</h2>
+                        <p>Share the calculator, not your private scorecard.</p>
+                        <div class="share-actions" role="group" aria-label="Share this calculator">
+                            <a class="share-link" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fruben.cougil.com%2Fassets%2Fitsawonderfulworld%2F&amp;text=Count%20every%20point%20with%20this%20free%20It%27s%20a%20Wonderful%20World%20score%20calculator." target="_blank" rel="noopener noreferrer" aria-label="Share on X">X</a>
+                            <a class="share-link" href="https://wa.me/?text=Count%20every%20point%20with%20this%20free%20It%27s%20a%20Wonderful%20World%20score%20calculator.%20https%3A%2F%2Fruben.cougil.com%2Fassets%2Fitsawonderfulworld%2F" target="_blank" rel="noopener noreferrer" aria-label="Share on WhatsApp">WhatsApp</a>
+                            <a class="share-link" href="https://t.me/share/url?url=https%3A%2F%2Fruben.cougil.com%2Fassets%2Fitsawonderfulworld%2F&amp;text=Count%20every%20point%20with%20this%20free%20It%27s%20a%20Wonderful%20World%20score%20calculator." target="_blank" rel="noopener noreferrer" aria-label="Share on Telegram">Telegram</a>
+                            <a class="share-link" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fruben.cougil.com%2Fassets%2Fitsawonderfulworld%2F" target="_blank" rel="noopener noreferrer" aria-label="Share on Facebook">Facebook</a>
+                            <a class="share-link" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fruben.cougil.com%2Fassets%2Fitsawonderfulworld%2F" target="_blank" rel="noopener noreferrer" aria-label="Share on LinkedIn">LinkedIn</a>
+                            <button id="copy_link_button" class="share-link" type="button" disabled>Copy link</button>
+                        </div>
+                        <div id="share_link" hidden><label for="share_url">Select and copy this link:</label><input id="share_url" type="url" value="https://ruben.cougil.com/assets/itsawonderfulworld/" readonly spellcheck="false"></div>
+                        <p id="share_status" role="status" aria-live="polite" aria-atomic="true"></p>
+                    </section>
+                </aside>
             </div>
-            <div class="col-1 col-xl-4 col-lg-2"></div>
-        </div>
-        <footer>
-            <div class="row bg-dark text-white">
-                <div class="col text-right pt-2 mr-5">
-                    <p> 🕹 <i>Created by <a href="https://ruben.cougil.com" rel="noopener" target="_blank"> Rubén Cougil</a></i></p>
+
+            <section class="guide" id="scoring-guide" aria-labelledby="guide-title">
+                <div class="guide-intro"><p class="eyebrow">A LITTLE LESS MENTAL MATH</p><h2 id="guide-title">It's a Wonderful World scoring, explained.</h2><p>This free scorecard adds the standard scoring categories for <cite>It's a Wonderful World</cite>. Count completed cards and remaining characters in your Empire after the fourth round.</p><p class="score-formula">Printed VP + card bonuses + character points = total VP.</p><figure class="worked-example"><figcaption>A 125-point example</figcaption><p>32 printed VP + 51 card-bonus VP + 27 General VP + 15 Financier VP = 125 VP.</p></figure><p class="source-links">Check the <a href="https://www.laboitedejeu.fr/en/its-a-wonderful-world/">publisher's game page</a> and <a href="https://www.laboitedejeu.fr/wp-content/uploads/2021/01/ITS-EN-STD-rules-web.pdf">official English rulebook (PDF)</a> for complete rules.</p></div>
+                <div class="guide-content">
+                    <details open><summary>How is my total calculated?</summary><p>Total = printed victory points + card-type bonuses + General points + Financier points. Each card-type bonus is its completed-card count multiplied by the sum of its matching VP multipliers. Characters score one point each, plus any additional VP multipliers. Blank fields count as zero.</p></details>
+                    <details><summary>What goes in the card and bonus fields?</summary><p>Count completed green (Science), black (Energy), yellow (Gold), and blue (Exploration) cards in your Empire, not resource cubes. Add together the matching victory-point multipliers on your cards and Empire card, then enter that sum in Bonus ×. Count only General and Financier tokens remaining in your Empire. Cards under construction and leftover Krystallium do not score.</p></details>
+                    <details><summary>Why do characters score with no bonus?</summary><p>Each General and Financier is worth one victory point before bonuses. This calculator adds that base point automatically. For example, three Generals with a Bonus × of 2 score 3 × (1 + 2) = 9 VP. Do not include their base points again in Printed VP.</p></details>
+                    <details id="tie-rules"><summary>How are ties broken?</summary><p>Compare the number of cards in the tied players' Empires first; the greater number wins. If still tied, compare Character tokens. If both counts tie, share the victory.</p></details>
+                    <details><summary>Does this handle expansions and solo ratings?</summary><p>This is a single scorecard, not a multiplayer leaderboard or solo-rating tool. It covers the original calculator's standard scoring categories. Expansion-specific sets, bonuses, and scenario conditions are not evaluated automatically. Resolve those with your rulebook and add any resulting fixed VP adjustment to Printed VP. This unofficial tool does not replace the rules.</p></details>
+                    <details><summary>Where is my score saved?</summary><p>Your current scorecard is saved locally in this browser, not on a server. It does not sync between devices. Clear score removes the current entries after confirmation. Clearing site data also removes the saved scorecard. If storage is unavailable, a notice explains that your entries will only last until you leave or reload the page.</p></details>
                 </div>
-            </div>
-        </footer>
-    </main>
-    <script src="js/calculator.js"></script>
+            </section>
+        </main>
+        <footer class="site-footer"><p>Made for game night by <a href="https://ruben.cougil.com/">Rubén Cougil</a>.</p><p>Unofficial fan-made tool. Not affiliated with La Boîte de Jeu or Origames.<br>Game artwork belongs to its respective owners.</p></footer>
+    </div>
+    <dialog id="reset_dialog" aria-labelledby="reset-title" aria-describedby="reset-description">
+        <span class="dialog-symbol" aria-hidden="true">↺</span>
+        <h2 id="reset-title">Start a fresh scorecard?</h2>
+        <p id="reset-description">This clears all current entries and replaces the score saved in this browser.</p>
+        <form method="dialog"><button class="secondary-button" autofocus>Keep my score</button><button id="confirm_reset" type="button" class="primary-button">Clear score</button></form>
+    </dialog>
 </body>
-
 </html>

@@ -1,215 +1,256 @@
-var emojis = [];
-var params = [];
-var level = "";
+(() => {
+    "use strict";
 
-async function loadJson(url) {
-    var response = await fetch(url);
-    if (!response.ok) {
-        throw new Error("Could not load " + url + ": " + response.status);
+    const levels = ["easy", "medium", "hard", "expert", "impossible"];
+    const byId = (id) => document.getElementById(id);
+    const input = byId("input_answer");
+    const submit = byId("input_submit");
+    const select = byId("select_level");
+    const result = byId("output_result");
+    const nextButton = byId("next_button");
+    const restartButton = byId("restart_button");
+    const dialog = byId("game_over_dialog");
+    const totalLives = 5;
+    const memory = new Map();
+    let storageAvailable = true;
+    let params;
+    let pools;
+    let level = "easy";
+    let currentEmoji;
+    let score = 0;
+    let lives = totalLives;
+    let phase = "loading";
+    let nextTimeout;
+
+    function storageWarning(error) {
+        if (!storageAvailable) return;
+        storageAvailable = false;
+        console.warn("Emoji Trainer cannot save progress in this browser:", error);
+        byId("storage_notice").textContent = "Browser storage is unavailable. New scores last only for this page session.";
     }
-    return response.json();
-}
 
-function displayLives(total, remaining) {
-    document.getElementById('lives').innerHTML = "❤️ ".repeat(remaining) + "🤍 ".repeat(total - remaining);
-}
-
-function displayStats() {
-    Object.keys(params).forEach(level => {
-        var totalPlays = getCookie(level + '_total_plays');
-        document.getElementById(level + '_display_total_plays').innerHTML = totalPlays ? totalPlays : 0;
-        var bestScore = getCookie(level + '_best_score');
-        document.getElementById(level + '_display_best_score').innerHTML = bestScore ? bestScore : 0;
-    });
-}
-
-function getRandomEmoji(emojis) {
-    var emoji;
-    do {
-        emoji = emojis[Math.random() * emojis.length | 0];
-    } while (params[level]['categories'].includes(emoji['category']) == false)
-    return emoji;
-}
-
-function setCookie(name, value, days) {
-    var expires = "";
-    if (days) {
-        var date = new Date();
-        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-        expires = "; expires=" + date.toUTCString();
-    }
-    document.cookie = name + "=" + (value || "") + expires + "; path=/";
-}
-
-function getCookie(name) {
-    var nameEQ = name + "=";
-    var ca = document.cookie.split(';');
-    for (var i = 0; i < ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
-    }
-    return null;
-}
-
-function setLevel(level) {
-    var select = document.getElementById('select_level');
-    var option;
-
-    for (var i = 0; i < select.options.length; i++) {
-        option = select.options[i];
-
-        if (option.value == level) {
-            option.selected = true;
-        }
-    }
-}
-
-(async () => {
-
-    var emoji = {};
-    var score = 0;
-    var livesTotal = 5;
-    var livesRemaining = 5;
-    var nextTimeout;
-    var answerInput = document.getElementById("input_answer");
-    var submitButton = document.getElementById("input_submit");
-    var levelSelect = document.getElementById("select_level");
-    var outputResult = document.getElementById("output_result");
-    var spinner = document.getElementById("spinner");
-    var displayScore = document.getElementById("display_score");
-    var displayHint = document.getElementById("display_hint");
-    var blockHint = document.getElementById("block_hint");
-
-    answerInput.disabled = true;
-    submitButton.disabled = true;
-    levelSelect.disabled = true;
-
-    try {
-        [emojis, params] = await Promise.all([
-            loadJson('https://raw.githubusercontent.com/github/gemoji/master/db/emoji.json'),
-            loadJson('./params.json')
-        ]);
-    } catch (error) {
-        console.error("Could not initialize Emoji Trainer:", error);
-        outputResult.classList.add("alert-danger");
-        outputResult.textContent = "Unable to load game data. Please reload to try again.";
-        return;
-    }
-    levelSelect.disabled = false;
-
-    submitButton.addEventListener("click", function (event) {
-        event.preventDefault();
-        submitAnswer(answerInput.value);
-    });
-
-    answerInput.addEventListener('keypress', function (event) {
-        if (event.key === 'Enter') {
-            submitAnswer(event.target.value)
-        }
-    });
-
-    function setStats(level, score) {
-        var totalPlays = getCookie(level + '_total_plays');
-        setCookie(level + '_total_plays', totalPlays ? ++totalPlays : 1);
-
-        var bestScore = getCookie(level + '_best_score');
-        if ((!bestScore) || (score > bestScore)) {
-            setCookie(level + '_best_score', score);
+    function readSaved(key) {
+        if (memory.has(key)) return memory.get(key);
+        try {
+            const saved = localStorage.getItem(`emoji-trainer:${key}`);
+            if (saved !== null) return saved;
+            // Keep scores and difficulty from the original cookie-based game.
+            const prefix = `${key}=`;
+            const cookie = document.cookie.split(";").map((part) => part.trim()).find((part) => part.startsWith(prefix));
+            return cookie ? cookie.slice(prefix.length) : null;
+        } catch (error) {
+            storageWarning(error);
+            return null;
         }
     }
 
-    function resetAnswer() {
-        answerInput.value = "";
-        outputResult.classList.remove("alert-danger", "alert-success");
-        outputResult.innerHTML = "";
-        spinner.innerHTML = "";
+    function save(key, value) {
+        memory.set(key, String(value));
+        try {
+            localStorage.setItem(`emoji-trainer:${key}`, String(value));
+        } catch (error) {
+            storageWarning(error);
+        }
     }
 
-    function submitAnswer(answer) {
-        if (answerInput.disabled) {
+    function savedNumber(key) {
+        const value = Number(readSaved(key));
+        return Number.isSafeInteger(value) && value >= 0 ? value : 0;
+    }
+
+    function displayStats() {
+        for (const name of levels) {
+            byId(`${name}_display_best_score`).textContent = savedNumber(`${name}_best_score`);
+            byId(`${name}_display_total_plays`).textContent = savedNumber(`${name}_total_plays`);
+            document.querySelector(`[data-level="${name}"]`).dataset.active = String(name === level);
+        }
+    }
+
+    function showLives() {
+        const display = byId("lives");
+        display.textContent = "❤️".repeat(lives) + "🤍".repeat(totalLives - lives);
+        display.setAttribute("aria-label", `${lives} of ${totalLives} lives remaining`);
+    }
+
+    function showResult(message, state = "") {
+        result.textContent = message;
+        result.dataset.state = state;
+    }
+
+    function setAnswerEnabled(enabled) {
+        input.disabled = !enabled;
+        submit.disabled = !enabled;
+    }
+
+    function finish() {
+        phase = "finished";
+        setAnswerEnabled(false);
+        save(`${level}_total_plays`, savedNumber(`${level}_total_plays`) + 1);
+        save(`${level}_best_score`, Math.max(score, savedNumber(`${level}_best_score`)));
+        displayStats();
+        byId("final_score").textContent = score;
+        byId("game_over_message").textContent = `${select.selectedOptions[0].textContent.replace(/^\S+\s/, "")} level complete. Your final score:`;
+        showResult("Workout complete. Restart or play again to begin a new game.");
+        dialog.showModal();
+    }
+
+    function next(focusInput = false) {
+        clearTimeout(nextTimeout);
+        nextButton.hidden = true;
+        if (lives === 0) {
+            finish();
             return;
         }
-        answerInput.disabled = true;
-        submitButton.disabled = true;
-        if (emoji['aliases'].includes(answer.toLowerCase())) {
-            displayScore.innerHTML = ++score;
-            outputResult.classList.add("alert-success");
-            outputResult.innerHTML = '👍'
-        } else {
-            outputResult.classList.add("alert-danger");
-            outputResult.innerHTML = "❌ " + emoji['aliases'].join(" ,")
-            if (livesRemaining > 0) {
-                livesRemaining--;
-            }
-        }
-
-        spinner.innerHTML = '<div class="spinner-border text-secondary text-center" role="status"></div>';
-        nextTimeout = setTimeout(() => {
-            resetAnswer();
-            next()
-        }, 2000)
+        const pool = pools[level];
+        // Select from a finite eligible pool and avoid consecutive repeats.
+        const choices = pool.length > 1 ? pool.filter((entry) => entry !== currentEmoji) : pool;
+        currentEmoji = choices[Math.floor(Math.random() * choices.length)];
+        byId("display_emoji").textContent = currentEmoji.emoji;
+        const ratio = params[level].hint_ratio;
+        byId("block_hint").hidden = ratio === 0;
+        byId("no_hint").hidden = ratio !== 0;
+        byId("display_hint").textContent = ratio === 0 ? "" : currentEmoji.aliases.map((alias) =>
+            Array.from(alias, (letter) => letter === "_" || Math.random() < ratio ? letter : "·").join(" ")
+        ).join(" / ");
+        input.value = "";
+        showResult("");
+        phase = "answering";
+        setAnswerEnabled(true);
+        if (focusInput) input.focus({ preventScroll: true });
     }
 
-    document.getElementById("try_again_button").addEventListener('click', function (event) {
-        location.reload();
-    })
+    function start(focusInput = false) {
+        clearTimeout(nextTimeout);
+        if (dialog.open) dialog.close();
+        score = 0;
+        lives = totalLives;
+        currentEmoji = null;
+        byId("display_score").textContent = score;
+        showLives();
+        displayStats();
+        next(focusInput);
+    }
 
-    levelSelect.addEventListener('change', function (event) {
-        setCookie('level', event.target.value);
+    byId("answer_form").addEventListener("submit", (event) => {
+        event.preventDefault();
+        if (phase !== "answering") return;
+        const answer = input.value.trim().toLowerCase().replace(/^:(.*):$/, "$1").trim();
+        if (!answer) {
+            showResult("Type an emoji shortcode before checking your answer.", "error");
+            input.focus();
+            return;
+        }
+        phase = "feedback";
+        setAnswerEnabled(false);
+        const correct = currentEmoji.aliases.includes(answer);
+        if (correct) {
+            score += 1;
+            byId("display_score").textContent = score;
+            showResult(`Correct! :${answer}: — nice work.`, "success");
+        } else {
+            lives -= 1;
+            showLives();
+            showResult(`Not quite. Accepted: ${currentEmoji.aliases.map((alias) => `:${alias}:`).join(", ")}`, "error");
+        }
+        nextButton.textContent = lives === 0 ? "See results →" : "Next emoji →";
+        nextButton.hidden = false;
+        nextButton.focus({ preventScroll: true });
+        nextTimeout = setTimeout(() => next(true), correct ? 1400 : 2800);
+    });
+
+    nextButton.addEventListener("click", () => {
+        if (phase === "feedback") next(true);
+    });
+    restartButton.addEventListener("click", () => start(true));
+    select.addEventListener("change", () => {
+        level = select.value;
+        save("level", level);
         start();
     });
+    byId("try_again_button").addEventListener("click", (event) => {
+        event.preventDefault();
+        start(true);
+    });
+    dialog.addEventListener("cancel", () => {
+        // Escape dismisses the summary; the visible Restart control stays usable.
+        restartButton.focus({ preventScroll: true });
+    });
+    byId("reload_button").addEventListener("click", () => location.reload());
 
-    function next() {
-        displayLives(livesTotal, livesRemaining);
-
-        if (livesRemaining == 0) {
-            var myModal = new bootstrap.Modal(document.getElementById('staticBackdrop'))
-            document.getElementById('game_over_message').innerHTML = "🕹️ Your final Score is <h2>" + score + "</h2>"
-            setStats(level, score);
-            myModal.show();
-            return;
-        }
-
-        emoji = getRandomEmoji(emojis)
-        displayHint.innerHTML = "";
-        document.getElementById("display_emoji").innerHTML = emoji["emoji"];
-        answerInput.disabled = false;
-        submitButton.disabled = false;
-        answerInput.focus();
-
-        if (params[level]['hint_ratio'] > 0) {
-            blockHint.hidden = false;
-            var hints = [];
-            emoji['aliases'].forEach(element => {
-                var hint = "";
-                for (var i = 0; i < element.length; i++) {
-                    if (Math.random() < params[level]['hint_ratio']) {
-                        hint += element[i] + " ";
-                    } else {
-                        hint += "_ "
-                    }
+    const copyButton = byId("copy_link_button");
+    const shareStatus = byId("share_status");
+    const shareLink = byId("share_link");
+    const shareUrl = byId("share_url");
+    const canonicalUrl = document.querySelector('link[rel="canonical"]').href;
+    shareUrl.value = canonicalUrl;
+    copyButton.disabled = false;
+    copyButton.addEventListener("click", async () => {
+        copyButton.disabled = true;
+        shareLink.hidden = true;
+        shareStatus.textContent = "";
+        try {
+            if (typeof navigator.clipboard?.writeText === "function") {
+                try {
+                    await navigator.clipboard.writeText(canonicalUrl);
+                    shareStatus.textContent = "Link copied. Paste it into your favorite app.";
+                    return;
+                } catch (error) {
+                    console.warn("Could not copy the sharing link:", error);
                 }
-                hints.push("\"" + hint + "\"");
-            });
-            displayHint.innerHTML = hints.join(" </p><p> ");
-        } else {
-            blockHint.hidden = true;
+            }
+            shareLink.hidden = false;
+            shareStatus.textContent = "Automatic copying is unavailable. Select and copy the link above.";
+            shareUrl.focus();
+            shareUrl.select();
+        } finally {
+            copyButton.disabled = false;
+        }
+    });
+
+    async function loadJson(url) {
+        const response = await fetch(url, { signal: AbortSignal.timeout(12000) });
+        if (!response.ok) throw new Error(`Could not load ${url}: HTTP ${response.status}`);
+        return response.json();
+    }
+
+    async function initialize() {
+        byId("game").setAttribute("aria-busy", "true");
+        showResult("Getting your workout ready…");
+        try {
+            const [emojis, settings] = await Promise.all([loadJson("./emoji.json"), loadJson("./params.json")]);
+            if (!Array.isArray(emojis) || !emojis.length || !emojis.every((entry) =>
+                typeof entry.emoji === "string" && entry.emoji.length > 0 &&
+                typeof entry.category === "string" &&
+                Array.isArray(entry.aliases) && entry.aliases.length > 0 &&
+                entry.aliases.every((alias) => typeof alias === "string" && alias.length > 0)
+            )) throw new Error("Invalid emoji data");
+            params = settings;
+            pools = {};
+            for (const name of levels) {
+                const config = params?.[name];
+                if (!config || !Number.isFinite(config.hint_ratio) || config.hint_ratio < 0 ||
+                    config.hint_ratio > 1 || !Array.isArray(config.categories) ||
+                    !config.categories.every((category) => typeof category === "string")) {
+                    throw new Error(`Invalid settings for ${name}`);
+                }
+                pools[name] = emojis.filter((entry) => config.categories.includes(entry.category));
+                if (!pools[name].length) throw new Error(`No eligible emoji for ${name}`);
+            }
+            const savedLevel = readSaved("level");
+            level = levels.includes(savedLevel) ? savedLevel : "easy";
+            select.value = level;
+            select.disabled = false;
+            restartButton.disabled = false;
+            start();
+        } catch (error) {
+            phase = "error";
+            console.error("Could not initialize Emoji Trainer:", error);
+            showResult("Unable to load game data. Check your connection and retry.", "error");
+            byId("reload_button").hidden = false;
+        } finally {
+            byId("game").setAttribute("aria-busy", "false");
         }
     }
 
-    function start() {
-        clearTimeout(nextTimeout);
-        resetAnswer();
-        score = 0;
-        displayScore.innerHTML = score;
-        livesRemaining = livesTotal;
-        level = getCookie('level') || levelSelect.value;
-        setLevel(level);
-        displayStats();
-        next()
-    }
-
-    start();
-
+    initialize();
 })();

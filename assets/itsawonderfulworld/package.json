@@ -1,0 +1,17 @@
+{
+  "name": "wonderful-world-score-calculator",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "An unofficial, dependency-free score calculator for It's a Wonderful World.",
+  "scripts": {
+    "start": "python3 -m http.server 4175 --bind 127.0.0.1",
+    "test": "node --test tests/scoring.test.js && playwright test",
+    "social-card": "node scripts/generate-social-card.js",
+    "audit": "lighthouse http://127.0.0.1:4175/ --chrome-flags='--headless=new' --output=json --output-path=./lighthouse-report.json"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.64.1",
+    "lighthouse": "13.5.0"
+  }
+}

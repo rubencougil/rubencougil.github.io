@@ -1,0 +1,15 @@
+{
+  "name": "emoji-trainer",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A dependency-free browser game for practicing emoji shortcodes.",
+  "scripts": {
+    "test": "playwright test",
+    "social-card": "node scripts/generate-social-card.js",
+    "audit": "lighthouse http://127.0.0.1:4173/ --chrome-flags='--headless=new' --output=json --output-path=./lighthouse-report.json"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.64.1",
+    "lighthouse": "13.5.0"
+  }
+}

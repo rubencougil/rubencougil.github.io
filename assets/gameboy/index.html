@@ -131,10 +131,12 @@
             <span style="--tone:#000000"></span><span style="--tone:#404000"></span><span style="--tone:#808040"></span><span style="--tone:#c0c080"></span>
           </div>
           <div class="converter-actions">
+            <button type="button" id="share-image" class="button button-primary" aria-describedby="save-help" hidden disabled>Save / Share image</button>
             <button type="button" id="download-image" class="button button-primary" disabled>Download PNG <span aria-hidden="true">↓</span></button>
             <button type="button" id="cancel-conversion" class="button button-secondary" hidden>Cancel</button>
             <a href="#result">View preview</a>
           </div>
+          <p id="save-help" class="help-text">On supported phones, Save / Share image opens your device's share menu. Choose Save Image on iPhone when available; Android options depend on your installed apps. Download PNG saves to Downloads or Files, not necessarily your photo library.</p>
           <p id="conversion-status" class="status" role="status" aria-live="polite" aria-atomic="true">Choose a photo or try an example below.</p>
           <noscript><p class="notice">Enable JavaScript to convert a photo and download the result. The examples and information below are still available.</p></noscript>
         </section>
@@ -218,7 +220,7 @@
       <h2 id="faq-title">Before you convert</h2>
       <details>
         <summary>Are my photos uploaded anywhere?</summary>
-        <p>No. Selected photos are opened and converted locally in your browser. This app does not send your image to a server. The sharing buttons share a link to the converter, not your picture.</p>
+        <p>No. Selected photos are opened and converted locally in your browser. This app does not send your image to a server. Save / Share image passes the converted PNG to the app or destination you choose, which may upload it. The separate Share the converter section shares only the public page link.</p>
       </details>
       <details>
         <summary>What size and format will I download?</summary>
@@ -234,7 +236,7 @@
       </details>
       <details>
         <summary>Can I use it on a phone?</summary>
-        <p>Yes. Choose a supported image from your device, wait for the preview, and use Download PNG to save it. Start with a smaller output on memory-constrained phones. You need JavaScript enabled and a browser with HTML canvas and Web Worker support.</p>
+        <p>Yes. PNG works with iPhone Photos and Android photo galleries and keeps the pixel art crisp. Choose a supported image, wait for the preview, and use Save / Share image when available. On iPhone, look for Save Image in the share menu; Android destinations vary by installed apps. If image sharing is unavailable, use Download PNG and check Downloads or Files, then use your device's options to save or import it into your photo library. Start with a smaller output on memory-constrained phones. You need JavaScript enabled and a browser with HTML canvas and Web Worker support.</p>
       </details>
     </section>
   </main>

@@ -6,6 +6,7 @@
   const fileInput = document.querySelector('#picture');
   const canvas = document.querySelector('#canvas');
   const downloadButton = document.querySelector('#download-image');
+  const shareImageButton = document.querySelector('#share-image');
   const status = document.querySelector('#conversion-status');
   const result = document.querySelector('#result');
   const exampleButtons = [...document.querySelectorAll('.example-button')];
@@ -17,6 +18,8 @@
   let selectionId = 0;
   let outputUrl = '';
   let outputName = 'gameboy-yourself.png';
+  let outputFile = null;
+  let sharingImage = false;
   let selectedSource = null;
   let activeImage = null;
   let activeJob = null;
@@ -161,6 +164,7 @@
     result.setAttribute('aria-busy', String(busy));
     cancelButton.hidden = !busy;
     downloadButton.disabled = busy || !outputUrl;
+    shareImageButton.disabled = busy || !outputFile || sharingImage;
   }
 
   async function convertImage(source, name, exampleButton = null) {
@@ -260,13 +264,17 @@
       if (previousUrl) URL.revokeObjectURL(previousUrl);
       const basename = name.replace(/\.[^.]+$/, '').replace(/[<>:"/\\|?*\u0000-\u001f]/g, '_').slice(0, 100) || 'photo';
       outputName = `${basename}-gameboy${outputWidth === WIDTH && outputHeight === HEIGHT ? '' : `-${outputWidth}x${outputHeight}`}.png`;
+      outputFile = new File([blob], outputName, { type: 'image/png' });
+      shareImageButton.hidden = !(typeof navigator.share === 'function'
+        && typeof navigator.canShare === 'function'
+        && navigator.canShare({ files: [outputFile] }));
       canvas.hidden = false;
       document.querySelector('#screen-preview').hidden = true;
       document.querySelector('#output-meta').textContent = `${name} · ${outputWidth} × ${outputHeight} pixels · ${mode === 'detail' ? 'Higher detail' : `${scale}× pixel art`} · PNG`;
       for (const button of exampleButtons) {
         button.setAttribute('aria-pressed', String(button === exampleButton));
       }
-      setStatus('Ready. Your four-tone PNG is available to download. Your photo has not been uploaded.');
+      setStatus(`Ready. Your four-tone PNG is available to ${shareImageButton.hidden ? 'download' : 'save, share, or download'}. Your photo has not been uploaded.`);
     } catch (error) {
       if (id === selectionId) {
         console.error('Image conversion failed.', error);
@@ -325,7 +333,32 @@
     document.body.appendChild(link);
     link.click();
     link.remove();
-    setStatus('PNG download started. Your original photo stays on your device.');
+    setStatus('PNG download started. On phones, check Downloads or Files; downloading may not add it to your photo library. Your original photo stays on your device.');
+  });
+  shareImageButton.addEventListener('click', async () => {
+    if (!outputFile || sharingImage || shareImageButton.disabled) return;
+    const file = outputFile;
+    const id = selectionId;
+    sharingImage = true;
+    shareImageButton.disabled = true;
+    try {
+      await navigator.share({ files: [file] });
+      if (id === selectionId) {
+        setStatus('Image share menu closed. Saving depends on the option you chose; check Photos, your gallery, or the selected app.');
+      }
+    } catch (error) {
+      if (error.name !== 'AbortError') {
+        console.error('Could not share the converted image.', error);
+      }
+      if (id === selectionId) {
+        setStatus(error.name === 'AbortError'
+          ? 'Image sharing cancelled. Your PNG is still ready to save or download.'
+          : 'Could not open the image share menu. Use Download PNG instead.', error.name === 'AbortError' ? '' : 'error');
+      }
+    } finally {
+      sharingImage = false;
+      shareImageButton.disabled = result.getAttribute('aria-busy') === 'true' || !outputFile;
+    }
   });
 
   const canonicalUrl = document.querySelector('link[rel="canonical"]').href;

@@ -9,11 +9,13 @@
   const shareStatus = document.querySelector('#share-status');
   let player = null;
   let loadTimeout = null;
+  let playerReady = false;
 
   function closePlayer() {
     clearTimeout(loadTimeout);
     player?.remove();
     player = null;
+    playerReady = false;
     overlay.hidden = false;
     preview.hidden = false;
     stopButton.hidden = true;
@@ -59,6 +61,10 @@
       stopButton.hidden = false;
       gameStatus.textContent = 'Emulador abierto. Cuando aparezca el menú de Mochilo ZX, pulsa 1 para jugar con teclado.';
       player.focus({ preventScroll: true });
+      if (!playerReady) {
+        playerReady = true;
+        window.trackProjectEvent?.('emulator_open');
+      }
     } else if (event.data?.type === 'mochilo-player-error') {
       showPlayerError('No se pudo cargar el emulador o la cinta del juego. Revisa la conexión y vuelve a intentarlo.');
     }
@@ -80,6 +86,7 @@
       await navigator.clipboard.writeText(canonicalUrl);
       document.querySelector('#manual-copy').hidden = true;
       shareStatus.textContent = 'Enlace copiado. Ya puedes compartir Mochilo ZX.';
+      window.trackProjectEvent?.('share', 'copy_link');
     } catch (error) {
       console.error('No se pudo copiar el enlace.', error);
       document.querySelector('#manual-copy').hidden = false;
@@ -101,6 +108,7 @@
           url: canonicalUrl
         });
         shareStatus.textContent = 'Gracias por compartir Mochilo ZX.';
+        window.trackProjectEvent?.('share', 'native');
       } catch (error) {
         if (error.name !== 'AbortError') {
           console.error('No se pudo compartir el juego.', error);

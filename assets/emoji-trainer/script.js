@@ -21,6 +21,7 @@
     let lives = totalLives;
     let phase = "loading";
     let nextTimeout;
+    let gameStarted = false;
 
     function storageWarning(error) {
         if (!storageAvailable) return;
@@ -92,6 +93,7 @@
         byId("game_over_message").textContent = `${select.selectedOptions[0].textContent.replace(/^\S+\s/, "")} level complete. Your final score:`;
         showResult("Workout complete. Restart or play again to begin a new game.");
         dialog.showModal();
+        window.trackProjectEvent?.("level_end");
     }
 
     function next(focusInput = false) {
@@ -125,6 +127,7 @@
         score = 0;
         lives = totalLives;
         currentEmoji = null;
+        gameStarted = false;
         byId("display_score").textContent = score;
         showLives();
         displayStats();
@@ -139,6 +142,10 @@
             showResult("Type an emoji shortcode before checking your answer.", "error");
             input.focus();
             return;
+        }
+        if (!gameStarted) {
+            gameStarted = true;
+            window.trackProjectEvent?.("level_start");
         }
         phase = "feedback";
         setAnswerEnabled(false);
@@ -193,6 +200,7 @@
                 try {
                     await navigator.clipboard.writeText(canonicalUrl);
                     shareStatus.textContent = "Link copied. Paste it into your favorite app.";
+                    window.trackProjectEvent?.("share", "copy_link");
                     return;
                 } catch (error) {
                     console.warn("Could not copy the sharing link:", error);

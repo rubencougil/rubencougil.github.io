@@ -11,6 +11,7 @@ const resetButton = byId("reset_button");
 const resetDialog = byId("reset_dialog");
 const storageKey = "wonderful-world:scorecard:v1";
 let storageAvailable = true;
+let calculationTracked = false;
 
 function warnStorage(error) {
     if (!storageAvailable) return;
@@ -81,7 +82,7 @@ function update() {
         for (const category of CATEGORIES) byId(`${category}Subtotal`).value = "—";
         for (const part of ["printed", "cards", "generals", "financiers"]) byId(`${part}-breakdown`).textContent = "—";
         scoreStatus.textContent = calculation.errors.total || "Check the highlighted fields before using this total.";
-        return;
+        return false;
     }
     result.value = calculation.total;
     byId("printed-breakdown").textContent = calculation.printed;
@@ -90,16 +91,22 @@ function update() {
     byId("financiers-breakdown").textContent = calculation.subtotals.financiers;
     for (const category of CATEGORIES) byId(`${category}Subtotal`).value = calculation.subtotals[category];
     scoreStatus.textContent = "Score updated. Blank fields count as zero.";
+    return true;
 }
 
 form.addEventListener("input", () => {
-    update();
+    const valid = update();
     save();
+    if (valid && !calculationTracked && fields.some((input) => input.value !== "")) {
+        calculationTracked = true;
+        window.trackProjectEvent?.("score_calculate");
+    }
 });
 form.addEventListener("submit", (event) => event.preventDefault());
 resetButton.addEventListener("click", () => resetDialog.showModal());
 byId("confirm_reset").addEventListener("click", () => {
     form.reset();
+    calculationTracked = false;
     update();
     save();
     resetDialog.close();
@@ -122,6 +129,7 @@ copyButton.addEventListener("click", async () => {
             try {
                 await navigator.clipboard.writeText(canonicalUrl);
                 shareStatus.textContent = "Link copied. Paste it into your favorite app.";
+                window.trackProjectEvent?.("share", "copy_link");
                 return;
             } catch (error) {
                 console.warn("Could not copy the sharing link:", error);

@@ -22,6 +22,24 @@ async function loseGame(page) {
     await expect(page.locator("#game_over_dialog")).toBeVisible();
 }
 
+test("analytics counts actual games, not loading, empty answers, or individual guesses", async ({ page }) => {
+    await page.addInitScript(() => {
+        window.projectEvents = [];
+        window.trackProjectEvent = (...args) => window.projectEvents.push(args);
+    });
+    await ready(page);
+    await expect.poll(() => page.evaluate(() => window.projectEvents.length)).toBe(0);
+    await page.locator("#input_submit").click();
+    expect(await page.evaluate(() => window.projectEvents)).toEqual([]);
+    await loseGame(page);
+    expect(await page.evaluate(() => window.projectEvents)).toEqual([["level_start"], ["level_end"]]);
+    await page.locator("#try_again_button").click();
+    expect(await page.evaluate(() => window.projectEvents.length)).toBe(2);
+    await page.locator("#input_answer").fill("private_answer");
+    await page.locator("#input_submit").click();
+    expect(await page.evaluate(() => window.projectEvents)).toEqual([["level_start"], ["level_end"], ["level_start"]]);
+});
+
 test("loads locally without browser errors and accepts normalized aliases", async ({ page }) => {
     const errors = [];
     const externalRequests = [];

@@ -218,39 +218,8 @@
     <link rel="stylesheet"
           href="css/main.css">
 
-    <!-- Google Analytics -->
-    <script>
-        (function () {
-            const measurementId = 'G-XP27FQB93K';
-            window.dataLayer = window.dataLayer || [];
-            window.gtag = function gtag() { window.dataLayer.push(arguments); };
-
-            function loadAnalyticsScript() {
-                if (document.querySelector('script[data-gtag-loader="true"]')) {
-                    return;
-                }
-
-                const script = document.createElement('script');
-                script.async = true;
-                script.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
-                script.dataset.gtagLoader = 'true';
-                document.head.appendChild(script);
-            }
-
-            window.gtag('js', new Date());
-            window.gtag('config', measurementId);
-
-            if ('requestIdleCallback' in window) {
-                window.addEventListener('load', () => {
-                    window.requestIdleCallback(loadAnalyticsScript, { timeout: 4000 });
-                }, { once: true });
-            } else {
-                window.addEventListener('load', () => {
-                    window.setTimeout(loadAnalyticsScript, 1200);
-                }, { once: true });
-            }
-        })();
-    </script>
+    <script defer
+            src="js/google-analytics.js"></script>
 </head>
 
 <body>
@@ -878,6 +847,8 @@
             src="js/i18n-inline.js"></script>
     <script defer
             src="js/main.js"></script>
+    <script defer
+            src="js/analytics.js"></script>
 </body>
 
 </html>

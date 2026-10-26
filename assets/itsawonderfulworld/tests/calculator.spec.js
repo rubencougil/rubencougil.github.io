@@ -17,6 +17,30 @@ async function ready(page) {
     await expect(page.locator("#scienceVictoryPointsInput")).toBeEnabled();
 }
 
+test("analytics counts valid scorecard use once, without sending entered values", async ({ page }) => {
+    await page.addInitScript(() => {
+        window.projectEvents = [];
+        window.trackProjectEvent = (...args) => window.projectEvents.push(args);
+    });
+    await ready(page);
+    expect(await page.evaluate(() => window.projectEvents)).toEqual([]);
+    await page.locator("#scienceVictoryPointsInput").fill("-1");
+    expect(await page.evaluate(() => window.projectEvents)).toEqual([]);
+    await page.locator("#scienceVictoryPointsInput").fill("5");
+    await page.locator("#scienceMultiplierInput").fill("3");
+    expect(await page.evaluate(() => window.projectEvents)).toEqual([["score_calculate"]]);
+    await page.reload();
+    await expect(page.locator("#scienceVictoryPointsInput")).toHaveValue("5");
+    expect(await page.evaluate(() => window.projectEvents)).toEqual([]);
+    await page.locator("#scienceMultiplierInput").fill("4");
+    expect(await page.evaluate(() => window.projectEvents)).toEqual([["score_calculate"]]);
+    await page.locator("#reset_button").click();
+    await page.locator("#confirm_reset").click();
+    expect(await page.evaluate(() => window.projectEvents.length)).toBe(1);
+    await page.locator("#grossVictoryPointsInput").fill("8");
+    expect(await page.evaluate(() => window.projectEvents)).toEqual([["score_calculate"], ["score_calculate"]]);
+});
+
 test("live scoring matches the complete example, without external requests or runtime errors", async ({ page }) => {
     const errors = [];
     const external = [];

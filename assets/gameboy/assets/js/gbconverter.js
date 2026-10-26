@@ -275,6 +275,7 @@
         button.setAttribute('aria-pressed', String(button === exampleButton));
       }
       setStatus(`Ready. Your four-tone PNG is available to ${shareImageButton.hidden ? 'download' : 'save, share, or download'}. Your photo has not been uploaded.`);
+      window.trackProjectEvent?.('image_convert');
     } catch (error) {
       if (id === selectionId) {
         console.error('Image conversion failed.', error);
@@ -334,6 +335,7 @@
     link.click();
     link.remove();
     setStatus('PNG download started. On phones, check Downloads or Files; downloading may not add it to your photo library. Your original photo stays on your device.');
+    window.trackProjectEvent?.('image_download');
   });
   shareImageButton.addEventListener('click', async () => {
     if (!outputFile || sharingImage || shareImageButton.disabled) return;
@@ -343,6 +345,7 @@
     shareImageButton.disabled = true;
     try {
       await navigator.share({ files: [file] });
+      window.trackProjectEvent?.('image_share');
       if (id === selectionId) {
         setStatus('Image share menu closed. Saving depends on the option you chose; check Photos, your gallery, or the selected app.');
       }
@@ -373,6 +376,7 @@
       await navigator.clipboard.writeText(canonicalUrl);
       document.querySelector('#manual-copy').hidden = true;
       shareStatus.textContent = 'Link copied. Share the converter with someone.';
+      window.trackProjectEvent?.('share', 'copy_link');
     } catch (error) {
       console.error('Could not copy the page link.', error);
       document.querySelector('#manual-copy').hidden = false;
@@ -393,6 +397,7 @@
           url: canonicalUrl
         });
         shareStatus.textContent = 'Thanks for sharing Game Boy Yourself.';
+        window.trackProjectEvent?.('share', 'native');
       } catch (error) {
         if (error.name !== 'AbortError') {
           console.error('Could not share the converter.', error);

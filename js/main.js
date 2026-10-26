@@ -155,9 +155,13 @@
 
     function setupLanguageSelector() {
         document.querySelectorAll('#language-selector .language-selector').forEach((node) => {
-            node.addEventListener('click', (event) => {
+            node.addEventListener('click', async (event) => {
                 event.preventDefault();
-                switchLocale(node.dataset.locale);
+                const previousLocale = document.documentElement.lang;
+                await switchLocale(node.dataset.locale);
+                if (document.documentElement.lang !== previousLocale) {
+                    document.dispatchEvent(new CustomEvent('site:language-change'));
+                }
             });
         });
     }
